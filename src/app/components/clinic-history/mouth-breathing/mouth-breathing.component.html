@@ -1,0 +1,763 @@
+<form class="was-validated" (ngSubmit)="onSubmit()" ngNativeValidate>
+    <div class="row">
+        <div class="col-xl-12 col-md-12">
+            <h5>Evaluación funcional</h5>
+            <hr>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="form-label" for="date">Fecha de evaluación</label>
+                <input class="form-control form-control-sm" id="date" name="date" type="date"
+                [(ngModel)]="this.inputs.date" required>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-2">
+            <div class="form-group mt-4">
+                <label for="type">Tipo de Parto:</label>
+            </div>
+        </div>
+        <div class="col-md-4 mt-4">
+            <div class="form-group d-inline">
+                <div class="radio radio-success d-inline">
+                    <input type="radio" name="normal" id="normal" value="normal" [(ngModel)]="this.inputs.delivery_type">
+                    <label for="normal" class="cr">Normal</label>
+                </div>
+            </div>
+            <div class="form-group d-inline">
+                <div class="radio radio-success d-inline">
+                    <input type="radio" name="cesarea" id="cesarea" value="cesarea" [(ngModel)]="this.inputs.delivery_type">
+                    <label for="cesarea" class="cr">Cesárea</label>
+                </div>
+            </div>
+            <div class="form-group d-inline">
+                <div class="radio radio-success d-inline">
+                    <input type="radio" name="forceps" id="forceps" value="forceps" [(ngModel)]="this.inputs.delivery_type">
+                    <label for="forceps" class="cr">Fórceps</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="">¿Por cuánto tiempo su hijo tuvo lactancia materna exclusiva?</label>
+                <textarea name="lactation" class="form-control" cols="2" placeholder="Digite el tiempo de lactancia materna"
+                required [(ngModel)]="this.inputs.lactation"></textarea>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="">¿Porqué razón dejó de hacerlo?</label>
+                <textarea name="lactation_reason" class="form-control" cols="2" placeholder="Digite la razón"
+                required [(ngModel)]="this.inputs.lactation_reason"></textarea>
+            </div>
+        </div>
+        <div class="col-xl-12 col-md-12">
+            <h5>Habitos</h5>
+            <hr>
+        </div>
+        <div class="col-xl-12 col-md-12">
+            <table class="table table-sm table-striped table-hover table-bordered">
+                <thead>
+                    <th></th>
+                    <th class="w50">Si</th>
+                    <th class="w50">No</th>
+                    <th class="w50">¿HASTA CUANDO?</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>¿Usó biberón? </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="feeding_bottle_si" id="feeding_bottle_si" value="si" [(ngModel)]="this.inputs.feeding_bottle">
+                                <label for="feeding_bottle_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="feeding_bottle_no" id="feeding_bottle_no" value="no" [(ngModel)]="this.inputs.feeding_bottle">
+                                <label for="feeding_bottle_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="text" name="feeding_bottle_str" id="feeding_bottle_str" class="form-control form-control-sm"
+                            [(ngModel)]="this.inputs.feeding_bottle_str">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Usó tetilla Ortodóntica para el biberón?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="feeding_bottle_nipple_si" id="feeding_bottle_nipple_si" value="si" [(ngModel)]="this.inputs.feeding_bottle_nipple">
+                                <label for="feeding_bottle_nipple_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="feeding_bottle_nipple_no" id="feeding_bottle_nipple_no" value="no" [(ngModel)]="this.inputs.feeding_bottle_nipple">
+                                <label for="feeding_bottle_nipple_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="text" name="feeding_bottle_nipple_str" id="feeding_bottle_nipple_str" class="form-control form-control-sm"
+                            [(ngModel)]="this.inputs.feeding_bottle_nipple_str">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Usó chupón?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="baby_pacifier_si" id="baby_pacifier_si" value="si" [(ngModel)]="this.inputs.baby_pacifier">
+                                <label for="baby_pacifier_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="baby_pacifier_no" id="baby_pacifier_no" value="no" [(ngModel)]="this.inputs.baby_pacifier">
+                                <label for="baby_pacifier_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="text" name="baby_pacifier_str" id="baby_pacifier_str" class="form-control form-control-sm"
+                            [(ngModel)]="this.inputs.baby_pacifier_str">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Usó el chupón con tetilla Ortodóntica?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="baby_pacifier_nipple_si" id="baby_pacifier_nipple_si" value="si" [(ngModel)]="this.inputs.baby_pacifier_nipple">
+                                <label for="baby_pacifier_nipple_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="baby_pacifier_nipple_no" id="baby_pacifier_nipple_no" value="no" [(ngModel)]="this.inputs.baby_pacifier_nipple">
+                                <label for="baby_pacifier_nipple_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="text" name="baby_pacifier_nipple_str" id="baby_pacifier_nipple_str" class="form-control form-control-sm"
+                            [(ngModel)]="this.inputs.baby_pacifier_nipple_str">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Succión digital? (chuparse el dedo)</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="digital_suction_si" id="digital_suction_si" value="si" [(ngModel)]="this.inputs.digital_suction">
+                                <label for="digital_suction_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="digital_suction_no" id="digital_suction_no" value="no" [(ngModel)]="this.inputs.digital_suction">
+                                <label for="digital_suction_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="text" name="digital_suction_str" id="digital_suction_str" class="form-control form-control-sm"
+                            [(ngModel)]="this.inputs.digital_suction_str">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Onicofagia? (comerse las uñas)</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="onicofagia_si" id="onicofagia_si" value="si" [(ngModel)]="this.inputs.onicofagia">
+                                <label for="onicofagia_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="onicofagia_no" id="onicofagia_no" value="no" [(ngModel)]="this.inputs.onicofagia">
+                                <label for="onicofagia_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="text" name="onicofagia_str" id="onicofagia_str" class="form-control form-control-sm"
+                            [(ngModel)]="this.inputs.onicofagia_str">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Succión labial?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="lip_suction_si" id="lip_suction_si" value="si" [(ngModel)]="this.inputs.lip_suction">
+                                <label for="lip_suction_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="lip_suction_no" id="lip_suction_no" value="no" [(ngModel)]="this.inputs.lip_suction">
+                                <label for="lip_suction_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="text" name="lip_suction_str" id="lip_suction_str" class="form-control form-control-sm"
+                            [(ngModel)]="this.inputs.lip_suction_str">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Presenta algún otro hábito? ¿Cual?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="another_habit_si" id="another_habit_si" value="si" [(ngModel)]="this.inputs.another_habit">
+                                <label for="another_habit_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="another_habit_no" id="another_habit_no" value="no" [(ngModel)]="this.inputs.another_habit">
+                                <label for="another_habit_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="text" name="another_habit_str" id="another_habit_str" class="form-control form-control-sm"
+                            [(ngModel)]="this.inputs.another_habit_str">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xl-12 col-md-12">
+            <h5>EVALUACIÓN DEL SUEÑO Y RESPIRACIÓN DEL NIÑO:</h5>
+            <hr>
+        </div>
+        <div class="col-xl-12 col-md-12">
+            <table class="table table-sm table-striped table-hover table-bordered">
+                <thead>
+                    <th>Durante la noche cuando duerme</th>
+                    <th class="w50">Si</th>
+                    <th class="w50">No</th>
+                    <th class="w50">No sabe</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>¿Ronca? </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="hoarse_si" id="hoarse_si" value="si" [(ngModel)]="this.inputs.hoarse">
+                                <label for="hoarse_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="hoarse_no" id="hoarse_no" value="no" [(ngModel)]="this.inputs.hoarse">
+                                <label for="hoarse_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="hoarse_nosabe" id="hoarse_nosabe" value="no sabe" [(ngModel)]="this.inputs.hoarse">
+                                <label for="hoarse_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Despierta varias veces? (llorando, para ir al baño, para tomar agua, pasarse de cama, etc.)</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="wake_up_several_times_si" id="wake_up_several_times_si" value="si" [(ngModel)]="this.inputs.wake_up_several_times">
+                                <label for="wake_up_several_times_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="wake_up_several_times_no" id="wake_up_several_times_no" value="no" [(ngModel)]="this.inputs.wake_up_several_times">
+                                <label for="wake_up_several_times_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="wake_up_several_times_nosabe" id="wake_up_several_times_nosabe" value="no sabe" [(ngModel)]="this.inputs.wake_up_several_times">
+                                <label for="wake_up_several_times_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Duerme con la boca abierta?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="sleep_mouth_open_si" id="sleep_mouth_open_si" value="si" [(ngModel)]="this.inputs.sleep_mouth_open">
+                                <label for="sleep_mouth_open_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="sleep_mouth_open_no" id="sleep_mouth_open_no" value="no" [(ngModel)]="this.inputs.sleep_mouth_open">
+                                <label for="sleep_mouth_open_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="sleep_mouth_open_nosabe" id="sleep_mouth_open_nosabe" value="no sabe" [(ngModel)]="this.inputs.sleep_mouth_open">
+                                <label for="sleep_mouth_open_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Se mueve mucho durante la noche?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="moves_lot_si" id="moves_lot_si" value="si" [(ngModel)]="this.inputs.moves_lot">
+                                <label for="moves_lot_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="moves_lot_no" id="moves_lot_no" value="no" [(ngModel)]="this.inputs.moves_lot">
+                                <label for="moves_lot_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="nosabe" id="nosabe" value="nosabe" [(ngModel)]="this.inputs.moves_lot">
+                                <label for="nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Babea?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="babea_si" id="babea_si" value="si" [(ngModel)]="this.inputs.babea">
+                                <label for="babea_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="babea_no" id="babea_no" value="no" [(ngModel)]="this.inputs.babea">
+                                <label for="babea_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="babea_nosabe" id="babea_nosabe" value="no sabe" [(ngModel)]="this.inputs.babea">
+                                <label for="babea_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Rechina los dientes?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="grind_teeth_si" id="grind_teeth_si" value="si" [(ngModel)]="this.inputs.grind_teeth">
+                                <label for="grind_teeth_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="grind_teeth_no" id="grind_teeth_no" value="no" [(ngModel)]="this.inputs.grind_teeth">
+                                <label for="grind_teeth_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="grind_teeth_nosabe" id="grind_teeth_nosabe" value="no sabe" [(ngModel)]="this.inputs.grind_teeth">
+                                <label for="grind_teeth_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Alguna vez despertó porque no podía respirar?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="wakeup_donot_breathe_si" id="wakeup_donot_breathe_si" value="si" [(ngModel)]="this.inputs.wakeup_donot_breathe">
+                                <label for="wakeup_donot_breathe_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="wakeup_donot_breathe_no" id="wakeup_donot_breathe_no" value="no" [(ngModel)]="this.inputs.wakeup_donot_breathe">
+                                <label for="wakeup_donot_breathe_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="wakeup_donot_breathe_nosabe" id="wakeup_donot_breathe_nosabe" value="no sabe" [(ngModel)]="this.inputs.wakeup_donot_breathe">
+                                <label for="wakeup_donot_breathe_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Presenta enuresis? (orinar en la cama)</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="has_enuresis_si" id="has_enuresis_si" value="si" [(ngModel)]="this.inputs.has_enuresis">
+                                <label for="has_enuresis_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="has_enuresis_no" id="has_enuresis_no" value="no" [(ngModel)]="this.inputs.has_enuresis">
+                                <label for="has_enuresis_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="has_enuresis_nosabe" id="has_enuresis_nosabe" value="no sabe" [(ngModel)]="this.inputs.has_enuresis">
+                                <label for="has_enuresis_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Habla dormido?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="talk_asleep_si" id="talk_asleep_si" value="si" [(ngModel)]="this.inputs.talk_asleep">
+                                <label for="talk_asleep_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="talk_asleep_no" id="talk_asleep_no" value="no" [(ngModel)]="this.inputs.talk_asleep">
+                                <label for="talk_asleep_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="talk_asleep_nosabe" id="talk_asleep_nosabe" value="no sabe" [(ngModel)]="this.inputs.talk_asleep">
+                                <label for="talk_asleep_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xl-12 col-md-12">
+            <table class="table table-sm table-striped table-hover table-bordered">
+                <thead>
+                    <th>Durante el día</th>
+                    <th class="w50">Si</th>
+                    <th class="w50">No</th>
+                    <th class="w50">No sabe</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>¿Está somnoliento en casa o en la escuela? </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="somnolent_si" id="somnolent_si" value="si" [(ngModel)]="this.inputs.somnolent">
+                                <label for="somnolent_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="somnolent_no" id="somnolent_no" value="no" [(ngModel)]="this.inputs.somnolent">
+                                <label for="somnolent_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="somnolent_nosabe" id="somnolent_nosabe" value="no sabe" [(ngModel)]="this.inputs.somnolent">
+                                <label for="somnolent_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Tiene una conducta HIPERACTIVA?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="hyperactive_si" id="hyperactive_si" value="si" [(ngModel)]="this.inputs.hyperactive">
+                                <label for="hyperactive_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="hyperactive_no" id="hyperactive_no" value="no" [(ngModel)]="this.inputs.hyperactive">
+                                <label for="hyperactive_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="hyperactive_nosabe" id="hyperactive_nosabe" value="no sabe" [(ngModel)]="this.inputs.hyperactive">
+                                <label for="hyperactive_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Tiene dificultad para concentrarse?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="difficult_focus_si" id="difficult_focus_si" value="si" [(ngModel)]="this.inputs.difficult_focus">
+                                <label for="difficult_focus_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="difficult_focus_no" id="difficult_focus_no" value="no" [(ngModel)]="this.inputs.difficult_focus">
+                                <label for="difficult_focus_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="difficult_focus_nosabe" id="difficult_focus_nosabe" value="no sabe" [(ngModel)]="this.inputs.difficult_focus">
+                                <label for="difficult_focus_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Se irrita fácilmente?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="irritates_easily_si" id="irritates_easily_si" value="si" [(ngModel)]="this.inputs.irritates_easily">
+                                <label for="irritates_easily_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="irritates_easily_no" id="irritates_easily_no" value="no" [(ngModel)]="this.inputs.irritates_easily">
+                                <label for="irritates_easily_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="irritates_easily_nosabe" id="irritates_easily_nosabe" value="nosabe" [(ngModel)]="this.inputs.irritates_easily">
+                                <label for="irritates_easily_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Se cansa al hacer deportes o actividad física?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="fatigue_si" id="fatigue_si" value="si" [(ngModel)]="this.inputs.fatigue">
+                                <label for="fatigue_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="fatigue_no" id="fatigue_no" value="no" [(ngModel)]="this.inputs.fatigue">
+                                <label for="fatigue_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="fatigue_nosabe" id="fatigue_nosabe" value="no sabe" [(ngModel)]="this.inputs.fatigue">
+                                <label for="fatigue_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Despierta con dolor de cabeza?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="headache_si" id="headache_si" value="si" [(ngModel)]="this.inputs.headache">
+                                <label for="headache_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="headache_no" id="headache_no" value="no" [(ngModel)]="this.inputs.headache">
+                                <label for="headache_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="headache_nosabe" id="headache_nosabe" value="no sabe" [(ngModel)]="this.inputs.headache">
+                                <label for="headache_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xl-12 col-md-12">
+            <table class="table table-sm table-striped table-hover table-bordered">
+                <thead>
+                    <th>Antecedentes médicos</th>
+                    <th class="w50">Si</th>
+                    <th class="w50">No</th>
+                    <th class="w50">No sabe</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>¿Presenta Rinitis alérgica?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="rinitis_si" id="rinitis_si" value="si" [(ngModel)]="this.inputs.rinitis">
+                                <label for="rinitis_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="rinitis_no" id="rinitis_no" value="no" [(ngModel)]="this.inputs.rinitis">
+                                <label for="rinitis_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="rinitis_nosabe" id="rinitis_nosabe" value="no sabe" [(ngModel)]="this.inputs.rinitis">
+                                <label for="rinitis_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Se resfría/agripa o enferma constantemente?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="sick_constantly_si" id="sick_constantly_si" value="si" [(ngModel)]="this.inputs.sick_constantly">
+                                <label for="sick_constantly_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="sick_constantly_no" id="sick_constantly_no" value="no" [(ngModel)]="this.inputs.sick_constantly">
+                                <label for="sick_constantly_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="sick_constantly_nosabe" id="sick_constantly_nosabe" value="no sabe" [(ngModel)]="this.inputs.sick_constantly">
+                                <label for="sick_constantly_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Amigdalitis frecuente?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="tonsillitis_si" id="tonsillitis_si" value="si" [(ngModel)]="this.inputs.tonsillitis">
+                                <label for="tonsillitis_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="tonsillitis_no" id="tonsillitis_no" value="no" [(ngModel)]="this.inputs.tonsillitis">
+                                <label for="tonsillitis_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="tonsillitis_nosabe" id="tonsillitis_nosabe" value="no sabe" [(ngModel)]="this.inputs.tonsillitis">
+                                <label for="tonsillitis_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Ha presentado otitis?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="otitis_si" id="otitis_si" value="si" [(ngModel)]="this.inputs.otitis">
+                                <label for="otitis_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="otitis_no" id="otitis_no" value="no" [(ngModel)]="this.inputs.otitis">
+                                <label for="otitis_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="otitis_nosabe" id="otitis_nosabe" value="no sabe" [(ngModel)]="this.inputs.otitis">
+                                <label for="otitis_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Tiene diagnóstico de asma?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="asthma_si" id="asthma_si" value="si" [(ngModel)]="this.inputs.asthma">
+                                <label for="asthma_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="asthma_no" id="asthma_no" value="no" [(ngModel)]="this.inputs.asthma">
+                                <label for="asthma_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="asthma_nosabe" id="asthma_nosabe" value="no sabe" [(ngModel)]="this.inputs.asthma">
+                                <label for="asthma_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Presenta hipertrofia de adenoides?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="hypertrophy_si" id="hypertrophy_si" value="si" [(ngModel)]="this.inputs.hypertrophy">
+                                <label for="hypertrophy_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="hypertrophy_no" id="hypertrophy_no" value="no" [(ngModel)]="this.inputs.hypertrophy">
+                                <label for="hypertrophy_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="hypertrophy_nosabe" id="hypertrophy_nosabe" value="no sabe" [(ngModel)]="this.inputs.hypertrophy">
+                                <label for="hypertrophy_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Presenta broncoespasmos o se le cierra el pecho?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="broncoespasmos_si" id="broncoespasmos_si" value="si" [(ngModel)]="this.inputs.broncoespasmos">
+                                <label for="broncoespasmos_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="broncoespasmos_no" id="broncoespasmos_no" value="no" [(ngModel)]="this.inputs.broncoespasmos">
+                                <label for="broncoespasmos_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="broncoespasmos_nosabe" id="broncoespasmos_nosabe" value="no sabe" [(ngModel)]="this.inputs.broncoespasmos">
+                                <label for="broncoespasmos_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>¿Ha sido operado de Adenoides o amígdalas?</td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="adenoid_operated_si" id="adenoid_operated_si" value="si" [(ngModel)]="this.inputs.adenoid_operated">
+                                <label for="adenoid_operated_si" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="adenoid_operated_no" id="adenoid_operated_no" value="no" [(ngModel)]="this.inputs.adenoid_operated">
+                                <label for="adenoid_operated_no" class="cr"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="radio radio-success d-inline">
+                                <input type="radio" name="adenoid_operated_nosabe" id="adenoid_operated_nosabe" value="no sabe" [(ngModel)]="this.inputs.adenoid_operated">
+                                <label for="adenoid_operated_nosabe" class="cr"></label>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="">Diagnóstico presuntivo</label>
+                <textarea name="diagnosis" class="form-control" cols="2" placeholder="Digite el diagnóstico"
+                required [(ngModel)]="this.inputs.diagnosis"></textarea>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <hr>
+            <div class="float-right">
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="fas fa fa-save"></i> Registrar
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+

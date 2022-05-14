@@ -1,0 +1,6 @@
+<div *ngIf="this.role === ''">
+  <app-alert type="primary"><i class="fas fa-spinner fa-spin"></i> Cargando perfil!</app-alert>
+</div>
+<div *ngIf="this.role === 'BASICO'">
+  <app-dashboard-basic></app-dashboard-basic>
+</div>

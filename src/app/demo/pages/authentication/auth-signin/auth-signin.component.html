@@ -1,0 +1,32 @@
+<div class="auth-wrapper">
+  <div class="auth-content">
+    <div class="card">
+      <div class="row align-items-center text-center">
+        <div class="col-md-12">
+          <div class="card-body">
+            <img src="assets/images/logo-dark.png" alt="" class="img-fluid mb-4">
+            <h4 class="mb-3 f-w-400">Inicio de Sessión</h4>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="feather icon-user"></i></span>
+              </div>
+              <input type="email" class="form-control" placeholder="Usuario">
+            </div>
+            <div class="input-group mb-4">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="feather icon-lock"></i></span>
+              </div>
+              <input type="password" class="form-control" placeholder="Password">
+            </div>
+            <div class="form-group text-left mt-2">
+              <div class="checkbox checkbox-primary d-inline">
+              </div>
+            </div>
+            <button class="btn btn-block btn-primary mb-4">Ingresar</button>
+            <p class="mb-2 text-muted">Olvidaste el password? <a [routerLink]="['/auth/reset-password']" class="f-w-400">Recuperar</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

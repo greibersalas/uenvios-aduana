@@ -1,0 +1,93 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card cardTitle="Métodos de pago" cardClass="card-datatable" [options]="false">
+            <button [disabled] = "canInsert" class="btn btn-primary" data-toggle="modal" (click)="clear();modalForm.show()">
+                <i class="fas fa-plus"> Nuevo</i>
+            </button>
+            <hr>
+            <div class="d-flex align-items-center" *ngIf="loading">
+                <strong>Loading...</strong>
+                <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+            </div>
+            <div class="table-responsive" *ngIf="!loading">
+                <table datatable class="table table-striped table-bordered nowrap table-hover table-sm">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Comisión</th>
+                            <th>Descripción</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of dataList">
+                            <td>{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.commission}}</td>
+                            <td>{{item.description}}</td>
+                            <td>
+                                <button [disabled] = "canUpdate" class="btn btn-success btn-sm" (click)="setItem(item);modalForm.show()"><i class="fas fa-edit"></i></button>
+                                <button [disabled] = "canDelete" class="btn btn-danger btn-sm ml-1" (click)="delete(item)"><i class="fas fa-ban"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Comisión</th>
+                            <th>Descripción</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </app-card>
+    </div>
+</div>
+
+<app-ui-modal #modalForm [hideFooter]="true" [containerClick]="false" [dialogClass]="'modal-lg'">
+    <div class="app-modal-header">
+      <h5 class="modal-title">Método de pago</h5>
+      <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalForm.hide()"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="app-modal-body">
+        <form #validationForm="ngForm" class="editForm" novalidate>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label class="form-control-label" for="name">Nombre <small class="text-danger">(*)</small></label>
+                    <input class="form-control input-md" id="text" name="name" type="text" placeholder="Nombre de la Sede" [ngClass]="{'is-invalid': !name.valid && (name.dirty || name.touched || isSubmit)}" #name="ngModel" required [(ngModel)]="formInput.name">
+                    <label *ngIf="!name.valid && (name.dirty || name.touched || isSubmit)" id="validation-email-error" class="error jquery-validation-error small form-text invalid-feedback">Debe colocar el nombre.</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label class="form-label">Comisión</label>
+                    <input type="number" class="form-control" name="commission" [ngClass]="{'is-invalid': !commission.valid && (commission.dirty || commission.touched || isSubmit)}" #commission="ngModel" min="0" [(ngModel)]="formInput.commission">
+                    <label *ngIf="!commission.valid && (commission.dirty || commission.touched || isSubmit)" id="validation-password-error" class="error jquery-validation-error small form-text invalid-feedback">La comisión debe ser mayor o igual a cero.</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                    <label class="form-label">Descripción</label>
+                    <input type="text" class="form-control" name="description" placeholder="Coloque la descripción de la sede" [ngClass]="{'is-invalid': !description.valid && (description.dirty || description.touched || isSubmit)}" #description="ngModel" minlength="6" [(ngModel)]="formInput.description">
+                    <label *ngIf="!description.valid && (description.dirty || description.touched || isSubmit)" id="validation-password-error" class="error jquery-validation-error small form-text invalid-feedback">Debe colocar la descripción de la sede.</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <hr>
+              <button type="button" uiSref="work" class="btn btn-primary btn-raised" (click)="save(validationForm)"
+              *ngIf="!processing"> Guardar <span style="margin-left:10px;"><i class="feather icon-save"></i></span></button>
+              <button class="btn btn-raised btn-primary" *ngIf="processing" disabled>
+                <span class="spinner-border spinner-border-sm" role="status"></span>
+                <span class="load-text"> Procesando...</span>
+              </button>
+              <button type="button" uiSref="work" class="btn btn-warning btn-raised ml-1" (click)="modalForm.hide()"
+              *ngIf="!processing"> Salir <span style="margin-left:10px;"><i class="feather icon-log-out"></i></span></button>
+            </div>
+        </form>
+    </div>
+</app-ui-modal>

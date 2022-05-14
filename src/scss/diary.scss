@@ -1,0 +1,877 @@
+
+/* planning ambiente */
+.table-bordered {
+  border: 1px solid #fff;
+}
+
+input.editable, select.editable{
+  background-color: #fcfbcd;
+}
+.planning {
+  height: 500px;
+  margin-top: 20px;
+}
+
+.planning .amb-header, .planning .hora-header{
+  height: 50px;
+  width: 120px;
+  position: absolute;
+  padding: 8px;
+  text-align: center;
+  vertical-align: middle;
+  background-color:#e271b1;
+  color: #fff;
+  border-left: 1px solid #fff;
+  border-top: 1px solid #fff;
+  font-size: 22px;
+}
+
+.planning .sidebar {
+  width: 120px;
+  height: 400px;
+  float: left;
+  overflow: hidden;
+}
+
+.planning .sidebar tr {
+  border-top: solid 1px #fff;
+  border-left: solid 1px #fff;
+}
+
+.planning .sidebar tr td {
+  border-bottom: solid 1px #fff;
+}
+
+.planning .sidebar div {
+  font-size: 22px;
+  font-weight: 200;
+}
+
+.planning .header {
+  width: 100%;
+  height: 50px;
+  margin-left: 120px;
+  overflow: hidden;
+}
+
+.planning .header tr {
+  border-top: solid 1px #fff;
+}
+
+.planning .header tr th {
+  border-right: solid 1px #fff;
+  border-left: solid 1px #fff;
+}
+
+.planning .header div {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.planning .table .fecha-header div{
+  margin-top: -5px;
+}
+
+.planning .body {
+  overflow: auto;
+  width: 90%;
+  height: 400px;
+  float: left;
+}
+
+.planning .table tr td, .planning .table tr th{
+  min-width: 160px;
+  width: 160px;
+  max-width: 160px;
+  min-height: 50px;
+  height: 50px;
+  padding: 5px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.planning .sidebar .table tr td{
+  min-width: 120px;
+  width: 120px;
+}
+
+.planning .table .fecha-header, .planning .table .hora-sidebar, .planning .table .item-ambiente{
+  background-color: #e271b1;
+  color: #fff;
+}
+
+.planning .table .item-ambiente.info{
+  min-width:62px;
+  width:62px;
+  max-width:62px ;
+}
+
+.planning .table .item-ambiente .ambiente-rotate{
+  font-size: 20px !important;
+  width:55px;
+  -ms-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+.planning .body .table tr td{
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  color: #000;
+  border: 1px solid #fff;
+  border-collapse: collapse;
+}
+
+.planning-medicos.genera-cupo .body .table tr td{
+  padding: 0.1px;
+}
+
+.planning .body .table .cell-amb:hover, .planning-det .cell-amb:hover {
+  cursor: pointer;
+}
+
+.planning .body .table .cell-amb .label{
+  background-color: #fff;
+  color: #fff;
+}
+
+.planning .body .table .cell-amb.total .label{
+  background-color: #008fa1;
+}
+
+.planning-det{
+  margin-left: 4%;
+  margin-right: 4%;
+}
+
+.planning-det.no-visible{
+  overflow: auto;
+  width: 89%;
+  margin-left: 121px;
+  height: auto;
+  float: left;
+}
+
+.planning-det .header{
+  position: absolute;
+  width: 120px;
+  margin-top: 71px;
+}
+
+.planning-det .table tr td, .planning-det .table tr th, .planning-det .header div{
+  min-width: 120px;
+  max-width: 120px;
+  width: 120px;
+  min-height: 50px;
+  height: 50px;
+  padding: 5px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.planning-det .table-bordered {
+  border: 1px solid #fff;
+  margin-bottom: 0px;
+}
+
+.planning-det .header{
+  border: 1px solid #fff;
+  border-collapse: collapse;
+}
+
+.planning-det .header .item-hora {
+  border-bottom: 1px solid #fff;
+}
+
+.planning-det .table tr th{
+  border: 1px solid #fff;
+  border-collapse: collapse;
+}
+
+.planning-det .table tr td{
+  background-color: #e1f9fc;
+  color: #000;
+  border: 1px solid #fff;
+  border-collapse: collapse;
+}
+
+.planning-det .table .item-hora, .planning-det .header .item-hora{
+  background-color: #9de5ee;
+  color: #057482;
+  font-weight: bold;
+}
+
+.planning-det .header .item-ambiente{
+  background-color: #9de5ee;
+  color: #057482;
+  font-weight: bold;
+}
+
+.planning-det .table .cell-amb{
+  background-color: #e1f9fc;
+}
+
+.planning-det .table .cell-amb .label{
+  background-color: #fff;
+  color: #fff;
+}
+
+.planning-det .table .cell-amb.total .label{
+  background-color: #008fa1;
+}
+
+.planning-det .table .cell-amb.selected{
+  background-color: #89DDF6;
+}
+
+/* fin planning ambiente */
+
+.planning-medicos {
+  width: 100%;
+  float: left;
+  height: 600px;
+}
+.planning-medicos .fixed-row{
+  position: absolute;
+  z-index: 1;
+}
+.planning-medicos .body-table{
+  margin-top: 46px;
+}
+.planning-medicos .fixed-row .cell-planing{
+  display: table-cell;
+  border-left: 1px solid #fff;
+  border-top: 1px solid #fff;
+  text-align: center;
+  vertical-align: middle;
+  left: 121px;
+  position: relative;
+  background-color: #9de5ee;
+}
+.planning-medicos .body-table .cell-planing{
+  display: table-cell;
+  border-left: 1px solid #fff;
+  border-top: 1px solid #fff;
+  text-align: center;
+  vertical-align: middle;
+}
+.planning-medicos .body-table .cell-planing:hover{
+  background-color: #e4fcc9;
+  cursor: pointer;
+  cursor: hand;
+}
+.planning-medicos .fixed-row .cell-planing .cell-section{
+  font-size: 22px;
+  width: 180px;
+  height: 45px;
+  color: #0790a2;
+}
+.planning-medicos .body-table .cell-planing .cell-section{
+  width: 180px;
+  height: 70px;
+}
+.planning-medicos .body-table .cell-planing .cell-section .cell-text{
+  font-size: 12px;
+  line-height: 1.2;
+  position: relative;
+  top: 5%;
+}
+.planning-medicos .fixed-row .cell-planing .cell-section p{
+  font-size: 14px;
+  position: relative;
+  top: -18%;
+}
+.planning-medicos .body-table .cell-planing.ambiente .cell-section{
+  font-size: 24px;
+  width: 120px;
+  font-weight: 200;
+  position: relative;
+  top: 16px;
+  color: #057482;
+}
+.planning-medicos .fixed-row .cell-planing.ambiente {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+}
+
+.planning-medicos .fixed-row .cell-planing.ambiente .cell-section{
+  font-size: 20px;
+  width: 120px;
+}
+.planning-medicos .body-table .cell-planing .cell-section .cell-text .label{
+  font-size: 11px;
+  line-height: 1.4;
+  margin-bottom: 1px;
+}
+
+.planning-medicos .body-table .cell-planing .cell-section .cell-text .label[href]:hover,
+.planning-medicos .body-table .cell-planing .cell-section .cell-text .label[href]:focus {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+}
+.planning-medicos .body-table .fixed-column{
+  position: absolute;
+  width: 121px;
+}
+
+.planning-medicos .body-table .fixed-column .cell-inline{
+  background-color: #9de5ee;
+}
+
+.planning-medicos .body-table .relative-column{
+  max-height: 555px;
+  margin-left: 121px;
+  overflow: auto;
+  background-color: #e1f9fc;
+  width: inherit;
+}
+
+.planning-medicos .body-table .wrapper-fixed-column{
+  width: 121px;
+  position: fixed;
+  overflow: hidden;
+  height: 538px;
+  display: block;
+  z-index: 1;
+}
+.planning-medicos .wrapper-fixed-row{
+  height: 46px;
+  position: fixed;
+  overflow: hidden;
+  width: 82.5%;
+  display: block;
+  z-index: 1;
+}
+
+
+/** estilo celdas domingos - feriados **/
+.planning-medicos .fixed-row .cell-planing.feriado .cell-section{
+  color: #e51c23;
+}
+
+.planning-medicos .body-table .cell-planing.feriado:hover {
+    background-color: #e1f9fc;
+    cursor: initial;
+}
+
+.planning-medicos .planning .body .table tr td:hover{
+  background-color: #e4fcc9;
+  cursor: pointer;
+}
+
+.planning-medicos .hora-sidebar.feriado {
+  color: #e51c23;
+}
+
+.planning-medicos .hora-sidebar.feriado div {
+  font-weight: 500;
+}
+
+.planning-medicos .planning .body .table tr td.feriado:hover{
+  background-color: #e1f9fc;
+  cursor: inherit;
+}
+
+/*ajustes planning medico horas*/
+.planning-medicos .planning {
+    height: 550px;
+    margin-top: 0;
+}
+
+.planning-medicos .planning .header {
+    height: 40px;
+}
+.planning-medicos.genera-cupo .planning .header {
+    height: 28px;
+}
+
+.planning-medicos .planning .hora-header {
+    height: 40px;
+    padding: 4px;
+}
+.planning-medicos.genera-cupo .planning .hora-header {
+    height: 28px;
+    padding: 0;
+    font-size: 18px;
+}
+.planning-medicos .planning .sidebar {
+  height: 550px;
+}
+
+.planning-medicos .planning .sidebar div {
+    font-size: 18px;
+}
+
+.planning-medicos .planning .body {
+  height: 550px;
+}
+
+.planning-medicos .planning .table tr td,
+.planning-medicos .planning .table tr th{
+    min-height: 40px;
+    height: 40px;
+}
+
+.planning-medicos.genera-cupo .header .table tr th{
+    padding: 0;
+}
+
+.planning-medicos.genera-cupo .header .table tr th div{
+    font-size: 19px;
+    /*width: 158px;*/
+}
+.planning-medicos.genera-cupo .planning .table tr td,
+.planning-medicos.genera-cupo .planning .table tr th{
+    min-height: 20px;
+    height: 20px;
+    border: unset;
+}
+
+.planning-medicos .body .cell-programacion .label[href]:hover{
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+}
+
+/*estilo etiqueta ambientes*/
+.planning .sidebar .item-ambiente .cell-ambiente{
+  position: relative;
+  left: 10px;
+}
+.planning .header .item-ambiente .cell-ambiente{
+  position: relative;
+  left: 10px;
+}
+
+.planning .sidebar .item-ambiente .cell-ambiente .badge{
+  position: relative;
+  top: -15px;
+  left: 7px;
+}
+.planning .header .item-ambiente .cell-ambiente .badge{
+  position: relative;
+  top: -15px;
+  left: 27px;
+}
+
+.planning-medicos .body-table .cell-planing .badge{
+  position: relative;
+  top: -20px;
+}
+
+.planning-medicos .body-table .cell-planing.ambiente .cell-section {
+    left: 12px;
+}
+
+.planning-medicos .planning .header .cell-ambiente {
+  left: 10px;
+  position: relative;
+}
+
+.planning-medicos .planning .header .cell-ambiente .badge {
+  position: relative;
+  top: -12px;
+  left: 20px;
+}
+
+/*lista pacientes*/
+
+
+.planning.pacientes .header {
+    width: 100%;
+    height: 30px;
+    margin-left: 0;
+}
+
+.planning.pacientes .table tr th {
+    min-width: 50px;
+    width: 50px;
+    min-height: 30px;
+    height: 30px;
+    padding: 0px;
+}
+
+/*ajustes planning horas generar cupo*/
+.planning-medicos.genera-cupo .planning .hora-header {
+  /*width: 9%*/
+  width: 140px;
+}
+
+.planning-medicos.genera-cupo .header {
+  width: 706px;
+  /*width:84%;*/  /*------------OJO-----------*/
+  margin-left: 140px;
+}
+
+.planning-medicos.genera-cupo.info .header {
+  /*width: 706px;*/
+  width:82%;  /*------------OJO-----------*/
+  margin-left: 140px;
+}
+
+
+.planning-medicos.genera-cupo .sidebar {
+  width: 9%;
+}
+
+.planning-medicos.genera-cupo .planning .sidebar .table tr td{
+  min-width: 9%;
+  width: 9%;
+  padding: 0;
+}
+
+.planning-medicos.genera-cupo .body {
+  max-width: 91%;
+}
+
+.planning-medicos.genera-cupo  {
+  height: auto;
+}
+
+.planning-medicos.genera-cupo .planning .sidebar {
+  height: 520px;
+  width: 140px;
+}
+
+.planning-medicos.genera-cupo .planning .body {
+  height: 520px;
+  width: 722px;
+}
+
+.planning-medicos.genera-cupo.info .planning .sidebar {
+  height: 2170px;
+  width: 140px;
+}
+
+.planning-medicos.genera-cupo.info .planning .body {
+  height: 2170px;
+  width:82%;
+}
+
+.planning-medicos.genera-cupo .planning .body .table tr td:hover {
+  background-color: #e1f9fc;
+}
+
+.planning-medicos.genera-cupo .planning .body .table .cell-vacia:hover {
+  cursor: inherit;
+}
+
+.planning-medicos.genera-cupo .planning {
+    height: auto;
+}
+
+.planning-medicos.genera-cupo .planning .cell-programacion {
+  padding: 0;
+  position: relative;
+}
+
+.planning-medicos.genera-cupo .planning .detalle {
+  height: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+
+.planning-medicos.genera-cupo .planning .sidebar div {
+    font-size: 14px;
+}
+.planning-medicos.genera-cupo .planning .sidebar .table tr td > div,
+.planning-medicos.genera-cupo .planning .sidebar .table tr th > div{
+    min-height: 20px;
+    height: 20px;
+}
+
+.hovered-hour, .hovered-ambiente{
+  background-color: #e4fcc9 !important;
+}
+
+.opacity-3 {
+  opacity: 0.3;
+}
+
+.truncate {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+.planning-medicos .body-table .cell-planing .label{
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.opaco-disabled {
+  opacity: 0.5 !important;
+}
+
+
+.info-tile .ind-leyenda {
+  margin: 15px 0 0 0;
+  text-align: center;
+}
+
+/* ##Device = Desktops ##Screen = 1281px to higher resolution desktops */
+@media (min-width: 1281px) {
+  /* .planning-medicos.genera-cupo.info .planning .body {
+    width: 90%;
+  }
+  .planning-medicos.genera-cupo.info .header {
+    width: 89%;
+  } */
+}
+
+/* ##Device = Laptops, Desktops ##Screen = B/w 1025px to 1280px */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  /* .planning-medicos.genera-cupo.info .planning .body {
+    width: 85%;
+  }
+  .planning-medicos.genera-cupo.info .header {
+    width: 85%;
+  } */
+}
+
+/* ##Device = Tablets, Ipads (portrait)  ##Screen = B/w 768px to 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .planning-medicos.genera-cupo.info .planning .body {
+    width: 73%;
+  }
+  .planning-medicos.genera-cupo.info .header {
+    width: 73%;
+  }
+}
+
+/* ##Device = Tablets, Ipads (landscape)  ##Screen = B/w 768px to 1024px */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .planning-medicos.genera-cupo.info .planning .body {
+    width: 82%;
+  }
+  .planning-medicos.genera-cupo.info .header {
+    width: 82%;
+  }
+}
+
+/* ##Device = Low Resolution Tablets, Mobiles (Landscape) ##Screen = B/w 481px to 767px */
+@media (min-width: 481px) and (max-width: 767px) {
+  .planning-medicos.genera-cupo.info .planning .body {
+    width: 79%;
+  }
+  .planning-medicos.genera-cupo.info .header {
+    width: 79%;
+  }
+}
+
+/* ##Device = Most of the Smartphones Mobiles (Portrait) ##Screen = B/w 320px to 479px */
+@media (min-width: 320px) and (max-width: 480px) {
+  .planning-medicos.genera-cupo.info .planning .body {
+    width: 59%;
+  }
+  .planning-medicos.genera-cupo.info .header {
+    width: 59%;
+  }
+}
+
+.row-cleaning{
+  color: #fff;
+  font-weight: bold;
+  background: #2193b0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.row-disabled{
+  color: gray;
+  font-weight: bold;
+  background: #ADA996;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.row-lunch{
+  color: #fff;
+  font-weight: bold;
+  background: #F2994A;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #F2C94C, #F2994A);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #F2C94C, #F2994A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.row-date{
+  color: #fff;
+  font-size: 9px;
+  background: #76b852;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #8DC26F, #76b852);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #8DC26F, #76b852); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+
+/*NUEVO DISEÑO*/
+
+$blockTimes:740,750,800,810,820,830,840,850,900,910,920,930,940,950,1000,1010,1020,1030,1040,1050,1100,1110,1120,1130,1140,1150
+,1200,1210,1220,1230,1240,1250,1300,1310,1320,1330,1340,1350,1400,1410,1420,1430,1440,1450,1500,1510,1520,1530,1540
+,1550,1560,1600,1610,1620,1630,1640,1650,1700,1710,1720,1730,1740,1750,1800,1810,1820,1830,1840,1850,1900,1910,1920,1930,1940
+,1950,2000,2010,2020,2030,2040,2050,2100,2110,2120,2130,2140,2150;
+$blockLengths: 1, 2, 3, 4;
+
+/**
+ * Time
+ */
+ .time {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	border-top: thin dotted #ccc;
+	height: 100%;
+	padding: 0 0.5rem;
+	@each $time in $blockTimes {
+		&.start-#{$time} {grid-area: time#{$time} }
+	}
+
+	&[class*="00"] {
+		font-size: 1rem;
+        background-color: #667dca;
+        color: white;
+	}
+}
+
+
+/**
+ * Event
+ */
+.event {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0.5rem 1rem;
+	background-color: orange;
+	border-radius: 0.2rem;
+	font-size: 0.8rem;
+	font-weight: bold;
+	line-height: 1.4;
+	span {
+		display: block;
+		width: 100%;
+		font-size: 0.8em;
+		font-weight: normal;
+	}
+	@each $time in $blockTimes {
+		&.start-#{$time} {grid-row-start: time#{$time} }
+	}
+	@each $time in $blockTimes {
+		&.end-#{$time} {grid-row-end: time#{$time} }
+	}
+	@each $length in $blockLengths {
+		&.length-#{$length} {
+			grid-column-end: span #{$length};
+		}
+	}
+	&.stage-earth {background-color: #FFA726};
+	&.stage-mercury {background-color: #9CCC65};
+	&.stage-venus {background-color:#d8d8d8} //#FF8A65};
+	&.stage-mars {background-color: #B3E5FC};
+	&.stage-jupiter {background-color:#e271b1; color:white} //#81D4FA};
+	&.stage-saturn {background-color:#f2f2f3}// #26C6DA};
+    &.stage-avalible {background-color: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)};
+}
+
+.scheduleContainer {
+	display: grid;
+	grid-gap: 0.2rem;
+
+	grid-template-columns: 5rem repeat(4, 1fr);
+	grid-template-rows: repeat(85, 1fr);
+	grid-template-areas:
+    "time740 stage stage stage stage"
+    "time750 stage stage stage stage"
+    "time800 stage stage stage stage"
+    "time810 stage stage stage stage"
+    "time820 stage stage stage stage"
+    "time830 stage stage stage stage"
+    "time840 stage stage stage stage"
+    "time850 stage stage stage stage"
+    "time900 stage stage stage stage"
+    "time910 stage stage stage stage"
+    "time920 stage stage stage stage"
+    "time930 stage stage stage stage"
+    "time940 stage stage stage stage"
+    "time950 stage stage stage stage"
+    "time1000 stage stage stage stage"
+    "time1010 stage stage stage stage"
+    "time1020 stage stage stage stage"
+    "time1030 stage stage stage stage"
+    "time1040 stage stage stage stage"
+    "time1050 stage stage stage stage"
+    "time1100 stage stage stage stage"
+    "time1110 stage stage stage stage"
+    "time1120 stage stage stage stage"
+    "time1130 stage stage stage stage"
+    "time1140 stage stage stage stage"
+    "time1150 stage stage stage stage"
+    "time1200 stage stage stage stage"
+    "time1210 stage stage stage stage"
+    "time1220 stage stage stage stage"
+    "time1230 stage stage stage stage"
+    "time1240 stage stage stage stage"
+    "time1250 stage stage stage stage"
+    "time1300 stage stage stage stage"
+    "time1310 stage stage stage stage"
+    "time1320 stage stage stage stage"
+    "time1330 stage stage stage stage"
+    "time1340 stage stage stage stage"
+    "time1350 stage stage stage stage"
+    "time1400 stage stage stage stage"
+    "time1410 stage stage stage stage"
+    "time1420 stage stage stage stage"
+    "time1430 stage stage stage stage"
+    "time1440 stage stage stage stage"
+    "time1450 stage stage stage stage"
+    "time1500 stage stage stage stage"
+    "time1510 stage stage stage stage"
+    "time1520 stage stage stage stage"
+    "time1530 stage stage stage stage"
+    "time1540 stage stage stage stage"
+    "time1550 stage stage stage stage"
+    "time1600 stage stage stage stage"
+    "time1610 stage stage stage stage"
+    "time1620 stage stage stage stage"
+    "time1630 stage stage stage stage"
+    "time1640 stage stage stage stage"
+    "time1650 stage stage stage stage"
+    "time1700 stage stage stage stage"
+    "time1710 stage stage stage stage"
+    "time1720 stage stage stage stage"
+    "time1730 stage stage stage stage"
+    "time1740 stage stage stage stage"
+    "time1750 stage stage stage stage"
+    "time1800 stage stage stage stage"
+    "time1810 stage stage stage stage"
+    "time1820 stage stage stage stage"
+    "time1830 stage stage stage stage"
+    "time1840 stage stage stage stage"
+    "time1850 stage stage stage stage"
+    "time1900 stage stage stage stage"
+    "time1910 stage stage stage stage"
+    "time1920 stage stage stage stage"
+    "time1930 stage stage stage stage"
+    "time1940 stage stage stage stage"
+    "time1950 stage stage stage stage"
+    "time2000 stage stage stage stage"
+    "time2010 stage stage stage stage"
+    "time2020 stage stage stage stage"
+    "time2030 stage stage stage stage"
+    "time2040 stage stage stage stage"
+    "time2050 stage stage stage stage"
+    "time2100 stage stage stage stage"
+    "time2110 stage stage stage stage"
+    "time2120 stage stage stage stage"
+    "time2130 stage stage stage stage"
+    "time2140 stage stage stage stage"
+    "time2150 stage stage stage stage"
+    ;
+}

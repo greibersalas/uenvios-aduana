@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card cardTitle="Tipo de Cambio" cardClass="card-datatable" [options]="false">
+            <div class="row">
+                <div class="col-md-9">
+                    <button [disabled] = "can_insert" class="btn btn-primary" data-toggle="modal" (click)="clear();modalForm.show()">
+                        <i class="fas fa-plus"> Nuevo</i>
+                    </button>
+                </div>
+                <div class="col-md-3">
+                    <app-card [hidHeader]="true" cardClass="bg-c-blue order-card">
+                      <h6 class="text-white">Precio</h6>
+                      <h2 class="text-right text-white"><i class="feather icon-repeat float-left"></i><span>S/ {{ coinPrice }}</span></h2>
+                      <p class="m-b-0">Precio anterior<span class="float-right">S/ {{ coinPreviousPrice }}</span></p>
+                    </app-card>
+                  </div>
+
+            </div>
+            
+            <hr>
+            <div class="d-flex align-items-center" *ngIf="loading">
+                <strong>Loading...</strong>
+                <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+            </div>
+            <div class="table-responsive" *ngIf="!loading">
+                <table datatable class="table table-striped table-bordered nowrap table-hover table-sm">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Moneda</th>
+                            <th>Valor</th>
+                            <th>Fecha</th>
+                            
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of dataList">
+                            <td>{{item.id}}</td>
+                            <td>{{item.coins.name}}</td>
+                            <td>{{item.value}}</td>
+                            <td>{{item.date | date:'dd/MM/yyyy' }}</td>
+                           
+                           
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>#</th>
+                            <th>Moneda</th>
+                            <th>Valor</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </app-card>
+    </div>
+</div>
+
+<app-ui-modal #modalForm [hideFooter]="true" [containerClick]="false" [dialogClass]="'modal-lg'">
+    <div class="app-modal-header">
+      <h5 class="modal-title">Nuevo Tipo de Cambio</h5>
+      <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalForm.hide()"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="app-modal-body">
+        <form #validationForm="ngForm" class="editForm" novalidate>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="value">Valor</label>
+                        <input class="form-control input-md" id="text" name="value" type="text" placeholder="Valor de la moneda" [ngClass]="{'is-invalid': !value.valid && (value.dirty || value.touched || isSubmit)}" #value="ngModel" minlength="1"  maxlength="30" required [(ngModel)]="formInput.value">
+                        <label *ngIf="!value.valid && (value.dirty || value.touched || isSubmit)" id="validation-email-error" class="error jquery-validation-error small form-text invalid-feedback">Debe colocar el valor.</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">Moneda <span class="text-danger">(*)</span></label>
+                        <select class="form-control form-control-sm custom-select" name="validation-cmbGear" [ngClass]="{'is-invalid': !coins.valid && (coins.dirty || coins.touched || isSubmit)}" #coins="ngModel" required [(ngModel)]="formInput.coins">
+                            <option value="">Seleccione</option>
+                            <option *ngFor="let sp of coinsList" [value]="sp.id">{{sp.name}}</option>
+                        </select>
+                        <label *ngIf="!coins.valid && (coins.dirty || coins.touched || isSubmit)" id="validation-cmbGear-error" class="error jquery-validation-error small form-text invalid-feedback">Debe seleccionar un departamento.</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <hr>
+              <button [disabled] = "can_insert" type="button" uiSref="work" class="btn btn-primary btn-raised" (click)="save(validationForm)"
+              *ngIf="!processing"> Guardar <span style="margin-left:10px;"><i class="feather icon-save"></i></span></button>
+              <button class="btn btn-raised btn-primary" *ngIf="processing" disabled>
+                <span class="spinner-border spinner-border-sm" role="status"></span>
+                <span class="load-text"> Procesando...</span>
+              </button>
+              <button type="button" uiSref="work" class="btn btn-warning btn-raised ml-1" (click)="modalForm.hide()"
+              *ngIf="!processing"> Salir <span style="margin-left:10px;"><i class="feather icon-log-out"></i></span></button>
+            </div>
+        </form>
+    </div>
+</app-ui-modal>
+

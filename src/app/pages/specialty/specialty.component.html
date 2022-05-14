@@ -1,0 +1,138 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card [customHeader]="true" cardClass="card-datatable" [options]="false">
+            <div class="app-card-header">
+                <h5 class="mb-3">Especialidades</h5>
+                <button [disabled] = "can_insert" class="btn btn-primary float-right f-14" (click)="clear();modalForm.show()">
+                    <i class="fas fa-plus-circle m-r-5"></i> Nuevo
+                </button>
+            </div>
+            <div class="d-flex align-items-center" *ngIf="loading">
+                <strong>Loading...</strong>
+                <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+            </div>
+            <div class="table-responsive" *ngIf="!loading">
+                <table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered nowrap table-hover table-sm">
+                    <thead>
+                        <tr>
+                            <th class="w50">#</th>
+                            <th>Linea de Negocio</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th class="w100">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of dataList">
+                            <td>{{item.id}}</td>
+                            <td>{{item.businessLines.name}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.description}}</td>
+                            <td>
+                                <button [disabled] = "can_update" class="btn btn-success btn-sm" (click)="setItem(item);modalForm.show()"
+                                ngbPopover="Editar" triggers="mouseenter:mouseleave">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button [disabled] = "can_delete" class="btn btn-danger btn-sm ml-1" (click)="delete(item)"
+                                ngbPopover="Eliminar" triggers="mouseenter:mouseleave">
+                                    <i class="fas fa-ban"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>#</th>
+                            <th>Linea de Negocio</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </app-card>
+    </div>
+</div>
+
+<app-ui-modal #modalForm [hideFooter]="true" [containerClick]="false" [dialogClass]="'modal-lg'">
+    <div class="app-modal-header">
+      <h5 class="modal-title">Especialidad</h5>
+      <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalForm.hide()"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="app-modal-body">
+        <form #validationForm="ngForm" class="editForm" novalidate>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">Linea de Negocio <small class="text-danger">(*)</small></label>
+                        <select class="form-control form-control-sm custom-select" name="validation-cmbGear"
+                        [ngClass]="{'is-invalid': !businessLines.valid && (businessLines.dirty || businessLines.touched || isSubmit)}"
+                        #businessLines="ngModel" required [(ngModel)]="formInput.businessLines">
+                            <option value="">Seleccione</option>
+                            <option *ngFor="let bl of blList" [value]="bl.id">{{bl.name}}</option>
+                        </select>
+                        <label *ngIf="!businessLines.valid && (businessLines.dirty || businessLines.touched || isSubmit)" id="validation-cmbGear-error" class="error jquery-validation-error small form-text invalid-feedback">Debe seleccionar una linea de negocio.</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="name">Nombre <small class="text-danger">(*)</small></label>
+                        <input class="form-control input-md" id="text" name="name" type="text" placeholder="Nombre de la Sede" [ngClass]="{'is-invalid': !name.valid && (name.dirty || name.touched || isSubmit)}" #name="ngModel" required [(ngModel)]="formInput.name">
+                        <label *ngIf="!name.valid && (name.dirty || name.touched || isSubmit)" id="validation-email-error" class="error jquery-validation-error small form-text invalid-feedback">Debe colocar el nombre.</label>
+                    </div>
+                </div>
+                <div class="col-md-3 float-right">
+                    <div class="form-group float-right">
+                        <div class="switch switch-primary d-inline m-r-10">
+                            <input type="checkbox" id="switch-p-1" name="laboratory"
+                            [(ngModel)]="formInput.laboratory" #laboratory="ngModel">
+                            <label for="switch-p-1" class="cr"></label>
+                        </div>
+                        <label>Laboratorio</label>
+                    </div>
+                </div>
+                <div class="col-md-3 float-right">
+                    <div class="form-group float-right">
+                        <div class="switch switch-primary d-inline m-r-10">
+                            <input type="checkbox" id="switch-p-2" name="odontograma"
+                            [(ngModel)]="formInput.odontograma" #odontograma="ngModel">
+                            <label for="switch-p-2" class="cr"></label>
+                        </div>
+                        <label>Odontograma</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="format">Formato Cotización <small class="text-danger">(*)</small></label>
+                        <select name="format" class="custom-select" [ngClass]="{'is-invalid': !format.valid && (format.dirty || format.touched || isSubmit)}"
+                        #format="ngModel" required [(ngModel)]="formInput.format">
+                            <option value="AP">Apnea</option>
+                            <option value="OF">Odontología Funcional</option>
+                            <option value="OI">Odontología Integral</option>
+                        </select>
+                        <label *ngIf="!format.valid && (format.dirty || format.touched || isSubmit)" class="error jquery-validation-error small form-text invalid-feedback">Debe colocar el nombre.</label>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="form-label">Descripción</label>
+                        <input type="test" class="form-control" name="description" placeholder="Digite la descripción de la especialidad"
+                        minlength="6" [(ngModel)]="formInput.description">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <hr>
+              <button type="button" uiSref="work" class="btn btn-primary btn-raised" (click)="save(validationForm)"
+              *ngIf="!processing"> Guardar <span style="margin-left:10px;"><i class="feather icon-save"></i></span></button>
+              <button class="btn btn-raised btn-primary" *ngIf="processing" disabled>
+                <span class="spinner-border spinner-border-sm" role="status"></span>
+                <span class="load-text"> Procesando...</span>
+              </button>
+              <button type="button" uiSref="work" class="btn btn-warning btn-raised ml-1" (click)="modalForm.hide()"
+              *ngIf="!processing"> Salir <span style="margin-left:10px;"><i class="feather icon-log-out"></i></span></button>
+            </div>
+        </form>
+    </div>
+</app-ui-modal>

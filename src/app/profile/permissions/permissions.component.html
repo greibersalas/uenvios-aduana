@@ -1,0 +1,118 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card [customHeader]="true" cardClass="card-datatable" [options]="false">
+            <div class="app-card-header">
+                <h5 class="mb-3">Permisos</h5>
+                <button [disabled] = "can_insert" class="btn btn-primary float-right mg-2 f-14" (click)="clear();modalForm.show()">
+                    <i class="fas fa-plus-circle m-r-5"></i> Nuevo
+                </button>
+                <button class="btn btn-warning float-right f-14" [routerLink]="['/users/']">
+                    <i class="fas fa-arrow-left m-r-5"></i> Volver a usuarios
+                </button>
+            </div>
+            <div class="d-flex align-items-center" *ngIf="loading">
+                <strong>Loading...</strong>
+                <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+            </div>
+            <div class="table-responsive" *ngIf="!loading">
+                <table datatable class="table table-striped table-bordered nowrap table-hover table-sm">
+                    <thead>
+                        <tr>
+                            <th>Nombre Permiso</th>
+                            <th>Acceso a la vista</th>
+                            <th>Puede Insertar</th>
+                            <th>Puede Actulizar</th>
+                            <th>Puedes Eliminar</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of listPermissions">
+                            <td>{{item.mpermissions.description}}</td>
+                            <td>{{item.view ? 'SI' : 'NO'}}</td>
+                            <td>{{item.insert ? 'SI' : 'NO'}}</td>
+                            <td>{{item.update ? 'SI' : 'NO'}}</td>
+                            <td>{{item.delete ? 'SI' : 'NO'}}</td>
+                            <td>
+                                <button [disabled] = "can_update"   class="btn btn-success btn-sm" (click)="setItem(item);modalForm.show()"><i class="fas fa-edit"></i></button>
+                                <button  [disabled] = "can_delete" class="btn btn-danger btn-sm ml-1" (click)="delete(item)"><i class="fas fa-ban"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Nombre Permiso</th>
+                            <th>Acceso a la vista</th>
+                            <th>Puede Insertar</th>
+                            <th>Puede Actulizar</th>
+                            <th>Puedes Eliminar</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+        </app-card>
+    </div>
+</div>
+
+<app-ui-modal #modalForm [hideFooter]="true" [containerClick]="false" [dialogClass]="'modal-lg'">
+    <div class="app-modal-header">
+      <h5 class="modal-title">Nuevo Permiso</h5>
+      <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalForm.hide()"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="app-modal-body">
+        <form #validationForm="ngForm" class="editForm" novalidate>
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="form-label">Permisos <span class="text-danger">(*)</span></label>
+                        <select class="form-control form-control-sm custom-select" name="validation-cmbGear" [ngClass]="{'is-invalid': !mpermissions.valid && (mpermissions.dirty || mpermissions.touched || isSubmit)}" #mpermissions="ngModel" required [(ngModel)]="formInput.mpermissions">
+                            <option value="">Seleccione</option>
+                            <option *ngFor="let sp of listMasterPermissions" [value]="sp.id">{{sp.description}}</option>
+                        </select>
+                        <label *ngIf="!mpermissions.valid && (mpermissions.dirty || mpermissions.touched || isSubmit)" id="validation-cmbGear-error" class="error jquery-validation-error small form-text invalid-feedback">Debe seleccionar un permiso.</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-md-3">
+                    <div class="checkbox checkbox-fill d-inline">
+                        <input type="checkbox" name="view" id="view" [(ngModel)]="formInput.view" >
+                        <label for="view" class="cr">Vista</label>
+                    </div>
+                </div>
+                <div class="col col-md-3">
+                    <div class="checkbox checkbox-fill d-inline">
+                        <input type="checkbox" name="insert" id="insert" [(ngModel)]="formInput.insert" >
+                        <label for="insert" class="cr">Insertar</label>
+                    </div>
+                </div>
+                <div class="col col-md-3">
+                    <div class="checkbox checkbox-fill d-inline">
+                        <input type="checkbox" name="update" id="update" [(ngModel)]="formInput.update">
+                        <label for="update" class="cr">Actulizar</label>
+                    </div>
+                </div>
+                <div class="col col-md-3">
+                    <div class="checkbox checkbox-fill d-inline">
+                        <input type="checkbox" name="delete" id="delete" [(ngModel)]="formInput.delete">
+                        <label for="delete" class="cr">Borrar</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <hr>
+              <button type="button" uiSref="work" class="btn btn-primary btn-raised" (click)="save(validationForm)"
+              *ngIf="!processing"> Guardar <span style="margin-left:10px;"><i class="feather icon-save"></i></span></button>
+              <button class="btn btn-raised btn-primary" *ngIf="processing" disabled>
+                <span class="spinner-border spinner-border-sm" role="status"></span>
+                <span class="load-text"> Procesando...</span>
+              </button>
+              <button type="button" uiSref="work" class="btn btn-warning btn-raised ml-1" (click)="modalForm.hide()"
+              *ngIf="!processing"> Salir <span style="margin-left:10px;"><i class="feather icon-log-out"></i></span></button>
+            </div>
+        </form>
+    </div>
+</app-ui-modal>

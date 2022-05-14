@@ -1,0 +1,118 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card cardTitle="Responsables" cardClass="card-datatable" [options]="false">
+            <button class="btn btn-primary" data-toggle="modal" (click)="clear();modalForm.show()">
+                <i class="fas fa-plus"> Nuevo</i>
+            </button>
+            <hr>
+            <div class="d-flex align-items-center" *ngIf="loading">
+                <strong>Loading...</strong>
+                <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+            </div>
+            <div class="table-responsive" *ngIf="!loading">
+                <table datatable class="table table-striped table-bordered nowrap table-hover table-sm">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Celular</th>
+                            <th>email</th>
+                            <th>Direccion</th>
+                            <th>Acciones</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of dataList">
+                            <td>{{item.id}}</td>
+                            <td>{{item.firt_name}}</td>
+                            <td>{{item.last_name}}</td>
+                            <td>{{item.cellphone}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.adress}}</td>
+                            <td>
+                                <button class="btn btn-success btn-sm" (click)="setItem(item);modalForm.show()"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger btn-sm ml-1" (click)="delete(item)"><i class="fas fa-ban"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Celular</th>
+                            <th>email</th>
+                            <th>Direccion</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </app-card>
+    </div>
+</div>
+
+<app-ui-modal #modalForm [hideFooter]="true" [containerClick]="false" [dialogClass]="'modal-lg'">
+    <div class="app-modal-header">
+      <h5 class="modal-title">Nuevo Responsable</h5>
+      <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalForm.hide()"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="app-modal-body">
+        <form #validationForm="ngForm" class="editForm" novalidate>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="firt_name">Nombre</label>
+                  <input class="form-control input-md" id="text" name="firt_name" type="text" placeholder="Nombre del responsable" [ngClass]="{'is-invalid': !firt_name.valid && (last_name.dirty || firt_name.touched || isSubmit)}" #firt_name="ngModel" minlength="1"  maxlength="60" required [(ngModel)]="formInput.firt_name">
+                  <label *ngIf="!firt_name.valid && (firt_name.dirty || firt_name.touched || isSubmit)" id="validation-email-error" class="error jquery-validation-error small form-text invalid-feedback">Debe colocar el nombre de responsable.</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-control-label" for="last_name">Apellido</label>
+                  <input class="form-control input-md" id="text" name="last_name" type="text" placeholder="Apellido del responsable" [ngClass]="{'is-invalid': !last_name.valid && (last_name.dirty || last_name.touched || isSubmit)}" #last_name="ngModel" minlength="1"  maxlength="60" required [(ngModel)]="formInput.last_name">
+                  <label *ngIf="!last_name.valid && (last_name.dirty || last_name.touched || isSubmit)" id="validation-email-error" class="error jquery-validation-error small form-text invalid-feedback">Debe colocar el nombre.</label>
+                </div>
+              </div>
+            </div> 
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label">Celular</label>
+                  <input type="test" class="form-control" name="cellphone" placeholder="Coloque en numero de celular" [ngClass]="{'is-invalid': !cellphone.valid && (cellphone.dirty || cellphone.touched || isSubmit)}" #cellphone="ngModel" minlength="9" maxlength="9" required [(ngModel)]="formInput.cellphone">
+                  <label *ngIf="!cellphone.valid && (cellphone.dirty || cellphone.touched || isSubmit)" id="validation-password-error" class="error jquery-validation-error small form-text invalid-feedback">Debe colocar la descripción de la moneda.</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="form-label">Email</label>
+                  <input type="email" class="form-control" name="email" placeholder="Coloque el email del responsable" [ngClass]="{'is-invalid': !email.valid && (email.dirty || email.touched || isSubmit)}" #email="ngModel"  maxlength="40" required [(ngModel)]="formInput.email">
+                  <label *ngIf="!email.valid && (email.dirty || email.touched || isSubmit)" id="validation-password-error" class="error jquery-validation-error small form-text invalid-feedback">Debe colocar el email del responsable.</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="form-control-label" for="adress">Dirección</label>
+                        <input class="form-control input-md" id="text" name="adress" type="text" placeholder="Nombre de la Moneda" [ngClass]="{'is-invalid': !adress.valid && (adress.dirty || adress.touched || isSubmit)}" #adress="ngModel"   maxlength="120"  [(ngModel)]="formInput.adress">
+                        <label *ngIf="!adress.valid && (adress.dirty || adress.touched || isSubmit)" id="validation-email-error" class="error jquery-validation-error small form-text invalid-feedback">Debe colocar el nombre.</label>
+                    </div>
+                </div>  
+            </div>
+            <div class="form-group">
+                <hr>
+              <button type="button" uiSref="work" class="btn btn-primary btn-raised" (click)="save(validationForm)"
+              *ngIf="!processing"> Guardar <span style="margin-left:10px;"><i class="feather icon-save"></i></span></button>
+              <button class="btn btn-raised btn-primary" *ngIf="processing" disabled>
+                <span class="spinner-border spinner-border-sm" role="status"></span>
+                <span class="load-text"> Procesando...</span>
+              </button>
+              <button type="button" uiSref="work" class="btn btn-warning btn-raised ml-1" (click)="modalForm.hide()"
+              *ngIf="!processing"> Salir <span style="margin-left:10px;"><i class="feather icon-log-out"></i></span></button>
+            </div>
+        </form>
+    </div>
+</app-ui-modal>

@@ -1,0 +1,41 @@
+import { BusinessLineModel } from "./business-line.model";
+import { DistrictsModel } from "./districts.model";
+
+export class DoctorModel{
+    id: number;
+    nameQuote: string;
+    namequote?: string;
+    mon?: boolean;
+    tue?: boolean;
+    wed?: boolean;
+    thu?: boolean;
+    fri?: boolean;
+    sat?: boolean;
+    sun?: boolean;
+    morning_schedule?: string;
+    afternoon_schedule?: string;
+    name?: string;
+    address?: string;
+    district?: any;
+    dni?: string;
+    cop?: any;
+    specialty?: string;
+    birthdate?: any;
+    email?: string;
+    phone?: string;
+    exclusive?: boolean;
+    cessationDate?: any;
+    environment?: string;
+    turn?: string;
+    business_lines?: string;
+    documentInssued?: number;
+    dateDocumentInssued?: any;
+    number_hours?: number;
+    porcentage?: number;
+    user?: number;
+    state?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+    payment?: number;
+    type_payment?: string;
+}

@@ -1,0 +1,40 @@
+<div class="modal-header modal_header">
+    <h5 class="modal-title titulo-modal">Linea de Negocio</h5>
+    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')"><span aria-hidden="true">&times;</span></button>
+</div>
+<div class="modal-body">
+    <form #validationForm="ngForm" class="editForm" novalidate>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label class="form-control-label" for="name">Nombre <span class="text-danger">(*)</span></label>
+              <input class="form-control input-md" id="text" name="name" type="text" placeholder="Linea de negocio" [ngClass]="{'is-invalid': !name.valid && (name.dirty || name.touched || isSubmit)}" #name="ngModel" required [(ngModel)]="formInput.name">
+              <label *ngIf="!name.valid && (name.dirty || name.touched || isSubmit)" id="validation-email-error" class="error jquery-validation-error small form-text invalid-feedback">Debe colocar la linea de negocio.</label>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="form-group">
+              <label class="form-label">Descripción <span class="text-danger">(*)</span></label>
+              <input type="test" class="form-control" name="description" placeholder="Coloque la descripción de la linea de negocio" [ngClass]="{'is-invalid': !description.valid && (description.dirty || description.touched || isSubmit)}" #description="ngModel" minlength="6" required [(ngModel)]="formInput.description">
+              <label *ngIf="!description.valid && (description.dirty || description.touched || isSubmit)" id="validation-password-error" class="error jquery-validation-error small form-text invalid-feedback">Debe colocar la descripción de la linea de negocio.</label>
+            </div>
+          </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" uiSref="work" class="btn btn-primary btn-raised" (click)="save(validationForm)"
+    *ngIf="!processing"> Guardar</button>
+    <button class="btn btn-raised btn-primary" *ngIf="processing" disabled>
+    <span class="spinner-border spinner-border-sm" role="status"></span>
+    <span class="load-text"> Procesando...</span>
+    </button>
+    <button
+      type="button" ngbAutofocus
+      class="btn btn-outline-dark"
+      (click)="activeModal.close('Close click')"
+      *ngIf="!processing"
+    >
+      Salir
+    </button>
+</div>

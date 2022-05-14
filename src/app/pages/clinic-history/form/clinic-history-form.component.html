@@ -1,0 +1,324 @@
+<div class="modal-header modal_header">
+    <h5 class="modal-title titulo-modal">Historia Clinica {{title}}</h5>
+    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="activeModal.close('Close click')"><span aria-hidden="true">&times;</span></button>
+</div>
+<div class="modal-body">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li [ngbNavItem]="1">
+      <a ngbNavLink>
+        <i class="fas fa-user"></i>  Datos del paciente
+      </a>
+      <ng-template ngbNavContent>
+        <form #validationForm="ngForm" class="editForm" novalidate>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="form-label">Sede <span class="text-danger">(*)</span></label>
+                <select class="custom-select" name="campus" (change)="setHistory()" [disabled]="this.formInput.id > 0"
+                [ngClass]="{'is-invalid': !validCampus && (campus.dirty || campus.touched || isSubmit)}"
+                #campus="ngModel" required [(ngModel)]="formInput.campus" ngbAutofocus (change)="validateCampus()">
+                <option value="">Seleccione</option>
+                  <option *ngFor="let sp of campusList" [value]="sp.id">{{sp.name}}</option>
+                </select>
+                <label *ngIf="!validCampus && (campus.dirty || campus.touched || isSubmit)" id="validation-cmbGear-error"
+                class="error jquery-validation-error small form-text invalid-feedback">Debe seleccionar una sede.</label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="form-control-label" for="history">Nro. Historia</label>
+                <input class="form-control form-control-sm" id="history" name="history" type="text"
+                #history="ngModel" [(ngModel)]="formInput.history" readonly>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="form-control-label" for="date">Fecha Registro</label>
+                <input class="form-control form-control-sm" id="date" name="date" type="date"
+                #date="ngModel" [(ngModel)]="formInput.date" readonly>
+              </div>
+            </div>
+            <div class="col-md-3 float-right">
+              <div class="form-group float-right">
+                <div class="switch switch-primary d-inline m-r-10">
+                  <input type="checkbox" id="switch-p-1" name="vip" [(ngModel)]="formInput.vip" #vip="ngModel">
+                  <label for="switch-p-1" class="cr"></label>
+                </div>
+                <label>VIP</label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="form-control-label" for="name">Nombre <span class="text-danger">(*)</span></label>
+                <input class="form-control form-control-sm input-md" id="text" name="name" type="text" placeholder="Nombres" [ngClass]="{'is-invalid': !name.valid && (name.dirty || name.touched || isSubmit)}" #name="ngModel" required [(ngModel)]="formInput.name">
+                <label *ngIf="!name.valid && (name.dirty || name.touched || isSubmit)" id="validation-email-error" class="error jquery-validation-error small form-text invalid-feedback">Debe colocar el nombre.</label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="form-control-label" for="lastNameFather">Apellido Paterno <span class="text-danger">(*)</span></label>
+                <input class="form-control form-control-sm input-md" id="lastNameFather" name="lastNameFather" type="text" placeholder="Apellido Paterno" [ngClass]="{'is-invalid': !lastNameFather.valid && (lastNameFather.dirty || lastNameFather.touched || isSubmit)}" #lastNameFather="ngModel" required [(ngModel)]="formInput.lastNameFather">
+                <label *ngIf="!lastNameFather.valid && (lastNameFather.dirty || lastNameFather.touched || isSubmit)" id="validation-email-error" class="error jquery-validation-error small form-text invalid-feedback">Debe colocar el apellido paterno.</label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="form-control-label" for="lastNameMother">Apellido Materno <span class="text-danger">(*)</span></label>
+                <input class="form-control form-control-sm input-md" id="lastNameMother" name="lastNameMother" type="text" placeholder="Apellido Materno" [ngClass]="{'is-invalid': !lastNameMother.valid && (lastNameMother.dirty || lastNameMother.touched || isSubmit)}" #lastNameMother="ngModel" required [(ngModel)]="formInput.lastNameMother">
+                <label *ngIf="!name.valid && (lastNameMother.dirty || lastNameMother.touched || isSubmit)" id="validation-email-error" class="error jquery-validation-error small form-text invalid-feedback">Debe colocar el apellido materno</label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="form-control-label" for="documentNumber">Nro. Documento <span class="text-danger">(*)</span></label>
+                <input class="form-control form-control-sm input-md" id="documentNumber" name="documentNumber"
+                type="text" minlength="8" placeholder="0" (blur)="validateDocumentNumber()"
+                [ngClass]="{'is-invalid': !documentNumber.valid && (documentNumber.dirty || documentNumber.touched || isSubmit)}"
+                #documentNumber="ngModel" required [(ngModel)]="formInput.documentNumber">
+                <label *ngIf="!documentNumber.valid && (documentNumber.dirty || documentNumber.touched || isSubmit)" id="validation-email-error" class="error jquery-validation-error small form-text invalid-feedback">Debe colocar el número de documento.</label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="form-control-label" for="birthdate">Fecha Nacimiento</label>
+                <input class="form-control form-control-sm input-md" id="birthdate" name="birthdate" type="date" placeholder="0" [ngClass]="{'is-invalid': !birthdate.valid && (birthdate.dirty || birthdate.touched || isSubmit)}" #birthdate="ngModel" [(ngModel)]="formInput.birthdate">
+                <label *ngIf="!birthdate.valid && (birthdate.dirty || birthdate.touched || isSubmit)" id="validation-email-error" class="error jquery-validation-error small form-text invalid-feedback">Requerido</label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="form-control-label" for="phone">Teléfono</label>
+                <input class="form-control form-control-sm input-md" id="phone" name="phone" type="text" placeholder="" [ngClass]="{'is-invalid': !phone.valid && (phone.dirty || phone.touched || isSubmit)}" #phone="ngModel" [(ngModel)]="formInput.phone">
+                <label *ngIf="!phone.valid && (phone.dirty || phone.touched || isSubmit)" id="validation-email-error" class="error jquery-validation-error small form-text invalid-feedback">Requerido</label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="form-control-label" for="cellphone">Celular <span class="text-danger">(*)</span></label>
+                <input class="form-control form-control-sm input-md" id="cellphone" name="cellphone" type="text" placeholder="999999999" minlength="9" maxlength="9" [ngClass]="{'is-invalid': !cellphone.valid && (cellphone.dirty || cellphone.touched || isSubmit)}" #cellphone="ngModel" required [(ngModel)]="formInput.cellphone">
+                <label *ngIf="!cellphone.valid && (cellphone.dirty || cellphone.touched || isSubmit)" id="validation-email-error" class="error jquery-validation-error small form-text invalid-feedback">Requerido</label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="form-control-label" for="email">Email <span class="text-danger">(*)</span></label>
+                <input class="form-control form-control-sm input-md" id="email" name="email" type="email" placeholder="ejemplo@dominio.com" [ngClass]="{'is-invalid': !email.valid && (email.dirty || email.touched || isSubmit)}" #email="ngModel" required email [(ngModel)]="formInput.email">
+                <label *ngIf="!email.valid && (email.dirty || email.touched || isSubmit)" id="validation-email-error" class="error jquery-validation-error small form-text invalid-feedback">Requerido</label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="form-control-label" for="country">Pais <span class="text-danger">(*)</span></label>
+                <input class="form-control form-control-sm input-md" id="country" name="country" type="text"placeholder="Perú"
+                [ngClass]="{'is-invalid': !country.valid && (country.dirty || country.touched || isSubmit)}" #country="ngModel"
+                required [(ngModel)]="formInput.country" value="Perú">
+                <label *ngIf="!country.valid && (country.dirty || country.touched || isSubmit)" id="validation-email-error" class="error jquery-validation-error small form-text invalid-feedback">Requerido</label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="form-control-label" for="deparment">Departamento</label>
+                <ng-select [items]="deparmenList"
+                    bindLabel="name"
+                    bindValue="id"
+                    placeholder="Seleccione"
+                    name="deparment"
+                    [(ngModel)]="this.deparment"
+                    (change)="this.getProvices()"
+                    [clearable]="false">
+                </ng-select>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="form-control-label" for="province">Provincia</label>
+                <ng-select [items]="provinceList"
+                    bindLabel="name"
+                    bindValue="id"
+                    placeholder="Seleccione"
+                    name="province"
+                    [(ngModel)]="this.province"
+                    (change)="this.getDistrics()"
+                    [clearable]="false">
+                </ng-select>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="form-control-label" for="district">Distrito</label>
+                <ng-select [items]="districList"
+                    bindLabel="name"
+                    bindValue="id"
+                    placeholder="Seleccione"
+                    name="district"
+                    [(ngModel)]="this.formInput.district"
+                    [clearable]="false">
+                </ng-select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-label">Dirección</label>
+                <input type="text" class="form-control form-control-sm" name="address" placeholder="Coloque la dirección" [ngClass]="{'is-invalid': !address.valid && (address.dirty || address.touched || isSubmit)}" #address="ngModel" minlength="6" [(ngModel)]="formInput.address">
+                <label *ngIf="!address.valid && (address.dirty || address.touched || isSubmit)" id="validation-password-error" class="error jquery-validation-error small form-text invalid-feedback">Requerido</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-label">Apoderado</label>
+                <input type="text" class="form-control form-control-sm" name="attorney" placeholder="Nombre del apoderado" #attorney="ngModel" minlength="6" [(ngModel)]="formInput.attorney">
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="form-label">Tipo Doc. Facturación</label>
+                <ng-select [items]="listTypeDocument"
+                    bindLabel="name"
+                    bindValue="id"
+                    placeholder="Seleccione"
+                    name="invoise_type_document"
+                    [(ngModel)]="this.formInput.invoise_type_document"
+                    [clearable]="false">
+                </ng-select>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label class="form-label">Num. Doc. Facturación</label>
+                <input type="text" class="form-control form-control-sm" name="invoise_num_document"
+                placeholder="Número documento" #invoise_num_document="ngModel" minlength="8" [(ngModel)]="formInput.invoise_num_document">
+              </div>
+            </div>
+          </div>
+          <button type="button" uiSref="work" class="btn btn-primary btn-raised" (click)="save(validationForm)"
+          *ngIf="!processing"> Guardar</button>
+          <button class="btn btn-raised btn-primary" *ngIf="processing" disabled>
+          <span class="spinner-border spinner-border-sm" role="status"></span>
+          <span class="load-text"> Procesando...</span>
+          </button>
+        </form>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="2" [disabled]="disabled">
+      <a ngbNavLink>
+        <i class="fas fa-file-medical-alt"></i> Evaluación
+      </a>
+      <ng-template ngbNavContent>
+        <ul ngbNav #nava="ngbNav"  class="nav-tabs">
+          <li [ngbNavItem]="1">
+            <a ngbNavLink>
+              <i class="fas fa-notes-medical"></i> Anamnesis
+            </a>
+            <ng-template ngbNavContent>
+              <app-anamnesis [idclinichistory]="this.id"></app-anamnesis>
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="2">
+            <a ngbNavLink>
+              <i class="fas fa-file-medical"></i> Ficha de diagnóstico
+            </a>
+            <ng-template ngbNavContent>
+              <app-attention-card [idclinichistory]="this.id"></app-attention-card>
+            </ng-template>
+          </li>
+          <li [ngbNavItem]="3">
+            <a ngbNavLink>
+              <i class="fas fa-teeth-open"></i> Respiración bucal
+            </a>
+            <ng-template ngbNavContent>
+              <app-mouth-breathing [idclinichistory]="this.id"></app-mouth-breathing>
+            </ng-template>
+          </li>
+        </ul>
+        <div [ngbNavOutlet]="nava" class="mt-2"></div>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="3" [disabled]="disabled">
+      <a ngbNavLink>
+        <i class="fas fa-history"></i> Atenciones
+      </a>
+      <ng-template ngbNavContent>
+        <app-attentions [id]="this.id" (closeModal)="$event ? activeModal.close('Close click') : false"></app-attentions>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="4" [disabled]="disabled" (click)="getOdontogramas()">
+      <a ngbNavLink>
+        <i class="fas fa-teeth"></i> Odontogramas
+      </a>
+      <ng-template ngbNavContent>
+        <div class="row">
+          <div class="col-md-2 mb-4">
+            <button class="btn btn-primary btn-sm" (click)="addOdontograma()">
+              <i class="fas fa-plus"></i> Nuevo
+            </button>
+          </div>
+          <div class="col-md-12">
+            <p *ngIf="odontogramas.length === 0" class="mt-3">
+              <ngb-alert [dismissible]="false" [type]="'info'">
+                <strong><i class="fas fa-info-circle"></i></strong>
+                No hay odontogramas registrados
+              </ngb-alert>
+            </p>
+          </div>
+        </div>
+        <ngb-carousel [wrap]="false" [interval]="20000" *ngIf="odontogramas.length > 0">
+          <ng-template ngbSlide *ngFor="let item of odontogramas">
+            <app-odontogramas [data]="item"></app-odontogramas>
+          </ng-template>
+        </ngb-carousel>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="5" [disabled]="disabled">
+      <a ngbNavLink>
+        <i class="fas fa-notes-medical"></i> Anotaciones
+      </a>
+      <ng-template ngbNavContent>
+        <app-clinic-history-notes [idch]="this.formInput.id"></app-clinic-history-notes>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="6" [disabled]="disabled">
+      <a ngbNavLink>
+        <i class="fas fa-file-archive"></i> Archivos
+      </a>
+      <ng-template ngbNavContent>
+          <app-clinic-history-files [id]="this.formInput.id"></app-clinic-history-files>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="7" [disabled]="disabled">
+      <a ngbNavLink>
+        <i class="fas fa-file-invoice"></i> Cotizaciones
+      </a>
+      <ng-template ngbNavContent>
+        <app-clinic-history-quotations [id]="this.formInput.id"></app-clinic-history-quotations>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="8" [disabled]="disabled" (click)="getReservations()">
+      <a ngbNavLink>
+        <i class="fas fa-calendar-alt"></i> Citas
+      </a>
+      <ng-template ngbNavContent>
+        <p *ngIf="this.listQuotes.length === 0">
+          <ngb-alert [dismissible]="false" [type]="'primary'">
+            <strong><i class="fas fa-info-circle"></i></strong>
+            No hay archivos registrados
+          </ngb-alert>
+        </p>
+        <div *ngIf="this.listQuotes.length > 0">
+          <app-clinic-history-quotes [data]="listQuotes" (confirm)="$event ? this.getReservations() : false"
+          (closeModal)="$event ? activeModal.close('Close click') : false"></app-clinic-history-quotes>
+        </div>
+      </ng-template>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-outline-dark"
+    (click)="activeModal.close('Close click')"
+    *ngIf="!processing"
+  >
+    Salir
+  </button>
+</div>

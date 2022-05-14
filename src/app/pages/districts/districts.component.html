@@ -1,0 +1,100 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card [customHeader]="true" cardClass="card-datatable" [options]="false">
+            <div class="app-card-header">
+                <h5 class="mb-3">Distritos</h5>
+                <button [disabled] = "can_insert" class="btn btn-primary float-right f-14" (click)="clear();modalForm.show()">
+                    <i class="fas fa-plus-circle m-r-5"></i> Nuevo
+                </button>
+            </div>
+            <div class="table-responsive" *ngIf="dataList.length > 0">
+                <table datatable class="table table-striped table-bordered nowrap table-hover table-sm">
+                    <thead>
+                        <tr>
+                            <th class="w50">#</th>
+                            <!--th>Provincia</th-->
+                            <th>Distrito</th>
+                            <th>Ubicación</th>
+                            <th class="w50">Acciones</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of dataList">
+                            <td>{{item.id}}</td>
+                            <!--td>{{item.provinces.name}}</td-->
+                            <td>{{item.name}}</td>
+                            <td>{{item.ubigeo}}</td>
+                            <td>
+                                <button [disabled] = "can_update" class="btn btn-success btn-sm" (click)="setItem(item);modalForm.show()"><i class="fas fa-edit"></i></button>
+                                <button [disabled] = "can_delete" class="btn btn-danger btn-sm ml-1" (click)="delete(item)"><i class="fas fa-ban"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>#</th>
+                            <!--th>Provincia</th-->
+                            <th>Distrito</th>
+                            <th>Ubicación</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </app-card>
+    </div>
+</div>
+
+<app-ui-modal #modalForm [hideFooter]="true" [containerClick]="false" [dialogClass]="'modal-lg'">
+    <div class="app-modal-header">
+      <h5 class="modal-title">Nuevo Distrito</h5>
+      <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="modalForm.hide()"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="app-modal-body">
+        <form class="was-validated" #register="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label class="form-control-label" for="name">Nombre</label>
+                        <input class="form-control form-control-sm" id="name" name="name" type="text"
+                        placeholder="Nombre del distrito" minlength="1"  maxlength="30" required [(ngModel)]="formInput.name">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-control-label" for="ubigeo">Ubicación Geográfica</label>
+                        <input class="form-control form-control-sm" id="ubigeo" name="ubigeo" type="text"
+                        placeholder="Ubicación Geográfica" minlength="6"  maxlength="6" required [(ngModel)]="formInput.ubigeo">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="form-label">Provincia <span class="text-danger">(*)</span></label>
+                        <ng-select [items]="provincesList"
+                            bindLabel="name"
+                            bindValue="id"
+                            placeholder="Seleccione"
+                            name="provinces"
+                            required
+                            [(ngModel)]="this.formInput.provinces">
+                        </ng-select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <hr>
+                <button type="submit" uiSref="work" class="btn btn-primary btn-raised"
+                [disabled]="!register.valid">
+                    Guardar <span style="margin-left:10px;">
+                    <i class="feather icon-save"></i></span>
+                </button>
+                <button type="button" uiSref="work" class="btn btn-warning btn-raised ml-1" (click)="modalForm.hide()">
+                    Salir <span style="margin-left:10px;"><i class="feather icon-log-out"></i></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</app-ui-modal>

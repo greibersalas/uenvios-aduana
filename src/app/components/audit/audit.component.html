@@ -1,0 +1,107 @@
+<div class="modal-header modal_header">
+    <h5 class="modal-title titulo-modal">Auditoria</h5>
+    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="activeModal.close('Close')"><span aria-hidden="true">&times;</span></button>
+</div>
+<div class="modal-body">
+    <p *ngIf="list.length === 0">
+        <ngb-alert [dismissible]="false" [type]="'warning'">
+          <strong><i class="fas fa-info-circle"></i></strong>
+          No hay registros para mostrar
+        </ngb-alert>
+    </p>
+    <div class="dt-responsive table-responsive" *ngIf="list.length > 0">
+        <table class="table table-striped row-border table-hover">
+            <thead>
+                <tr>
+                    <th>Idusuario</th>
+                    <th>Usuario</th>
+                    <th>Idregistro</th>
+                    <th>Modulo</th>
+                    <th>Acción</th>
+                    <th>Fecha Registro</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let it of list">
+                    <td>{{it.iduser}}</td>
+                    <td>{{it.username}}</td>
+                    <td>{{it.idregister}}</td>
+                    <td>{{it.title}}</td>
+                    <td>{{it.description}}</td>
+                    <td>{{it.datetime | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-primary"
+                        (click)="showDetail(it)">
+                            <i class="fas fa-eye"></i>
+                        </button> 
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <ng-container *ngIf="loading">
+        <div class="spinner-border" role="status"></div>
+        <span class="visually-hidden">Loading...</span>
+    </ng-container>
+    <ng-container *ngIf="show && !loading">
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header text-white bg-primary mb-3">
+                      {{data.title}}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Datos de la cita</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Paciente</h6>
+                                <label for="">{{data.patient}}</label>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Doctor</h6>
+                                <label for="">{{data.doctor}}</label>
+                            </div>
+                            <div class="col-md-4">
+                                <h6>Fecha</h6>
+                                <label for="">{{data.date}}</label>
+                            </div>
+                            <div class="col-md-4">
+                                <h6>Horario</h6>
+                                <label for="">{{data.appointment}}</label>
+                            </div>
+                            <div class="col-md-4">
+                                <h6>Consultorio</h6>
+                                <label for="" *ngIf="!loadingEnviront">{{environment}}</label>
+                                <ng-container *ngIf="loadingEnviront">
+                                    <div class="spinner-border" role="status">
+                                        
+                                    </div><span class="visually-hidden">Loading...</span>
+                                </ng-container>
+                            </div>
+                            <div class="col-md-4">
+                                <h6>Usuario</h6>
+                                <label for="">{{data.user}}</label>
+                            </div>
+                            <div class="col-md-8">
+                                <h6>Motivo</h6>
+                                <label for="">{{data.reason}}</label>
+                            </div>
+                            <div class="col-md-8">
+                                <h6>Estado</h6>
+                                <label for="">{{data.state}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    
+</div>
+<div class="modal-footer">
+    <button  type="button" ngbAutofocus class="btn btn-outline-dark"
+    (click)="activeModal.close('Close')">
+    Cerrar
+    </button>
+</div>

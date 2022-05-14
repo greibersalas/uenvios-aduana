@@ -1,0 +1,384 @@
+<div class="row">
+    <div class="col-xl-6 col-md-6 col-sm-12">
+        <app-card cardTitle="Reporte de pagos por cliente" [options]="false">
+            <form class="was-validated" ngNativeValidate>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-control-label" for="name">Desde <small class="text-danger">(*)</small></label>
+                            <input type="date" class="form-control" name="desde" required
+                            [(ngModel)]="this.filters1.since">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-control-label" for="name">hasta <small class="text-danger">(*)</small></label>
+                            <input type="date" class="form-control" name="hasta" required
+                            [(ngModel)]="this.filters1.until">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <hr>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-primary btn-sm btn-block"
+                                (click)="this.onDownloadXlsxPayPatient()">
+                                    <i class="fas fa fa-file-excel"></i> Excel
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-primary btn-sm btn-block"
+                                (click)="this.onPrintPdfPayPatient()">
+                                    <i class="fas fa fa-file-pdf"></i> PDF
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </app-card>
+    </div>
+    <div class="col-xl-6 col-md-6 col-sm-12"></div>
+    <div class="col-xl-6 col-md-6 col-sm-12">
+        <app-card [hidHeader]="true">
+            <h6>Cantidad tratamientos realizados</h6>
+            <span> Detalle de la cantidad de tratamientos realizados en un día por linea de negocio, especialidad o Doctor</span>
+            <div class="row">
+                <div class="col-md-6">
+                  <p class="m-b-0 float-right">Filtro -> Fecha</p>
+                </div>
+                <div class="col-md-6">
+                  <span class="float-right">
+                    <div class="row">
+                      <div class="col-md-10">
+                        <input type="date" class="form-control form-control-sm" [(ngModel)]="fecha1">
+                      </div>
+                      <div class="col-md-2">
+                          <span class="text-c-green" style="cursor: pointer;">
+                            <i class="fas fa-sync float-right icon-reload mt-2" [ngClass]="{'fa-spin': loading1}"
+                            (click)="getDataChart1()"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </span>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col">
+                    <div class="d-flex align-items-center">
+                        <div *ngIf="loading1">
+                            <div class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></div>
+                            <strong> Loading...</strong>
+                        </div>
+                        <div class="alert alert-primary" role="alert" *ngIf="!loading1 && !dataChar1">
+                            No hay información disponible!
+                        </div>
+                        <div *ngIf="dataChar1">
+                            <app-apex-chart chartID="sale-apex-satisfaction-chart1" [chartConfig]="this.saleSatisfaction1"></app-apex-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-card>
+    </div>
+    <div class="col-xl-6 col-md-6 col-sm-12">
+        <app-card [hidHeader]="true">
+            <h6>Valor tratamientos realizados</h6>
+            <span>Ingresos por tratamientos realizados en un día por linea de negocio, especialidad o Doctor</span>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="m-b-0 float-right">Filtro -> Fecha</p>
+                </div>
+                <div class="col-md-6">
+                    <span class="float-right">
+                    <div class="row">
+                        <div class="col-md-10">
+                        <input type="date" class="form-control form-control-sm" [(ngModel)]="fecha2">
+                        </div>
+                        <div class="col-md-2">
+                            <span class="text-c-green" style="cursor: pointer;">
+                            <i class="fas fa-sync float-right icon-reload mt-2" [ngClass]="{'fa-spin': loading2}"
+                            (click)="getDataChart2()"></i>
+                        </span>
+                        </div>
+                    </div>
+                    </span>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col">
+                    <div class="d-flex align-items-center">
+                        <div *ngIf="loading2">
+                            <div class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></div>
+                            <strong> Loading...</strong>
+                        </div>
+                        <div class="alert alert-primary" role="alert" *ngIf="!loading2 && !dataChar2">
+                            No hay información disponible!
+                        </div>
+                        <div *ngIf="dataChar2">
+                            <app-apex-chart chartID="sale-apex-satisfaction-chart2" [chartConfig]="this.saleSatisfaction2"></app-apex-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-card>
+    </div>
+    <div class="col-xl-6 col-md-6 col-sm-12">
+        <app-card cardTitle="Ranking 10 tratamientos más vendidos (volumen) | 5 OI 5 OFM" [options]="false">
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="m-b-0 float-right">Filtros ---> Desde / Hasta</p>
+                </div>
+                <div class="col-md-8">
+                    <span class="float-right">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <input type="date" class="form-control form-control-sm" [(ngModel)]="fechadesde3">
+                        </div>
+                        <div class="col-md-5">
+                            <input type="date" class="form-control form-control-sm" [(ngModel)]="fechahasta3">
+                        </div>
+                        <div class="col-md-2">
+                            <span class="text-c-green" style="cursor: pointer;">
+                            <i class="fas fa-sync float-right icon-reload mt-2" [ngClass]="{'fa-spin': loading3}"
+                            (click)="getDataChart3()"></i>
+                        </span>
+                        </div>
+                    </div>
+                    </span>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col">
+                    <div class="d-flex align-items-center">
+                        <div *ngIf="loading3">
+                            <div class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></div>
+                            <strong> Loading...</strong>
+                        </div>
+                        <div class="alert alert-primary" role="alert" *ngIf="!loading3 && !dataChar3">
+                            No hay información disponible!
+                        </div>
+                        <div *ngIf="dataChar3">
+                            <app-apex-chart chartID="sale-apex-annual-profit-chart" [chartConfig]="this.saleAnnualProfit"></app-apex-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-card>
+    </div>
+    <div class="col-xl-6 col-md-6 col-sm-12">
+        <app-card cardTitle="Ranking 10 tratamientos mas vendidos (Ingresos) | 5 OI 5 OFM" [options]="false">
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="m-b-0 float-right">Filtros ---> Desde / Hasta</p>
+                </div>
+                <div class="col-md-8">
+                    <span class="float-right">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <input type="date" class="form-control form-control-sm" [(ngModel)]="fechadesde4">
+                        </div>
+                        <div class="col-md-5">
+                            <input type="date" class="form-control form-control-sm" [(ngModel)]="fechahasta4">
+                        </div>
+                        <div class="col-md-2">
+                            <span class="text-c-green" style="cursor: pointer;">
+                            <i class="fas fa-sync float-right icon-reload mt-2" [ngClass]="{'fa-spin': loading4}"
+                            (click)="getDataChart4()"></i>
+                        </span>
+                        </div>
+                    </div>
+                    </span>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col">
+                    <div class="d-flex align-items-center">
+                        <div *ngIf="loading4">
+                            <div class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></div>
+                            <strong> Loading...</strong>
+                        </div>
+                        <div class="alert alert-primary" role="alert" *ngIf="!loading4 && !dataChar4">
+                            No hay información disponible!
+                        </div>
+                        <div *ngIf="dataChar4">
+                            <app-apex-chart chartID="sale-apex-annual-profit-chart2" [chartConfig]="this.saleAnnualProfit2"></app-apex-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-card>
+    </div>
+    <div class="col-xl-6 col-md-12">
+        <app-card [hidHeader]="true">
+            <h6>Ranking 5 especialidades OI mas vendidos (volumen)</h6>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="m-b-0 float-right">Filtros ---> Desde / Hasta</p>
+                </div>
+                <div class="col-md-8">
+                    <span class="float-right">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <input type="date" class="form-control form-control-sm" [(ngModel)]="fechadesde5">
+                            </div>
+                            <div class="col-md-5">
+                                <input type="date" class="form-control form-control-sm" [(ngModel)]="fechahasta5">
+                            </div>
+                            <div class="col-md-2">
+                                <span class="text-c-green" style="cursor: pointer;">
+                                    <i class="fas fa-sync float-right icon-reload mt-2" [ngClass]="{'fa-spin': loading5}"
+                                    (click)="getDataChart5()"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col">
+                    <div class="d-flex align-items-center">
+                        <div *ngIf="loading5">
+                            <div class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></div>
+                            <strong> Loading...</strong>
+                        </div>
+                        <div class="alert alert-primary" role="alert" *ngIf="!loading5 && !dataChart5">
+                            No hay información disponible!
+                        </div>
+                        <div *ngIf="dataChart5">
+                            <app-apex-chart chartID="top-5-specialty-val" [chartConfig]="this.top5SpecialtyVol"></app-apex-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-card>
+    </div>
+    <div class="col-xl-6 col-md-12">
+        <app-card [hidHeader]="true">
+            <h6>Ranking 5 especialidades OI mas vendidos (ingresos)</h6>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="m-b-0 float-right">Filtros ---> Desde / Hasta</p>
+                </div>
+                <div class="col-md-8">
+                    <span class="float-right">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <input type="date" class="form-control form-control-sm" [(ngModel)]="fechadesde6">
+                            </div>
+                            <div class="col-md-5">
+                                <input type="date" class="form-control form-control-sm" [(ngModel)]="fechahasta6">
+                            </div>
+                            <div class="col-md-2">
+                                <span class="text-c-green" style="cursor: pointer;">
+                                    <i class="fas fa-sync float-right icon-reload mt-2" [ngClass]="{'fa-spin': loading6}"
+                                    (click)="getDataChart6()"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col">
+                    <div class="d-flex align-items-center">
+                        <div *ngIf="loading6">
+                            <div class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></div>
+                            <strong> Loading...</strong>
+                        </div>
+                        <div class="alert alert-primary" role="alert" *ngIf="!loading6 && !dataChart6">
+                            No hay información disponible!
+                        </div>
+                        <div *ngIf="dataChart6">
+                            <app-apex-chart chartID="top-5-specialty-ing" [chartConfig]="this.top5SpecialtyIng"></app-apex-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-card>
+    </div>
+    <div class="col-xl-6 col-md-12">
+        <app-card [hidHeader]="true">
+            <h6>Número de Tratamientos por Doctor (volumen)</h6>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="m-b-0 float-right">Filtros ---> Fecha</p>
+                </div>
+                <div class="col-md-8">
+                    <span class="float-right">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <input type="date" class="form-control form-control-sm" [(ngModel)]="fecha7">
+                            </div>
+                            <div class="col-md-2">
+                                <span class="text-c-green" style="cursor: pointer;">
+                                    <i class="fas fa-sync float-right icon-reload mt-2" [ngClass]="{'fa-spin': loading7}"
+                                    (click)="getDataChart7()"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col">
+                    <div class="d-flex align-items-center">
+                        <div *ngIf="loading7">
+                            <div class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></div>
+                            <strong> Loading...</strong>
+                        </div>
+                        <div class="alert alert-primary" role="alert" *ngIf="!loading7 && !dataChart7">
+                            No hay información disponible!
+                        </div>
+                        <div *ngIf="dataChart7">
+                            <app-apex-chart chartID="tto-by-doctor-val" [chartConfig]="this.ttoByDoctorVol"></app-apex-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-card>
+    </div>
+    <div class="col-xl-6 col-md-12">
+        <app-card [hidHeader]="true">
+            <h6>Número de Tratamientos por Doctor (ingresos)</h6>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="m-b-0 float-right">Filtros ---> Fecha</p>
+                </div>
+                <div class="col-md-8">
+                    <span class="float-right">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <input type="date" class="form-control form-control-sm" [(ngModel)]="fecha8">
+                            </div>
+                            <div class="col-md-2">
+                                <span class="text-c-green" style="cursor: pointer;">
+                                    <i class="fas fa-sync float-right icon-reload mt-2" [ngClass]="{'fa-spin': loading8}"
+                                    (click)="getDataChart8()"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col">
+                    <div class="d-flex align-items-center">
+                        <div *ngIf="loading8">
+                            <div class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></div>
+                            <strong> Loading...</strong>
+                        </div>
+                        <div class="alert alert-primary" role="alert" *ngIf="!loading8 && !dataChart8">
+                            No hay información disponible!
+                        </div>
+                        <div *ngIf="dataChart8">
+                            <app-apex-chart chartID="tto-by-doctor-ing" [chartConfig]="this.ttoByDoctorIng"></app-apex-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-card>
+    </div>
+</div>

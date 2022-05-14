@@ -1,0 +1,172 @@
+<div class="row">
+    <div class="col-12">
+        <form class="was-validated" #register="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" for="name">Fecha</label>
+                        <input name="date" type="date" class="form-control" [(ngModel)]="this.formInput.date">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" for="coin">Moneda</label>
+                        <ng-select [items]="coinList"
+                                    bindLabel="code"
+                                    bindValue="id"
+                                    placeholder="Seleccione"
+                                    name="coin" required
+                                    [(ngModel)]="this.formInput.co"></ng-select>
+                        <div *ngIf="!formInput.co" class="invalid-feedback">
+                            La moneda es requerida
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" for="idpaymentmethod">Forma pago</label>
+                        <ng-select [items]="pmList"
+                            bindLabel="name"
+                            bindValue="id"
+                            placeholder="Seleccione"
+                            name="idpaymentmethod" required
+                            [(ngModel)]="this.formInput.idpaymentmethod"
+                            (change)="setComision()"></ng-select>
+                        <div *ngIf="!formInput.idpaymentmethod" class="invalid-feedback">
+                            La moneda es requerida
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" for="quantity">Costo Laboratorio</label>
+                        <input name="lab_cost" type="number" class="form-control"
+                        [(ngModel)]="this.formInput.lab_cost" step=".01" min="0">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" for="name">Doctor <small class="text-danger">(*)</small></label>
+                        <ng-select [items]="doctorList"
+                                    bindLabel="name"
+                                    bindValue="id"
+                                    placeholder="Seleccione"
+                                    name="doctor"
+                                    [(ngModel)]="this.formInput.doctor"></ng-select>
+                        <div *ngIf="!formInput.doctor" class="invalid-feedback">
+                            El doctor es requerida
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" for="name">Linea de Negocio <small class="text-danger">(*)</small></label>
+                        <ng-select [items]="blList"
+                                    bindLabel="name"
+                                    bindValue="id"
+                                    placeholder="Seleccione"
+                                    name="businessline" required
+                                    [(ngModel)]="this.formInput.businessline"
+                                    (change)="getSpecialtys()"></ng-select>
+                        <div *ngIf="!formInput.businessline" class="invalid-feedback">
+                            La Linea de negocio es requerida
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" for="name">Especialidad <small class="text-danger">(*)</small></label>
+                        <ng-select [items]="specialtyList"
+                                    bindLabel="name"
+                                    bindValue="id"
+                                    placeholder="Seleccione"
+                                    name="specialty" required
+                                    [(ngModel)]="this.formInput.specialty"
+                                    (change)="getTariff()"></ng-select>
+                        <div *ngIf="!formInput.specialty" class="invalid-feedback">
+                            La especialidad es requerida
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" for="name">Tratamiento <small class="text-danger">(*)</small></label>
+                        <ng-select [items]="tariffList"
+                                    bindLabel="name"
+                                    bindValue="id"
+                                    placeholder="Seleccione"
+                                    name="tariff" required
+                                    [(ngModel)]="this.formInput.tariff"
+                                    (change)="setMonto()"></ng-select>
+                        <div *ngIf="!formInput.tariff" class="invalid-feedback">
+                            El tratamiento es requerido
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" for="quantity">Cantidad</label>
+                        <input name="quantity" type="number" class="form-control" min="1" step="1" pattern="[0-9]*"
+                        [(ngModel)]="this.formInput.quantity" required (change)="setMonto()">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" for="quantity">Valor Unit.</label>
+                        <input name="value" type="number" class="form-control"
+                        [(ngModel)]="this.formInput.value" step=".01" min="0" (change)="setMonto()">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" for="quantity">Total</label>
+                        <input name="total" type="number" class="form-control"
+                        [(ngModel)]="this.total" step=".01" min="0" readonly>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="!register.valid">
+                <i class="fas fa fa-save"></i> Registrar
+            </button>
+        </form>
+    </div>
+    <div class="col-12 mt-2" *ngIf="this.list.length > 0">
+        <div class="dt-responsive table-responsive">
+            <table datatable [dtOptions]="dtOptions" class="table table-striped row-border table-hover">
+                <thead>
+                    <tr>
+                        <th class="w50">#</th>
+                        <th>Linea de negocio</th>
+                        <th>Especialidad</th>
+                        <th>Tratamiento</th>
+                        <th class="w100">Cantidad</th>
+                        <th class="w100">Total</th>
+                        <th class="w100">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of list">
+                        <td>{{item.id}}</td>
+                        <td>{{item.tariff.specialty.businessLines.name}}</td>
+                        <td>{{item.tariff.specialty.name}}</td>
+                        <td>{{item.tariff.name}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>{{item.co.code}} {{item.quantity*item.value}}</td>
+                        <td>
+                            <button type="button" class="btn btn-icon btn-success btn-sm"
+                            ngbPopover="Editar" triggers="mouseenter:mouseleave" (click)="setItem(item)">
+                                <i class="feather icon-check-circle"></i>
+                            </button>
+                            <button type="button" class="btn btn-icon btn-danger btn-sm"
+                            ngbPopover="Eliminar" triggers="mouseenter:mouseleave" (click)="delete(item)">
+                                <i class="feather icon-trash-2"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

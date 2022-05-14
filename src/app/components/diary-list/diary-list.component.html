@@ -1,0 +1,72 @@
+
+<div class="modal-header modal_header">
+    <h5 class="modal-title titulo-modal">Listado de citas según los filtros</h5>
+    <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="activeModal.close('Close')"><span aria-hidden="true">&times;</span></button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-2">
+            <label for="desde">Desde</label>
+            <input type="date" class="form-control" [(ngModel)]="filters.since" (change)="get()">
+        </div>
+        <div class="col-md-2">
+            <label for="hasta">Hasta</label>
+            <input type="date" class="form-control" [(ngModel)]="filters.until" (change)="get()">
+        </div>
+        <div class="col-md-2">
+            <label for="state">Estado</label>
+            <ng-select name="state" [(ngModel)]="filters.state" [ngModelOptions]="{standalone: true}"
+            [loading]="loadingSelectStateFilter" placeholder="Todos" (change)="get()">
+                <ng-option *ngFor="let st of listState" [value]="st.id">{{st.state}}</ng-option>
+            </ng-select>
+        </div>
+        <div class="col-md-4">
+            <label for="doctor">Doctor</label>
+            <ng-select name="doctor" [(ngModel)]="filters.doctor" [ngModelOptions]="{standalone: true}"
+                [loading]="loadingSelectDoctor" placeholder="Todos" (change)="get()">
+                <ng-option *ngFor="let doc of listDoctors" [value]="doc.id">{{doc.nameQuote}}</ng-option>
+            </ng-select>
+        </div>
+        <div class="col-md-12">
+            <hr>
+            <p *ngIf="list.length === 0">
+                <ngb-alert [dismissible]="false" [type]="'warning'">
+                  <strong><i class="fas fa-info-circle"></i></strong>
+                  No hay citas registrada, por favor intente con otros parametros
+                </ngb-alert>
+            </p>
+            <div class="dt-responsive table-responsive" *ngIf="list.length > 0">
+                <table datatable [dtOptions]="dtOptions" class="table table-striped row-border table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Paciente</th>
+                            <th>Doctor</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Consultorio</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let it of list">
+                            <td>{{it.id}}</td>
+                            <td>{{it.patient.name}} {{it.patient.lastNameFather}} {{it.patient.lastNameMother}}</td>
+                            <td>{{it.doctor.nameQuote}}</td>
+                            <td>{{it.date | date: 'dd/MM/yyyy'}}</td>
+                            <td>{{it.appointment}}</td>
+                            <td>{{it.environment.name}}</td>
+                            <td><div [innerHTML]="setState(it.state)"></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" ngbAutofocus class="btn btn-outline-dark"
+    (click)="activeModal.close('Close')">
+    Salir
+    </button>
+</div>

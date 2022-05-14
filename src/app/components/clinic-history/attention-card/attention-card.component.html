@@ -1,0 +1,107 @@
+<app-card [customHeader]="true" [options]="false">
+    <div class="app-card-header">
+        <h5 class="mb-1">Ficha de Atención</h5>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form class="was-validated" (ngSubmit)="onSubmit()" ngNativeValidate>
+                <div class="col-md-12">
+                    <h6>FECHA DE INGRESO</h6>
+                    <hr>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input class="form-control form-control-sm" id="dateadmission" name="dateadmission" type="date"
+                        #date="ngModel" [(ngModel)]="formInputs.dateadmission" required>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <h6>MOTIVO DE LA CONSULTA</h6>
+                    <hr>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <textarea name="motivo" class="form-control" cols="2" placeholder="Digite el motivo"
+                        [(ngModel)]="this.formInputs.motivo" required></textarea>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <h6>DIAGNOSTICOS:</h6>
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="col-md-6" style="padding-left: 47px;">
+                        <div class="form-group mt-4">
+                            <div class="checkbox checkbox-fill d-inline">
+                                <input type="checkbox" name="ma" id="ma" [(ngModel)]="this.formInputs.ma">
+                                <label for="ma" class="cr">Maloclusión apiñamiento</label>
+                            </div>
+                        </div>
+                        <div class="form-group mt-4">
+                            <div class="checkbox checkbox-fill d-inline">
+                                <input type="checkbox" name="mmp" id="mmp" [(ngModel)]="this.formInputs.mmp">
+                                <label for="mmp" class="cr">Maloclusión mandíbula pequeña</label>
+                            </div>
+                        </div>
+                        <div class="form-group mt-4">
+                            <div class="checkbox checkbox-fill d-inline">
+                                <input type="checkbox" name="mp" id="mp" [(ngModel)]="this.formInputs.mp">
+                                <label for="mp" class="cr">Maloclusión prognastismo</label>
+                            </div>
+                        </div>
+                        <div class="form-group mt-4">
+                            <div class="checkbox checkbox-fill d-inline">
+                                <input type="checkbox" name="ar" id="ar" [(ngModel)]="this.formInputs.ar">
+                                <label for="ar" class="cr">Apnea y Ronquidos</label>
+                            </div>
+                        </div>
+                        <div class="form-group mt-4">
+                            <div class="checkbox checkbox-fill d-inline">
+                                <input type="checkbox" name="dcb" id="dcb" [(ngModel)]="this.formInputs.dcb">
+                                <label for="dcb" class="cr">Dientes chuecos brackets</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group mt-4">
+                            <div class="checkbox checkbox-fill d-inline">
+                                <input type="checkbox" name="dtm" id="dtm" [(ngModel)]="this.formInputs.dtm">
+                                <label for="dtm" class="cr">DTM</label>
+                            </div>
+                        </div>
+                        <div class="form-group mt-4">
+                            <div class="checkbox checkbox-fill d-inline">
+                                <input type="checkbox" name="mm" id="mm" [(ngModel)]="this.formInputs.mm">
+                                <label for="mm" class="cr">Maloclusión mordida abierta</label>
+                            </div>
+                        </div>
+                        <div class="form-group mt-4">
+                            <div class="checkbox checkbox-fill d-inline">
+                                <input type="checkbox" name="af" id="af" [(ngModel)]="this.formInputs.af">
+                                <label for="af" class="cr">Asimetría facial</label>
+                            </div>
+                        </div>
+                        <div class="form-group mt-4">
+                            <div class="checkbox checkbox-fill d-inline">
+                                <input type="checkbox" name="asc" id="asc" [(ngModel)]="this.formInputs.asc">
+                                <label for="asc" class="cr">Apnea del sueño CPAP</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 float-right">
+                    <hr>
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        <i class="fas fa fa-save"></i> Registrar
+                    </button>
+                    <a class="btn btn-secondary btn-sm ml-1"
+                    *ngIf="this.formInputs.id > 0" (click)="this.onPrint()">
+                        <i class="fas fa fa-print"></i> Imprimir
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</app-card>

@@ -1,0 +1,151 @@
+<div [innerHTML]="this.greetings"></div>
+<!-- <div class="row">
+  <div class="col-xl-8 col-md-12">
+    <app-alert type="primary" *ngIf="this.listCh.length === 0"><i class="fas fa-spinner fa-spin"></i> Cargando...</app-alert>
+    <app-card cardTitle="Historias Clinicas" cardClass="user-profile-list" [options]="false">
+      <div class="dt-responsive table-responsive" *ngIf="this.listCh.length > 0">
+        <table datatable [dtOptions]="dtOptions" class="table table-striped row-border table-hover">
+          <thead>
+            <tr>
+              <th>Paciente</th>
+              <th class="w50">Nro. Documento</th>
+              <th class="w50">Celular</th>
+              <th>Email</th>
+              <th class="w100">Distrito</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ch of this.listCh">
+              <td>
+                <div class="d-inline-block align-middle">
+                  <img src="assets/images/user/male.png" [alt]="'..'" class="img-radius align-top m-r-15" style="width:40px;">
+                  <div class="d-inline-block">
+                    <h6 class="m-b-0">{{ch.name}} {{ch.lastNameFather}} {{ch.lastNameMother}}</h6>
+                    <p class="m-b-0">{{ch.history}}</p>
+                  </div>
+                </div>
+              </td>
+              <td>{{ch.documentNumber}}</td>
+              <td>{{ch.cellphone}}</td>                                                               
+              <td>{{ch.email}}</td>
+              <td>
+                {{ch.district.name}}
+                <div class="overlay-edit">
+                  <button type="button" class="btn btn-icon btn-success"
+                  (click)="addFormClinicHistory(ch);">
+                    <i class="feather icon-check-circle"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Paciente</th>
+              <th>Nro. Documento</th>
+              <th>Celular</th>
+              <th>Email</th>
+              <th>Distrito</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </app-card>
+  </div>
+  <div class="col-xl-4 col-md-12">
+      <app-card cardTitle="Citas del Día" cardClass="feed-card" [options]="false">
+        <perfect-scrollbar [style.max-height]="'385px'">
+          <div class="row m-b-25 m-t-5 align-items-center">
+            <div class="col-auto p-r-0">
+              <i class="feather icon-bell badge-light-primary feed-icon"></i>
+            </div>
+            <div class="col">
+              <a href="javascript:">
+                <h6 class="m-b-5">You have 3 pending tasks. <span class="text-muted float-right f-14">Just Now</span></h6>
+              </a>
+            </div>
+          </div>
+          <div class="row m-b-25 align-items-center">
+            <div class="col-auto p-r-0">
+              <i class="feather icon-shopping-cart badge-light-danger feed-icon"></i>
+            </div>
+            <div class="col">
+              <a href="javascript:">
+                <h6 class="m-b-5">New order received <span class="text-muted float-right f-14">30 min ago</span></h6>
+              </a>
+            </div>
+          </div>
+          <div class="row m-b-25 align-items-center">
+            <div class="col-auto p-r-0">
+              <i class="feather icon-file-text badge-light-success feed-icon"></i>
+            </div>
+            <div class="col">
+              <a href="javascript:">
+                <h6 class="m-b-5">You have 3 pending tasks. <span class="text-muted float-right f-14">Just Now</span></h6>
+              </a>
+            </div>
+          </div>
+          <div class="row m-b-25 align-items-center">
+            <div class="col-auto p-r-0">
+              <i class="feather icon-bell badge-light-primary feed-icon"></i>
+            </div>
+            <div class="col">
+              <a href="javascript:">
+                <h6 class="m-b-5">You have 4 tasks Done. <span class="text-muted float-right f-14">1 hours ago</span></h6>
+              </a>
+            </div>
+          </div>
+          <div class="row m-b-25 align-items-center">
+            <div class="col-auto p-r-0">
+              <i class="feather icon-file-text badge-light-success feed-icon"></i>
+            </div>
+            <div class="col">
+              <a href="javascript:">
+                <h6 class="m-b-5">You have 2 pending tasks. <span class="text-muted float-right f-14">Just Now</span></h6>
+              </a>
+            </div>
+          </div>
+          <div class="row m-b-25 align-items-center">
+            <div class="col-auto p-r-0">
+              <i class="feather icon-shopping-cart badge-light-danger feed-icon"></i>
+            </div>
+            <div class="col">
+              <a href="javascript:">
+                <h6 class="m-b-5">New order received <span class="text-muted float-right f-14">4 hours ago</span></h6>
+              </a>
+            </div>
+          </div>
+          <div class="row m-b-25 align-items-center">
+            <div class="col-auto p-r-0">
+              <i class="feather icon-shopping-cart badge-light-danger feed-icon"></i>
+            </div>
+            <div class="col">
+              <a href="javascript:">
+                <h6 class="m-b-5">New order Done <span class="text-muted float-right f-14">Just Now</span></h6>
+              </a>
+            </div>
+          </div>
+          <div class="row m-b-25 align-items-center">
+            <div class="col-auto p-r-0">
+              <i class="feather icon-file-text badge-light-success feed-icon"></i>
+            </div>
+            <div class="col">
+              <a href="javascript:">
+                <h6 class="m-b-5">You have 5 pending tasks. <span class="text-muted float-right f-14">5 hours ago</span></h6>
+              </a>
+            </div>
+          </div>
+          <div class="row m-b-0 align-items-center">
+            <div class="col-auto p-r-0">
+              <i class="feather icon-bell badge-light-primary feed-icon"></i>
+            </div>
+            <div class="col">
+              <a href="javascript:">
+                <h6 class="m-b-5">You have 4 tasks Done. <span class="text-muted float-right f-14">2 hours ago</span></h6>
+              </a>
+            </div>
+          </div>
+        </perfect-scrollbar>
+      </app-card>
+  </div>
+</div> -->

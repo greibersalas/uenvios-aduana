@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="col-12">
+        <form class="was-validated" (ngSubmit)="onSubmit()" ngNativeValidate>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="name">Medicamento <small class="text-danger">(*)</small></label>
+                        <input name="medicamento" placeholder="Digite el medicamento" minlength="5"
+                        class="form-control" required="" [(ngModel)]="formInput.name">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" for="name">Presentación <small class="text-danger">(*)</small></label>
+                        <input name="presentation" placeholder="[TABLETA, JARABE, ETC]"
+                        class="form-control" required="" [(ngModel)]="formInput.presentation">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" for="name">Cantidad <small class="text-danger">(*)</small></label>
+                        <input type="number" name="amount" min="1" class="form-control" required="" [(ngModel)]="formInput.amount">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="name">Indicaciones <small class="text-danger">(*)</small></label>
+                        <textarea name="indication" cols="30" rows="3" placeholder="Digite las indicaciones"
+                        class="form-control" required="" [(ngModel)]="formInput.indications" minlength="10"></textarea>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label class="form-control-label" for="name">Observaciones</label>
+                        <textarea name="observation" cols="30" rows="3" placeholder="Observaciones..."
+                        class="form-control" [(ngModel)]="formInput.observations"></textarea>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" *ngIf="!loaderInsert">
+                <i class="fas fa fa-save"></i> Registrar
+            </button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" *ngIf="loaderInsert" disabled>
+                <span class="spinner-border spinner-border-sm" role="status"></span>
+                <span class="load-text"> Registrando...</span>
+            </button>
+        </form>
+    </div>
+    <div class="col-12 mt-2" *ngIf="prescriptions.length > 0">
+        <div class="dt-responsive table-responsive">
+            <table datatable [dtOptions]="dtOptions" class="table table-striped row-border table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Medicamento</th>
+                        <th>Presentación</th>
+                        <th>Cantidad</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of prescriptions">
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.presentation}}</td>
+                        <td>{{item.amount}}</td>
+                        <td class="w100">
+                            <button type="button" class="btn btn-icon btn-success" (click)="setFormInput(item)"
+                            ngbPopover="Editar" triggers="mouseenter:mouseleave">
+                                <i class="feather icon-check-circle"></i>
+                            </button>
+                            <button type="button" class="btn btn-icon btn-danger"
+                            ngbPopover="Eliminar" triggers="mouseenter:mouseleave">
+                                <i class="feather icon-trash-2"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</div>
+

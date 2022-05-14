@@ -1,0 +1,56 @@
+<div class="auth-wrapper align-items-stretch aut-bg-img">
+  <div class="flex-grow-1">
+    <div class="h-100 d-md-flex align-items-center auth-side-img">
+      <div class="col-sm-10 auth-content w-auto">
+        <img src="assets/images/auth/dentista.png" alt="" class="img-fluid w-50">
+        <h1 class="text-white my-4">Bienvenido!</h1>
+        <h4 class="text-white font-weight-normal">Sistema Aduana U-ENVIOS.<br/></h4>
+      </div>
+    </div>
+    <div class="auth-side-form">
+        <div class=" auth-content">
+          <form (submit)="onLogin()" class="validate-form" ngNativeValidate>
+            <img src="assets/images/auth/auth-logo.png" alt="" class="img-fluid mb-4 d-block d-xl-none d-lg-none">
+            <h3 class="mb-4 f-w-400">Acceso al Sistema</h3>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="feather icon-user"></i></span>
+              </div>
+              <input type="text" class="form-control" placeholder="Usuario" [(ngModel)]="formInput.username"
+              required name="username" autofocus>
+            </div>
+            <div class="input-group mb-4">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="feather icon-lock"></i></span>
+              </div>
+              <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" placeholder="Password" required
+              [(ngModel)]="formInput.password" name="password">
+              <div class="input-group-append">
+                <span class="input-group-text cursor" (click)="toggleFieldTextType()">
+                  <i class="fas"
+                      [ngClass]="{
+                      'fa-eye-slash': fieldTextType,
+                      'fa-eye': !fieldTextType
+                      }"
+                  ></i>
+                </span>
+              </div>
+            </div>
+            <div class="form-group text-left mt-2">
+              <div class="checkbox checkbox-primary d-inline">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-block btn-primary mb-0" *ngIf="!btnValidar">Acceder</button>
+            <button class="btn btn-block btn-villa mb-4" *ngIf="btnValidar" disabled>
+              <span class="spinner-border spinner-border-sm" role="status"></span>
+              <span class="load-text"> Verificando...</span>
+            </button>
+            <!-- <div class="text-center">
+              <p class="mb-2 text-muted">Olvodaste tu contraseña? <a [routerLink]="['/auth/reset-password-v2']" class="f-w-400">Recuperar</a></p>
+            </div> -->
+          </form>
+        </div>
+            
+    </div>
+  </div>
+</div>
