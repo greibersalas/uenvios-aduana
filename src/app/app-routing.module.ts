@@ -16,46 +16,6 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: 'campus',
-        loadChildren: () => import('./pages/campus/campus.module').then(module => module.CampusModule),
-        canActivate: [AuthGuard],
-        data: {
-          permissions: 'campus'
-        }
-      },
-      {
-        path: 'business-line',
-        loadChildren: () => import('./pages/business-line/business-line.module').then(module => module.BusinessLineModule),
-        canActivate: [AuthGuard],
-        data: {
-          permissions: 'business-line'
-        }
-      },
-      {
-        path: 'specialty',
-        loadChildren: () => import('./pages/specialty/specialty.module').then(module => module.SpecialtyModule),
-        canActivate: [AuthGuard],
-        data: {
-          permissions: 'specialty'
-        }
-      },
-      {
-        path: 'tariff',
-        loadChildren: () => import('./pages/tariff/tariff.module').then(module => module.TariffModule),
-        canActivate: [AuthGuard],
-        data: {
-          permissions: 'tariff'
-        }
-      },
-      {
-        path: 'clinic-history',
-        loadChildren: () => import('./pages/clinic-history/clinic-history.module').then(module => module.ClinicHistoryModule),
-        canActivate: [AuthGuard],
-        data: {
-          permissions: 'clinic-history'
-        }
-      },
-      {
         path: 'documents',
         loadChildren: () => import('./pages/documents/documents.module').then(module => module.DocumentsModule),
         canActivate: [AuthGuard],
@@ -77,22 +37,6 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         data: {
           permissions: 'country'
-        }
-      },
-      {
-        path: 'doctor',
-        loadChildren: () => import('./pages/doctor/doctor.module').then(module => module.DoctorModule),
-        canActivate: [AuthGuard],
-        data: {
-          permissions: 'doctor'
-        }
-      },
-      {
-        path: 'quotation',
-        loadChildren: () => import('./pages/quotation/quotation.module').then(module => module.QuotationModule),
-        canActivate: [AuthGuard],
-        data: {
-          permissions: 'quotation'
         }
       },
       {
@@ -158,10 +102,6 @@ const routes: Routes = [
         }
       },
       {
-        path: 'responsible',
-        loadChildren: () => import('./pages/responsible/responsible.module').then(module => module.ResponsibleModule)
-      },
-      {
         path: 'deparments',
         loadChildren: () => import('./pages/deparments/deparments.module').then(module => module.DeparmentsModule)
       },
@@ -175,14 +115,6 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         data: {
           permissions: 'districts'
-        }
-      },
-      {
-        path: 'exchangerates',
-        loadChildren: () => import('./pages/exchange-rates/exchange-rates.module').then(module => module.ExchangeRateModule),
-        canActivate: [AuthGuard],
-        data: {
-          permissions: 'exchangerates'
         }
       },
       {
@@ -210,48 +142,8 @@ const routes: Routes = [
         }
       },
       {
-        path: 'environment-doctor',
-        loadChildren: () => import('./pages/environment-doctor/environment-doctor.module').then(module => module.EnvironmentDoctorModule),
-        canActivate: [AuthGuard],
-        data: {
-          permissions: 'environment-doctor'
-        }
-      },
-      {
-        path: 'programation',
-        loadChildren: () => import('./pages/programation/programation.module').then(module => module.ProgramationModule)
-      },
-      {
         path: 'user-profile',
         loadChildren: () => import('./profile/user/user.module').then(module => module.UserModule)
-      },
-      {
-        path: 'medical-attention/:id',
-        loadChildren: () => import('./pages/main/medical-attention/medical-attention.module').then(module => module.MedicalAttentionModule)
-      },
-      {
-        path: 'lab-order',
-        loadChildren: () => import('./pages/main/lab-order/lab-order.module').then(module => module.LabOrderModule),
-        canActivate: [AuthGuard],
-        data: {
-          permissions: 'lab-order'
-        }
-      },
-      {
-        path: 'laboratory-programming',
-        loadChildren: () => import('./pages/main/lab-programming/lab-programming.module').then(module => module.LabProgrammingModule),
-        canActivate: [AuthGuard],
-        data: {
-          permissions: 'laboratory-programming'
-        }
-      },
-      {
-        path: 'diary',
-        loadChildren: () => import('./pages/main/diary/diary.module').then(module => module.DiaryModule),
-        canActivate: [AuthGuard],
-        data: {
-          permissions: 'diary'
-        }
       },
       {
         path: 'reports',
