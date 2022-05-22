@@ -4,4 +4,5 @@ export interface UbigeoDto {
     IdProvincia: string;
     IdDistrito: string;
     Description: string;
+    Ubigeo: string;
 }

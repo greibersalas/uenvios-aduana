@@ -14,43 +14,44 @@
                     </ngb-alert>
                 </p>
             </div>
-            <div class="table-responsive" *ngIf="list.length > 0">
-                <table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered nowrap table-hover table-sm">
-                    <thead>
-                        <tr>
-                            <th class="w50">#</th>
-                            <th>Departamento</th>
-                            <th>Provincia</th>
-                            <th class="w100">Distrito</th>
-                            <th>Ubigeo</th>
-                            <th class="w50">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let item of list">
-                            <td>{{item.IdUbigeo}}</td>
-                            <td>{{item.IdDepartamento}}</td>
-                            <td>{{item.IdProvincia}}</td>
-                            <td>{{item.IdDistrito}}</td>
-                            <td>{{item.IdDepartamento}}{{item.IdProvincia}}{{item.IdDistrito}}</td>
-                            <td>
-                                <button [disabled] = "canUpdate" class="btn btn-success btn-sm" (click)="openModal(item.IdUbigeo)"><i class="fas fa-edit"></i></button>
-                                <button [disabled] = "canDelete" class="btn btn-danger btn-sm ml-1" (click)="delete(item.IdUbigeo)"><i class="fas fa-ban"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th >#</th>
-                            <th>Departamento</th>
-                            <th>Provincia</th>
-                            <th>Distrito</th>
-                            <th>Ubigeo</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
+            <app-card [hidHeader]="true" cardClass="card-border-c-blue">
+                <div class="table-responsive" *ngIf="list.length > 0">
+                    <table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered nowrap table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th class="w50">#</th>
+                                <th style="width: 100px;">Ubigeo</th>
+                                <th style="width: 150px;">Tipo</th>
+                                <th>Nombre</th>
+                                <th class="w50">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of list">
+                                <td>{{item.IdUbigeo}}</td>
+                                <td>{{item.Ubigeo}}</td>
+                                <td *ngIf="item.IdProvincia === '00' && item.IdDistrito === '00'">Departamento</td>
+                                <td *ngIf="item.IdProvincia !== '00' && item.IdDistrito === '00'">Provincia</td>
+                                <td>{{item.Description}}</td>
+                                <td>
+                                    <button [disabled] = "canUpdate" class="btn btn-success btn-sm" (click)="openModal(item.IdUbigeo)"><i class="fas fa-edit"></i></button>
+                                    <button [disabled] = "canDelete" class="btn btn-danger btn-sm ml-1" (click)="delete(item.IdUbigeo)"><i class="fas fa-ban"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th >#</th>
+                                <th>Ubigeo</th>
+                                <th>Tipo</th>
+                                <th>Nombre</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </app-card>
+            
         </app-card>
     </div>
 </div>

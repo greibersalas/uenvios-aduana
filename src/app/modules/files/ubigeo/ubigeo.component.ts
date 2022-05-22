@@ -5,6 +5,9 @@ import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 
+// Config
+import { LanguageApp } from 'src/app/config/data-table.language';
+
 // Components
 import { ModalUbigeoComponent } from '../modals/modal-ubigeo/modal-ubigeo.component';
 
@@ -23,6 +26,7 @@ import { UbigeoService } from '../services/public/ubigeo.service';
 })
 export class UbigeoComponent implements OnInit {
 
+  dtOptions: DataTables.Settings = {};
   canInsert: true;
   canUpdate: true;
   canDelete: true;
@@ -55,6 +59,15 @@ export class UbigeoComponent implements OnInit {
     this.list = [];
     this.ubigeoService.getAll().subscribe(
       res => {
+        this.dtOptions = {
+        pagingType: 'full_numbers',
+        pageLength: 10,
+        language: LanguageApp.spanish_datatables,
+        search: true,
+        responsive: true,
+        order: [0],
+        orderClasses: true
+      };
         this.list = res;
         this.spinner.hide();
       },

@@ -8,6 +8,7 @@ export class Ubigeo implements Transferable<UbigeoDto> {
     IdProvincia: string;
     IdDistrito: string;
     Description: string;
+    Ubigeo: string;
 
     ToDTO(): UbigeoDto {
         const dto: UbigeoDto = ({
@@ -16,6 +17,7 @@ export class Ubigeo implements Transferable<UbigeoDto> {
             IdProvincia: this.IdProvincia,
             IdDistrito: this.IdDistrito,
             Description: this.Description,
+            Ubigeo: this.Ubigeo
         });
         return dto;
     }
@@ -26,6 +28,7 @@ export class Ubigeo implements Transferable<UbigeoDto> {
         this.IdProvincia = from.IdProvincia;
         this.IdDistrito = from.IdDistrito;
         this.Description = from.Description;
+        this.Ubigeo = from.Ubigeo;
         return this;
     }
 }
