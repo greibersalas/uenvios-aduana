@@ -43,7 +43,7 @@ export class BreadcrumbComponent implements OnInit {
 
   filterNavigation(activeLink) {
     let result = [];
-    let title = 'Maxillaris';
+    let title = 'Aduana';
     this.navigation.forEach((a) => {
       if (a.type === 'item' && 'url' in a && a.url === activeLink) {
         result = [
@@ -124,7 +124,7 @@ export class BreadcrumbComponent implements OnInit {
       }
     });
     this.navigationList = result;
-    this.titleService.setTitle(title + ' | Maxillaris | Mano Clinic');
+    this.titleService.setTitle(title + ' | U-ENVIOS');
   }
 
 }

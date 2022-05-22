@@ -16,6 +16,11 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
+        path: 'files',
+        loadChildren: () => import('./modules/files/files.module').then(mod => mod.FilesModule),
+        canActivate: [ AuthGuard ]
+      },
+      {
         path: 'documents',
         loadChildren: () => import('./pages/documents/documents.module').then(module => module.DocumentsModule),
         canActivate: [AuthGuard],
