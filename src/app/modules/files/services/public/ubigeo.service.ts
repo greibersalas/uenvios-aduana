@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-// Environtment
-import { environment } from '../../../../../environments/environment';
-
 // Models
 import { Ubigeo } from '../../models/ubigeo.model';
 
@@ -16,8 +13,6 @@ import { UbigeoDataRequestService } from '../private/ubigeo-data-request.service
 })
 export class UbigeoService {
 
-  baseUrl = `${environment.apiUrl}/ubigeo`;
-
   constructor(
     private dataRequest: UbigeoDataRequestService
   ) { }
@@ -28,7 +23,11 @@ export class UbigeoService {
     );
   }
 
-  public delete(): void{
-    //
+  public insert(data: Ubigeo): Observable<Response>{
+    return this.dataRequest.insert(data.ToDTO());
+  }
+
+  public delete(id: number): Observable<Response>{
+    return this.dataRequest.delete(id);
   }
 }

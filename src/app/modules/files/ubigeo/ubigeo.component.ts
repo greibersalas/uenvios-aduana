@@ -68,7 +68,7 @@ export class UbigeoComponent implements OnInit {
 
   // Abre el modal para guardar o editar
   openModal(id: number): void{
-    const modal = this.modalSerive.open(ModalUbigeoComponent);
+    const modal = this.modalSerive.open(ModalUbigeoComponent, {size: 'lg'});
     modal.result.then((result: any) => {
       if (result === 'Save click'){
         this.get();
@@ -80,23 +80,23 @@ export class UbigeoComponent implements OnInit {
   delete(id: number): void{
     Swal.fire({
       title: 'Atención!!!!',
-      text: '¿Está seguro que desea eliminar la programación?',
+      text: '¿Está seguro que desea eliminar el registro?',
       type: 'warning',
       showCloseButton: true,
       showCancelButton: true
     }).then((willDelete) => {
-        if (willDelete.value) {
-          /* this.ubigeoService.delete(id)
-          .subscribe(
-            res => {
-              Swal.fire('ok!', 'Registro eliminado satisfactoriamente', 'success');
-              this.get();
-            },
-            err => {
-              Swal.fire('Error!', 'No se puedo borrar el registro', 'error');
-            }
-          ); */
-        }
+      if (willDelete.value) {
+        this.ubigeoService.delete(id)
+        .subscribe(
+          res => {
+            Swal.fire('ok!', 'Registro eliminado satisfactoriamente', 'success');
+            this.get();
+          },
+          err => {
+            Swal.fire('Error!', 'No se puedo borrar el registro', 'error');
+          }
+        );
+      }
     });
   }
 

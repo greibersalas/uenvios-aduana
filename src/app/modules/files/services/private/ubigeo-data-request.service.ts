@@ -13,7 +13,7 @@ import { UbigeoDto } from '../../dtos/ubigeo-dto';
 })
 export class UbigeoDataRequestService {
 
-  baseUrl = `${environment.apiUrl}/ubigeo`;
+  private baseUrl = `${environment.apiUrl}ubigeo`;
 
   constructor(
     private http: HttpClient,
@@ -21,5 +21,13 @@ export class UbigeoDataRequestService {
 
   public getDataTable(): Observable<UbigeoDto[]> {
     return this.http.get<UbigeoDto[]>(`${this.baseUrl}/get-all`);
+  }
+
+  public insert(data: UbigeoDto): Observable<Response> {
+    return this.http.post<Response>(`${this.baseUrl}/insert`, data);
+  }
+
+  delete(id: number): Observable<Response> {
+    return this.http.delete<Response>(`${this.baseUrl}/delete/${id}`);
   }
 }

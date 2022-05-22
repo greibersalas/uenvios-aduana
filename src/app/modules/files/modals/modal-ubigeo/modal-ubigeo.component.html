@@ -1,35 +1,49 @@
-<!-- <form class="was-validated" #formDoctor="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+<form class="was-validated" #formUbigeo="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
     <div class="modal-header modal_header">
         <h5 class="modal-title titulo-modal">Registro Ubigeo</h5>
         <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')"><span aria-hidden="true">&times;</span></button>
     </div>
     <div class="modal-body">
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label class="form-control-label" for="iddepartamento">Departamento <small class="text-danger">(*)</small></label>
-                    <input class="form-control form-control-sm" name="iddepartamento" type="text" ngbAutofocus
-                    placeholder="Departamento" required [(ngModel)]="formInput.IdDepartamento">
+                    <div class="input-group">
+                        <input type="text" maxlength="2" minlength="2" class="form-control form-control-sm" name="iddepartamento"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.iddepartamento">
+                        <input class="form-control form-control-sm" name="departamento" type="text" ngbAutofocus
+                        placeholder="Departamento" required [(ngModel)]="formInput.departamento">
+                    </div>
                 </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label class="form-label" for="idprovincia">Provincia <small class="text-danger">(*)</small></label>
-                    <input type="text" class="form-control form-control-sm" name="idprovincia" placeholder="Provincia"
-                    minlength="6" required [(ngModel)]="formInput.IdProvincia">
+                    <div class="input-group">
+                        <input type="text" maxlength="2" minlength="2" class="form-control form-control-sm" name="idprovincia"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.idprovincia">
+                        <input type="text" class="form-control form-control-sm" name="provincia" placeholder="Provincia"
+                        required [(ngModel)]="formInput.provincia">
+                    </div>
+                    
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label class="form-control-label" for="iddistrito">Distrito <small class="text-danger">(*)</small></label>
-                    <input class="form-control form-control-sm" name="iddistrito" type="text" placeholder="Dsitrito"
-                    required [(ngModel)]="formInput.IdDistrito">
+                    <div class="input-group">
+                        <input type="text" maxlength="2" minlength="2" class="form-control form-control-sm" name="iddistrito"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.iddistrito">
+                        <input class="form-control form-control-sm" name="distrito" type="text" placeholder="Distrito"
+                        required [(ngModel)]="formInput.distrito">
+                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="submit" uiSref="work" class="btn btn-primary btn-raised" [disabled]="!formDoctor.valid">
+        <button type="submit" uiSref="work" class="btn btn-primary btn-raised" [disabled]="!formUbigeo.valid">
             Guardar
         </button>
         <button type="button" class="btn btn-outline-dark"
@@ -37,4 +51,4 @@
             Salir
         </button>
     </div>
-</form> -->
+</form>

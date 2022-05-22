@@ -27,15 +27,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of dataList">
+                        <tr *ngFor="let item of list">
                             <td>{{item.IdUbigeo}}</td>
                             <td>{{item.IdDepartamento}}</td>
                             <td>{{item.IdProvincia}}</td>
                             <td>{{item.IdDistrito}}</td>
                             <td>{{item.IdDepartamento}}{{item.IdProvincia}}{{item.IdDistrito}}</td>
                             <td>
-                                <button [disabled] = "canUpdate" class="btn btn-success btn-sm" (click)="openModal(item.id)"><i class="fas fa-edit"></i></button>
-                                <button [disabled] = "canDelete" class="btn btn-danger btn-sm ml-1" (click)="delete(item)"><i class="fas fa-ban"></i></button>
+                                <button [disabled] = "canUpdate" class="btn btn-success btn-sm" (click)="openModal(item.IdUbigeo)"><i class="fas fa-edit"></i></button>
+                                <button [disabled] = "canDelete" class="btn btn-danger btn-sm ml-1" (click)="delete(item.IdUbigeo)"><i class="fas fa-ban"></i></button>
                             </td>
                         </tr>
                     </tbody>
