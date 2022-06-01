@@ -1,0 +1,69 @@
+<form class="was-validated" #formUbigeo="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+    <div class="modal-header modal_header">
+        <h5 class="modal-title titulo-modal">Registro de Tipo de Documento</h5>
+        <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="form-control-label" for="code">Codigo <small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" maxlength="2" minlength="2" class="form-control form-control-sm" name="code"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.code">
+                        <input class="form-control form-control-sm" name="code" type="text" ngbAutofocus
+                        placeholder="Codigo de documento" required [(ngModel)]="formInput.code">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label class="form-label" for="name">Nombre <small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="name"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.name">
+                        <input type="text" class="form-control form-control-sm" name="name" placeholder="Nombre"
+                        required [(ngModel)]="formInput.name">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label class="form-control-label" for="description">Descripción<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text"  class="form-control form-control-sm" name="description"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.description">
+                        <input class="form-control form-control-sm" name="description" type="text" placeholder="Descripción"
+                         [(ngModel)]="formInput.description">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="form-control-label" for="code_sunat">Codigo Sunat<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" maxlength="2" minlength="2" class="form-control form-control-sm" name="code_sunat"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.code_sunat">
+                        <input class="form-control form-control-sm" name="code_sunat" type="text" placeholder="Codigo sunat"
+                         maxlength="2" minlength="2"[(ngModel)]="formInput.code_sunat">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" uiSref="work" class="btn btn-primary btn-raised" >
+            Guardar
+        </button>
+        <button type="button" class="btn btn-outline-dark"
+        (click)="activeModal.close('Close click')">
+            Salir
+        </button>
+    </div>
+</form>
+

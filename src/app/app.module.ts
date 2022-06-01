@@ -42,6 +42,8 @@ import { TokenInterceptorService } from './service/token-interceptor.service';
 import { ComponentsModule } from './components/components.module';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +62,6 @@ import { ComponentsModule } from './components/components.module';
     FriendComponent,
     ChatMsgComponent,
     ConfigurationComponent,
-    ToggleFullScreenDirective
   ],
   imports: [
     BrowserModule,

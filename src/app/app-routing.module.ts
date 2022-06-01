@@ -38,7 +38,7 @@ const routes: Routes = [
       },
       {
         path: 'country',
-        loadChildren: () => import('./pages/country/country.module').then(module => module.CountryModule),
+        loadChildren: () => import('./modules/files/files.module').then(module => module.FilesModule),
         canActivate: [AuthGuard],
         data: {
           permissions: 'country'
