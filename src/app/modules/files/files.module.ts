@@ -25,10 +25,12 @@ import { ImporterRiskComponent } from './importer-risk/importer-risk.component';
 import { ModalImporterRiskComponent } from './modals/modal-importer-risk/modal-importer-risk.component';
 import { CarrierComponent } from './carrier/carrier.component';
 import { ModalCarrierComponent } from './modals/modal-carrier/modal-carrier.component';
+import { DepositComponent } from './deposit/deposit.component';
+import { ModalDepositComponent } from './modals/modal-deposit/modal-deposit.component';
 
 
 @NgModule({
-  declarations: [UbigeoComponent, ModalUbigeoComponent, CountryComponent, ModalCountryComponent, StatementTypeComponent, ModalStatementTypeComponent, DocumenttypeComponent, ModalDocumenttypeComponent, ShippingTypeComponent, ModalShippingTypeComponent, CategoriesComponent, ModalCategoriesComponent, TransportRouteComponent, ModalTransportRouteComponent, SenderComponent, ModalSenderComponent, ShipperComponent, ModalShipperComponent, ImporterRiskComponent, ModalImporterRiskComponent, CarrierComponent, ModalCarrierComponent],
+  declarations: [UbigeoComponent, ModalUbigeoComponent, CountryComponent, ModalCountryComponent, StatementTypeComponent, ModalStatementTypeComponent, DocumenttypeComponent, ModalDocumenttypeComponent, ShippingTypeComponent, ModalShippingTypeComponent, CategoriesComponent, ModalCategoriesComponent, TransportRouteComponent, ModalTransportRouteComponent, SenderComponent, ModalSenderComponent, ShipperComponent, ModalShipperComponent, ImporterRiskComponent, ModalImporterRiskComponent, CarrierComponent, ModalCarrierComponent, DepositComponent, ModalDepositComponent],
   imports: [
     CommonModule,
     FilesRoutingModule,

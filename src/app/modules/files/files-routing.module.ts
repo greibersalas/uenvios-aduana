@@ -11,6 +11,7 @@ import { SenderComponent } from './sender/sender.component';
 import { ShipperComponent } from './shipper/shipper.component';
 import { ImporterRiskComponent } from './importer-risk/importer-risk.component';
 import { CarrierComponent } from './carrier/carrier.component';
+import { DepositComponent } from './deposit/deposit.component';
 
 
 const routes: Routes = [
@@ -60,7 +61,11 @@ const routes: Routes = [
       {
         path: 'carrier',
         component: CarrierComponent
-      },  
+      },
+      {
+        path: 'deposit',
+        component: DepositComponent
+      },    
     ]
   },
  
