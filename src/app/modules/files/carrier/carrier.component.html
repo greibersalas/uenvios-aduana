@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card [customHeader]="true" cardClass="card-border-c-blue" [options]="false">
+            <div class="app-card-header">
+                <h5 class="mb-3">Pais</h5>
+                <button [disabled] = "canInsert" class="btn btn-primary float-right f-14" (click)="openModal(0)">
+                    <i class="fas fa-plus-circle m-r-5"></i> Nuevo [F2]
+                </button>
+            </div>
+            <div class="col-12" *ngIf="this.list.length === 0">
+                <p>
+                    <ngb-alert [dismissible]="false" [type]="'info'">
+                      <strong>Atención!</strong> No hay registros para mostrar.
+                    </ngb-alert>
+                </p>
+            </div>
+            <app-card [hidHeader]="true" cardClass="card-border-c-blue">
+                <div class="table-responsive" *ngIf="list.length > 0">
+                    <table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered nowrap table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th class="w50">#</th>
+                                <th style="width: 150px;">RUC</th>
+                                <th>Descripción</th>
+                                <th>Telefono</th>
+                                <th>Correo</th>
+                                <th>Dirección</th>
+                                <th class="w50">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of list">
+                                <td>{{item.idcarrier}}</td>
+                                <td>{{item.ruc}}</td>
+                                <td>{{item.description}}</td>
+                                <td>{{item.phone}}</td>
+                                <td>{{item.email}}</td>
+                                <td>{{item.address}}</td>
+                                
+                                <td>
+                                    <button [disabled] = "canUpdate" class="btn btn-success btn-sm" (click)="openModal(item.idcarrier)"><i class="fas fa-edit"></i></button>
+                                    <button [disabled] = "canDelete" class="btn btn-danger btn-sm ml-1" (click)="delete(item.idcarrier)"><i class="fas fa-ban"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th >#</th>
+                                <th>Ruc</th>
+                                <th>Descripción</th>
+                                <th>Correo</th>
+                                <th>Dirección</th>
+                                <th>Acciones</th>
+                               
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </app-card>
+            
+        </app-card>
+    </div>
+</div>
+<div class="fixed-button active">
+    <button [disabled] = "canInsert" class="btn btn-icon btn-primary has-ripple btn-circle btn-md" (click)="openModal(0)">
+      <i aria-hidden="true" class="fas fa-plus-circle fa-2x"></i> [F2]
+    </button>
+</div>

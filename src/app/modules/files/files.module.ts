@@ -17,10 +17,18 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ModalCategoriesComponent } from './modals/modal-categories/modal-categories.component';
 import { TransportRouteComponent } from './transport-route/transport-route.component';
 import { ModalTransportRouteComponent } from './modals/modal-transport-route/modal-transport-route.component';
+import { SenderComponent } from './sender/sender.component';
+import { ModalSenderComponent } from './modals/modal-sender/modal-sender.component';
+import { ShipperComponent } from './shipper/shipper.component';
+import { ModalShipperComponent } from './modals/modal-shipper/modal-shipper.component';
+import { ImporterRiskComponent } from './importer-risk/importer-risk.component';
+import { ModalImporterRiskComponent } from './modals/modal-importer-risk/modal-importer-risk.component';
+import { CarrierComponent } from './carrier/carrier.component';
+import { ModalCarrierComponent } from './modals/modal-carrier/modal-carrier.component';
 
 
 @NgModule({
-  declarations: [UbigeoComponent, ModalUbigeoComponent, CountryComponent, ModalCountryComponent, StatementTypeComponent, ModalStatementTypeComponent, DocumenttypeComponent, ModalDocumenttypeComponent, ShippingTypeComponent, ModalShippingTypeComponent, CategoriesComponent, ModalCategoriesComponent, TransportRouteComponent, ModalTransportRouteComponent],
+  declarations: [UbigeoComponent, ModalUbigeoComponent, CountryComponent, ModalCountryComponent, StatementTypeComponent, ModalStatementTypeComponent, DocumenttypeComponent, ModalDocumenttypeComponent, ShippingTypeComponent, ModalShippingTypeComponent, CategoriesComponent, ModalCategoriesComponent, TransportRouteComponent, ModalTransportRouteComponent, SenderComponent, ModalSenderComponent, ShipperComponent, ModalShipperComponent, ImporterRiskComponent, ModalImporterRiskComponent, CarrierComponent, ModalCarrierComponent],
   imports: [
     CommonModule,
     FilesRoutingModule,

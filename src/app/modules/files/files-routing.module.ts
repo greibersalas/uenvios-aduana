@@ -7,6 +7,10 @@ import { DocumenttypeComponent } from './documenttype/documenttype.component';
 import { ShippingTypeComponent } from './shipping-type/shipping-type.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { TransportRouteComponent } from './transport-route/transport-route.component';
+import { SenderComponent } from './sender/sender.component';
+import { ShipperComponent } from './shipper/shipper.component';
+import { ImporterRiskComponent } from './importer-risk/importer-risk.component';
+import { CarrierComponent } from './carrier/carrier.component';
 
 
 const routes: Routes = [
@@ -41,11 +45,22 @@ const routes: Routes = [
         path: 'transport-route',
         component: TransportRouteComponent
       },
-      
-      
-      
-
-      
+      {
+        path: 'sender',
+        component: SenderComponent
+      },
+      {
+        path: 'shipper',
+        component: ShipperComponent
+      },
+      {
+        path: 'importer-risk',
+        component: ImporterRiskComponent
+      },
+      {
+        path: 'carrier',
+        component: CarrierComponent
+      },  
     ]
   },
  
