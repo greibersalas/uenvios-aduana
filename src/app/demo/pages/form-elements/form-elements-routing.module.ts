@@ -14,10 +14,6 @@ const routes: Routes = [
         loadChildren: () => import('./frm-advance/frm-advance.module').then(module => module.FrmAdvanceModule)
       },
       {
-        path: 'validation',
-        loadChildren: () => import('./frm-validation/frm-validation.module').then(module => module.FrmValidationModule)
-      },
-      {
         path: 'wizard',
         loadChildren: () => import('./frm-wizard/frm-wizard.module').then(module => module.FrmWizardModule)
       },
