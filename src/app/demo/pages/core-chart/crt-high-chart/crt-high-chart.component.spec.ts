@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CrtHighChartComponent } from './crt-high-chart.component';
 
@@ -6,7 +6,7 @@ describe('CrtHighChartComponent', () => {
   let component: CrtHighChartComponent;
   let fixture: ComponentFixture<CrtHighChartComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ CrtHighChartComponent ]
     })

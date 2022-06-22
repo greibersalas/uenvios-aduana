@@ -50,10 +50,6 @@ const routes: Routes = [
         loadChildren: () => import('./basic-spinner/basic-spinner.module').then(module => module.BasicSpinnerModule)
       },
       {
-        path: 'tabs-pills',
-        loadChildren: () => import('./basic-tabs-pills/basic-tabs-pills.module').then(module => module.BasicTabsPillsModule)
-      },
-      {
         path: 'typography',
         loadChildren: () => import('./basic-typography/basic-typography.module').then(module => module.BasicTypographyModule)
       },

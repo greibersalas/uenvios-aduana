@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { FrmValidationComponent } from './frm-validation.component';
 
@@ -6,7 +6,7 @@ describe('FrmValidationComponent', () => {
   let component: FrmValidationComponent;
   let fixture: ComponentFixture<FrmValidationComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ FrmValidationComponent ]
     })

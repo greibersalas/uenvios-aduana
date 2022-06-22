@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { FrmWizardComponent } from './frm-wizard.component';
 
@@ -6,7 +6,7 @@ describe('FrmWizardComponent', () => {
   let component: FrmWizardComponent;
   let fixture: ComponentFixture<FrmWizardComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ FrmWizardComponent ]
     })

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TransportRouteComponent } from './transport-route.component';
 
@@ -6,7 +6,7 @@ describe('TransportRouteComponent', () => {
   let component: TransportRouteComponent;
   let fixture: ComponentFixture<TransportRouteComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ TransportRouteComponent ]
     })

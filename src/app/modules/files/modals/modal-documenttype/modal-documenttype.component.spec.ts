@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ModalDocumenttypeComponent } from './modal-documenttype.component';
 
@@ -6,7 +6,7 @@ describe('ModalDocumenttypeComponent', () => {
   let component: ModalDocumenttypeComponent;
   let fixture: ComponentFixture<ModalDocumenttypeComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ModalDocumenttypeComponent ]
     })

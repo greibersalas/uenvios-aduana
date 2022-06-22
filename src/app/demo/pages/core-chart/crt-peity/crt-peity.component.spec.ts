@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CrtPeityComponent } from './crt-peity.component';
 
@@ -6,7 +6,7 @@ describe('CrtPeityComponent', () => {
   let component: CrtPeityComponent;
   let fixture: ComponentFixture<CrtPeityComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ CrtPeityComponent ]
     })

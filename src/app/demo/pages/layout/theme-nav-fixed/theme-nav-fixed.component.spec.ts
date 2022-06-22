@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ThemeNavFixedComponent } from './theme-nav-fixed.component';
 
@@ -6,7 +6,7 @@ describe('ThemeNavFixedComponent', () => {
   let component: ThemeNavFixedComponent;
   let fixture: ComponentFixture<ThemeNavFixedComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ThemeNavFixedComponent ]
     })

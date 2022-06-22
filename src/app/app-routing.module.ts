@@ -90,11 +90,6 @@ const routes: Routes = [
         loadChildren: () => import('./demo/extension/invoice/invoice.module').then(module => module.InvoiceModule)
       },
       {
-        path: 'full-calendar',
-        loadChildren: () => import('./demo/extension/full-event-calendar/full-event-calendar.module')
-          .then(module => module.FullEventCalendarModule)
-      },
-      {
         path: 'file-upload',
         loadChildren: () => import('./demo/extension/files-upload/files-upload.module').then(module => module.FilesUploadModule)
       },
@@ -173,7 +168,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

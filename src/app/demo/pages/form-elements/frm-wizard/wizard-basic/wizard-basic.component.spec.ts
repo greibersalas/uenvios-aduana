@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { WizardBasicComponent } from './wizard-basic.component';
 
@@ -6,7 +6,7 @@ describe('WizardBasicComponent', () => {
   let component: WizardBasicComponent;
   let fixture: ComponentFixture<WizardBasicComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ WizardBasicComponent ]
     })

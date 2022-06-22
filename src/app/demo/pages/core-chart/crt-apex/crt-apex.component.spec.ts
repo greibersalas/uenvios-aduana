@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CrtApexComponent } from './crt-apex.component';
 
@@ -6,7 +6,7 @@ describe('CrtApexComponent', () => {
   let component: CrtApexComponent;
   let fixture: ComponentFixture<CrtApexComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ CrtApexComponent ]
     })

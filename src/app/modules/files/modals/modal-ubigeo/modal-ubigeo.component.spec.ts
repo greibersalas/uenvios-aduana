@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ModalUbigeoComponent } from './modal-ubigeo.component';
 
@@ -6,7 +6,7 @@ describe('ModalUbigeoComponent', () => {
   let component: ModalUbigeoComponent;
   let fixture: ComponentFixture<ModalUbigeoComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ModalUbigeoComponent ]
     })

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { BasicTooltipPopoversComponent } from './basic-tooltip-popovers.component';
 
@@ -6,7 +6,7 @@ describe('BasicTooltipPopoversComponent', () => {
   let component: BasicTooltipPopoversComponent;
   let fixture: ComponentFixture<BasicTooltipPopoversComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ BasicTooltipPopoversComponent ]
     })

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { BasicCollapseComponent } from './basic-collapse.component';
 
@@ -6,7 +6,7 @@ describe('BasicCollapseComponent', () => {
   let component: BasicCollapseComponent;
   let fixture: ComponentFixture<BasicCollapseComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ BasicCollapseComponent ]
     })
