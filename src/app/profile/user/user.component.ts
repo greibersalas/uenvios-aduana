@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {IAlbum, IEvent, Lightbox, LIGHTBOX_EVENT, LightboxConfig, LightboxEvent} from 'ngx-lightbox';
+import {IEvent, Lightbox, LIGHTBOX_EVENT, LightboxConfig, LightboxEvent} from 'ngx-lightbox';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -20,10 +20,14 @@ export class UserComponent implements OnInit {
   public editOtherInfo: boolean;
   public editOtherInfoIcon: string;
 
-  public albums: Array<IAlbum>;
+  /* public albums: Array<IAlbum>; */
   private subscription: Subscription;
 
-  constructor(private lightbox: Lightbox, private lightboxEvent: LightboxEvent, private lighboxConfig: LightboxConfig) {
+  constructor(
+    private lightbox: Lightbox,
+    private lightboxEvent: LightboxEvent,
+    private lighboxConfig: LightboxConfig
+  ) {
 
     this.activeTab = 'home';
 
@@ -36,7 +40,7 @@ export class UserComponent implements OnInit {
     this.editOtherInfo = false;
     this.editOtherInfoIcon = 'icon-edit';
 
-    this.albums = [];
+    /* this.albums = [];
     for (let i = 1; i <= 6; i++) {
       const album = {
         src: 'assets/images/light-box/l' + i + '.jpg',
@@ -45,7 +49,7 @@ export class UserComponent implements OnInit {
       };
 
       this.albums.push(album);
-    }
+    } */
     lighboxConfig.fadeDuration = 1;
 
   }
@@ -55,7 +59,7 @@ export class UserComponent implements OnInit {
 
   open(index: number): void {
     this.subscription = this.lightboxEvent.lightboxEvent$.subscribe((event: IEvent) => this._onReceivedEvent(event));
-    this.lightbox.open(this.albums, index, { wrapAround: true, showImageNumberLabel: true });
+    // this.lightbox.open(this.albums, index, { wrapAround: true, showImageNumberLabel: true });
   }
 
   private _onReceivedEvent(event: IEvent): void {

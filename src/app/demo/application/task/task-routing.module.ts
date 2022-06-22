@@ -12,10 +12,6 @@ const routes: Routes = [
       {
         path: 'board',
         loadChildren: () => import('./task-board/task-board.module').then(module => module.TaskBoardModule)
-      },
-      {
-        path: 'detail',
-        loadChildren: () => import('./task-detail/task-detail.module').then(module => module.TaskDetailModule)
       }
     ]
   }

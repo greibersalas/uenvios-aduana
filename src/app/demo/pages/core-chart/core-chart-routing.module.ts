@@ -14,10 +14,6 @@ const routes: Routes = [
         loadChildren: () => import('./crt-chart-js/crt-chart-js.module').then(module => module.CrtChartJsModule)
       },
       {
-        path: 'high-chart',
-        loadChildren: () => import('./crt-high-chart/crt-high-chart.module').then(module => module.CrtHighChartModule)
-      },
-      {
         path: 'peity',
         loadChildren: () => import('./crt-peity/crt-peity.module').then(module => module.CrtPeityModule)
       }

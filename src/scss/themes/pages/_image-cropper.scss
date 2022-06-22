@@ -637,39 +637,6 @@ new-task {
     }
 }
 
-.fullcalendar-card {
-    .fc-button {
-        background-color: $primary-color;
-        border-color: #fff;
-        color: #fff;
-        background-image: none;
-        box-shadow: none;
-        text-shadow: none;
-        height: 37px;
-        padding: 0 15px;
-    }
-
-    h2 {
-        font-size: 28px;
-    }
-    @media screen and (max-width:768px) {
-        .fc .fc-toolbar > * > * {
-            float: none;
-        }
-
-        .fc-toolbar .fc-center,
-        .fc-toolbar .fc-left,
-        .fc-toolbar .fc-right {
-            float: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            text-align: center;
-            margin: 0 auto 10px;
-        }
-    }
-}
 
 .msg-user-list.scroll-div {
     height: calc(100vh - 300px);

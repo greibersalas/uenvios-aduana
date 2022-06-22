@@ -16,10 +16,6 @@ const routes: Routes = [
       {
         path: 'wizard',
         loadChildren: () => import('./frm-wizard/frm-wizard.module').then(module => module.FrmWizardModule)
-      },
-      {
-        path: 'select',
-        loadChildren: () => import('./frm-select/frm-select.module').then(module => module.FrmSelectModule)
       }
     ]
   }

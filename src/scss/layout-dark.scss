@@ -1005,9 +1005,6 @@ body.gradient-dark {
     background: $dark-layout;
   }
 
-  .fullcalendar-card .fc-button {
-    border-color: lighten($dark-layout,7%);
-  }
 
   .h-list-body .chat-messages .chat-menu-reply > div {
     &:before {
