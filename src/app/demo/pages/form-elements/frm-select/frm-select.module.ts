@@ -6,7 +6,7 @@ import { FrmSelectComponent } from './frm-select.component';
 import {SharedModule} from '../../../../theme/shared/shared.module';
 import {AngularDualListBoxModule} from 'angular-dual-listbox';
 import {TagInputModule} from 'ngx-chips';
-import {SelectModule} from 'ng-select';
+//import {SelectModule} from 'ng-select';
 import {SelectOptionService} from '../../../../theme/shared/components/select/select-option.service';
 
 @NgModule({
@@ -16,7 +16,7 @@ import {SelectOptionService} from '../../../../theme/shared/components/select/se
     SharedModule,
     AngularDualListBoxModule,
     TagInputModule,
-    SelectModule
+    //SelectModule
   ],
   declarations: [FrmSelectComponent],
   providers: [SelectOptionService]

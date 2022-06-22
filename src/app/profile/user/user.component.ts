@@ -41,7 +41,8 @@ export class UserComponent implements OnInit {
       const album = {
         src: 'assets/images/light-box/l' + i + '.jpg',
         caption: 'Image ' + i + ' caption here',
-        thumb: 'assets/images/light-box/sl' + i + '.jpg'
+        thumb: 'assets/images/light-box/sl' + i + '.jpg',
+        downloadUrl:''
       };
 
       this.albums.push(album);

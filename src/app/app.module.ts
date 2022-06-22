@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -34,7 +35,7 @@ import { ToggleFullScreenDirective } from './theme/shared/full-screen/toggle-ful
 
 /* Menu Items */
 import { NavigationItem } from './theme/layout/admin/navigation/navigation';
-import { NgbButtonsModule, NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbButtonsModule, NgbDropdownModule, NgbTooltipModule,NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './service/token-interceptor.service';
@@ -77,7 +78,8 @@ import { ComponentsModule } from './components/components.module';
     ToastrModule.forRoot(),
     ComponentsModule,
     NgxSpinnerModule,
-    StoreModule.forRoot({session: sessionReducer})
+    StoreModule.forRoot({session: sessionReducer}),
+    NgbModule
   ],
   providers: [
     NavigationItem,
@@ -89,5 +91,6 @@ import { ComponentsModule } from './components/components.module';
     }
   ],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

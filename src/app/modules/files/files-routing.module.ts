@@ -13,6 +13,8 @@ import { ImporterRiskComponent } from './importer-risk/importer-risk.component';
 import { CarrierComponent } from './carrier/carrier.component';
 import { DepositComponent } from './deposit/deposit.component';
 import { CustomsComponent } from './customs/customs.component';
+import { UnittypeComponent } from './unittype/unittype.component';
+import { ArancelComponent } from './arancel/arancel.component';
 
 
 const routes: Routes = [
@@ -70,7 +72,15 @@ const routes: Routes = [
       {
         path: 'customs',
         component: CustomsComponent
-      },   
+      },
+      {
+        path: 'unittype',
+        component: UnittypeComponent
+      },  
+      {
+        path: 'arancel',
+        component: ArancelComponent
+      },  
     ]
   },
  

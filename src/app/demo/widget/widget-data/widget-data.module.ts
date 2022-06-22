@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { WidgetDataRoutingModule } from './widget-data-routing.module';
 import { WidgetDataComponent } from './widget-data.component';
 import {SharedModule} from '../../../theme/shared/shared.module';
-import {NgbCarouselModule, NgbProgressbarModule, NgbTabsetModule} from '@ng-bootstrap/ng-bootstrap';
+//import {NgbCarouselModule, NgbProgressbarModule, NgbTabsetModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbCarouselModule, NgbProgressbarModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [WidgetDataComponent],
@@ -13,8 +14,8 @@ import {NgbCarouselModule, NgbProgressbarModule, NgbTabsetModule} from '@ng-boot
     WidgetDataRoutingModule,
     SharedModule,
     NgbProgressbarModule,
-    NgbTabsetModule,
-    NgbCarouselModule
+    NgbModule,
+    NgbCarouselModule,
   ]
 })
 export class WidgetDataModule { }

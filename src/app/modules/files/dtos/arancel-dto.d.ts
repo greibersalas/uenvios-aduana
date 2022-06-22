@@ -1,0 +1,15 @@
+export interface ArancelDto {
+    id: number,
+    code: string,
+    description: string,
+    adv: number,
+    isc: number,
+    igv: number,
+    imp: number,
+    de: number,
+    da: number,
+    insurance: number,
+    tax_surcharge: number,
+    measure_unit: string,
+    penalty_surtax: number,
+ }

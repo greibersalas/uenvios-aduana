@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {IOption} from 'ng-select';
+import {NgOption} from '@ng-select/ng-select';
 import {DualListComponent} from 'angular-dual-listbox';
 import {SelectOptionService} from '../../../../theme/shared/components/select/select-option.service';
 
@@ -121,14 +121,14 @@ export class FrmSelectComponent implements OnInit, OnDestroy {
   ];
 
 
-  simpleOption: Array<IOption> = this.selectOptionService.getCharacters();
+  simpleOption: Array<NgOption> = this.selectOptionService.getCharacters();
   selectedOption = '3';
   isDisabled = true;
-  characters: Array<IOption>;
+  characters: Array<NgOption>;
   selectedCharacter = '3';
   timeLeft = 5;
 
-  countries: Array<IOption> = this.selectOptionService.getCountries();
+  countries: Array<NgOption> = this.selectOptionService.getCountries();
   selectedCountry = 'IN';
   selectedCountries: Array<string> = ['IN', 'BE', 'LU', 'NL'];
 

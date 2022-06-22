@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { CrtHighChartRoutingModule } from './crt-high-chart-routing.module';
 import { CrtHighChartComponent } from './crt-high-chart.component';
 import {SharedModule} from '../../../../theme/shared/shared.module';
-import {AngularHighchartsChartModule} from 'angular-highcharts-chart';
+//import {AngularHighchartsChartModule} from 'angular-highcharts-chart';
+import { HighchartsChartModule } from 'highcharts-angular';
 import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
@@ -12,7 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
     CommonModule,
     CrtHighChartRoutingModule,
     SharedModule,
-    AngularHighchartsChartModule,
+    HighchartsChartModule,
     HttpClientModule
   ],
   declarations: [CrtHighChartComponent]

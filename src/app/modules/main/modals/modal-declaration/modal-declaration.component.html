@@ -1,0 +1,342 @@
+<!-- <form class="was-validated" #formUbigeo="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+    <div class="modal-header modal_header">
+        <h5 class="modal-title titulo-modal">Registro de Declaraciones</h5>
+        <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="form-control-label" for="dispatch_date">Fecha de Despacho <small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" maxlength="2" minlength="2" class="form-control form-control-sm" name="dispatch_date"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.dispatch_date">
+                        <input class="form-control form-control-sm" name="dispatch_date" type="text" ngbAutofocus
+                        placeholder="Fecha de Despacho" required [(ngModel)]="formInput.dispatch_date">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label class="form-label" for="idcustoms">Aduana<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="idcustoms"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.idcustoms">
+                        <input type="text" class="form-control form-control-sm" name="idcustoms" placeholder="Aduana"
+                        required [(ngModel)]="formInput.idcustoms">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-md-8">
+                <div class="form-group">
+                    <label class="form-label" for="idconsignee">Consignatario<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="idconsignee"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.idconsignee">
+                        <input type="text" class="form-control form-control-sm" name="idconsignee" placeholder="Aduana"
+                        required [(ngModel)]="formInput.idconsignee">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col col-md-4">
+                <div class="form-group">
+                    <label class="form-label" for="idshippingtype">Tipo de Envio<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="idshippingtype"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.idshippingtype">
+                        <input type="text" class="form-control form-control-sm" name="idshippingtype" placeholder="Tipo de Envio"
+                        required [(ngModel)]="formInput.idshippingtype">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label class="form-label" for="customer_reference">Referencia Cliente<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="customer_reference"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.customer_reference">
+                        <input type="text" class="form-control form-control-sm" name="customer_reference" placeholder="Referencia Cliente"
+                        required [(ngModel)]="formInput.customer_reference">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="form-label" for="idcategories">Categoria<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="idcategories"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.idcategories">
+                        <input type="text" class="form-control form-control-sm" name="idcategories" placeholder="Tipo de Envio"
+                        required [(ngModel)]="formInput.idcategories">
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label class="form-label" for="idcarrier">Transportista<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="idcarrier"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.idcarrier">
+                        <input type="text" class="form-control form-control-sm" name="idcarrier" placeholder="transportista"
+                        required [(ngModel)]="formInput.idcarrier">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="form-label" for="idtransportroute">Via de Transporte<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="idtransportroute"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.idtransportroute">
+                        <input type="text" class="form-control form-control-sm" name="idtransportroute" placeholder="Via de Transporte"
+                        required [(ngModel)]="formInput.idtransportroute">
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label" for="iddeposit">Deposito Temporal<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="iddeposit"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.iddeposit">
+                        <input type="text" class="form-control form-control-sm" name="iddeposit" placeholder="Deposito Temporal"
+                        required [(ngModel)]="formInput.iddeposit">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label" for="idimporterrisk">Riesgo del Importador<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="idcarrier"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.idimporterrisk">
+                        <input type="text" class="form-control form-control-sm" name="idimporterrisk" placeholder="Riesgo de Importador"
+                        required [(ngModel)]="formInput.idimporterrisk">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label" for="idshipper">Embarcador<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="idshipper"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.idshipper">
+                        <input type="text" class="form-control form-control-sm" name="idshipper" placeholder="Embarcador"
+                        required [(ngModel)]="formInput.idshipper">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label" for="idsender">Remitente<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="idsender"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.idsender">
+                        <input type="text" class="form-control form-control-sm" name="idsender" placeholder="Remitente"
+                        required [(ngModel)]="formInput.idsender">
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="form-label" for="contents">Contenido<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <textarea type="text" class="form-control form-control-sm" name="contents"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.contents"></textarea>
+                        <textarea type="text" class="form-control form--control-sm" name="contents" placeholder="Contenido"
+                        required [(ngModel)]="formInput.contents"></textarea>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="form-label" for="number_packages">Nro de Bultos<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="number_packages"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.number_packages">
+                        <input type="text" class="form-control form-control-sm" name="number_packages" placeholder="Numero de Bultos"
+                        required [(ngModel)]="formInput.number_packages">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="form-label" for="total_units">Total Unidad Fisica<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="total_units"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.total_units">
+                        <input type="text" class="form-control form-control-sm" name="total_units" placeholder="Total Unidad Fisica"
+                        required [(ngModel)]="formInput.total_units">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="form-label" for="gross_kilos">Kilos Brutos<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="gross_kilos"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.gross_kilos">
+                        <input type="text" class="form-control form-control-sm" name="gross_kilos" placeholder="Kilos Brutos"
+                        required [(ngModel)]="formInput.gross_kilos">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label" for="idtechnical">Tecnico<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="idtechnical"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.idtechnical">
+                        <input type="text" class="form-control form-control-sm" name="idtechnical" placeholder="Tecnico"
+                        required [(ngModel)]="formInput.idtechnical">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label" for="electronicpayment">Pago Electronico<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="electronicpayment"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.electronicpayment">
+                        <input type="text" class="form-control form-control-sm" name="electronicpayment" placeholder="Pago Electronico"
+                        required [(ngModel)]="formInput.electronicpayment">
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="form-label" for="number_packages">F.O.B<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="number_packages"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.number_packages">
+                        <input type="text" class="form-control form-control-sm" name="number_packages" placeholder="Numero de Bultos"
+                        required [(ngModel)]="formInput.number_packages">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="form-label" for="total_units">F.O.B Gastos<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="total_units"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.total_units">
+                        <input type="text" class="form-control form-control-sm" name="total_units" placeholder="Total Unidad Fisica"
+                        required [(ngModel)]="formInput.total_units">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="form-label" for="gross_kilos">Flete<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="gross_kilos"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.gross_kilos">
+                        <input type="text" class="form-control form-control-sm" name="gross_kilos" placeholder="Kilos Brutos"
+                        required [(ngModel)]="formInput.gross_kilos">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="form-label" for="gross_kilos">Seguro<small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="gross_kilos"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.gross_kilos">
+                        <input type="text" class="form-control form-control-sm" name="gross_kilos" placeholder="Kilos Brutos"
+                        required [(ngModel)]="formInput.gross_kilos">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" uiSref="work" class="btn btn-primary btn-raised" >
+            Guardar
+        </button>
+        <button type="button" class="btn btn-outline-dark"
+        (click)="activeModal.close('Close click')">
+            Salir
+        </button>
+    </div>
+</form> -->
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li [ngbNavItem]="1">
+      <a ngbNavLink>One</a>
+      <ng-template ngbNavContent>
+        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
+          master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro
+          keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat
+          salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+      <a ngbNavLink>Two</a>
+      <ng-template ngbNavContent>
+        <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko
+          farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
+          ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar
+          helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson
+          8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester
+          stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="3">
+      <a ngbNavLink>Three</a>
+      <ng-template ngbNavContent>
+        <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id diam. Nulla facilisi.
+          Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis, luctus eget tincidunt eu, congue et odio.
+          Duis pharetra et nisl at faucibus. Quisque luctus pulvinar arcu, et molestie lectus ultrices et. Sed diam urna,
+          egestas ut ipsum vel, volutpat volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim, nec
+          tristique ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque penatibus et
+          magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac lorem aliquet ultricies in eget
+          neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+      </ng-template>
+    </li>
+  </ul>
+  
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+  
+  <pre>Active: {{ active }}</pre>

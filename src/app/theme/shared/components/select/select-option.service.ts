@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {IOption} from 'ng-select';
+import {NgOption} from '@ng-select/ng-select';
 
 @Injectable()
 export class SelectOptionService {
-  public static readonly PLAYER_ONE: Array<IOption> = [
+  public static readonly PLAYER_ONE: Array<NgOption> = [
     {value: '0', label: 'Alabama'},
     {value: '1', label: 'Wyoming'},
     {value: '2', label: 'Coming'},
@@ -12,7 +12,7 @@ export class SelectOptionService {
     {value: '4', label: 'John Doe'}
   ];
 
-  private static readonly COUNTRIES: Array<IOption> = [
+  private static readonly COUNTRIES: Array<NgOption> = [
     {value: 'AF', label: 'Afghanistan'},
     {value: 'AX', label: 'Åland Islands'},
     {value: 'AL', label: 'Albania'},
@@ -261,34 +261,34 @@ export class SelectOptionService {
     {value: 'ZW', label: 'Zimbabwe'}
   ];
 
-  public cloneOptions(options: Array<IOption>): Array<IOption> {
+  public cloneOptions(options: Array<NgOption>): Array<NgOption> {
     return options.map(option => ({ value: option.value, label: option.label }));
   }
 
-    getCharacters(): Array<IOption> {
+    getCharacters(): Array<NgOption> {
         return this.cloneOptions(SelectOptionService.PLAYER_ONE);
     }
 
-    loadCharacters(): Observable<Array<IOption>> {
+    loadCharacters(): Observable<Array<NgOption>> {
         return this.loadOptions(SelectOptionService.PLAYER_ONE);
     }
 
-    getCharactersWithDisabled(): Array<IOption> {
-        const characters: Array<IOption> = this.cloneOptions(SelectOptionService.PLAYER_ONE);
+    getCharactersWithDisabled(): Array<NgOption> {
+        const characters: Array<NgOption> = this.cloneOptions(SelectOptionService.PLAYER_ONE);
         characters[1].disabled = true;
         characters[4].disabled = true;
         return characters;
     }
 
-    getCountries(): Array<IOption> {
+    getCountries(): Array<NgOption> {
         return this.cloneOptions(SelectOptionService.COUNTRIES);
     }
 
-    loadCountries(): Observable<Array<IOption>> {
+    loadCountries(): Observable<Array<NgOption>> {
         return this.loadOptions(SelectOptionService.COUNTRIES);
     }
 
-    private loadOptions(options: Array<IOption>): Observable<Array<IOption>> {
+    private loadOptions(options: Array<NgOption>): Observable<Array<NgOption>> {
         return new Observable((obs) => {
             setTimeout(() => {
                 obs.next(this.cloneOptions(options));
