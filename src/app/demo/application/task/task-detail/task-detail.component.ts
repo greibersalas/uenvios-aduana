@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
-import 'rxjs/add/observable/interval';
+//import 'rxjs/add/observable/interval';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -26,10 +26,10 @@ export class TaskDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.future = new Date(this.futureString);
-    this.$counter = Observable.interval(1000).map((x) => {
+   /*  this.$counter = Observable.interval(1000).map((x) => {
       this.diff = Math.floor((this.future.getTime() - new Date().getTime()) / 1000);
       return x;
-    });
+    }); */
 
     this.subscription = this.$counter.subscribe((x) => this.message = this.dhms(this.diff));
   }

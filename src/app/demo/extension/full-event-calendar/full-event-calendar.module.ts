@@ -5,21 +5,21 @@ import { FullEventCalendarRoutingModule } from './full-event-calendar-routing.mo
 import { FullEventCalendarComponent } from './full-event-calendar.component';
 import {SharedModule} from '../../../theme/shared/shared.module';
 import {FormsModule} from '@angular/forms';
-import { FullCalendarModule } from '@fullcalendar/angular';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import interactionPlugin from '@fullcalendar/interaction';
+// import { FullCalendarModule } from '@fullcalendar/angular';
+// import dayGridPlugin from '@fullcalendar/daygrid';
+// import interactionPlugin from '@fullcalendar/interaction';
 
-FullCalendarModule.registerPlugins([ // register FullCalendar plugins
-  dayGridPlugin,
-  interactionPlugin
-]);
+// FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+//   dayGridPlugin,
+//   interactionPlugin
+// ]);
 
 @NgModule({
   imports: [
     CommonModule,
     FullEventCalendarRoutingModule,
     SharedModule,
-    FullCalendarModule,
+    //FullCalendarModule,
     FormsModule
   ],
   declarations: [FullEventCalendarComponent],

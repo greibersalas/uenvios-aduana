@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import { formatDate } from '@angular/common';
-import { CalendarOptions } from '@fullcalendar/angular';
+//import { CalendarOptions } from '@fullcalendar/angular';
 
 @Component({
   selector: 'app-full-event-calendar',
@@ -12,7 +12,7 @@ export class FullEventCalendarComponent implements OnInit {
   dateObj = new Date();
   yearMonth = this.dateObj.getUTCFullYear() + '-' + (this.dateObj.getUTCMonth() + 1);
 
-  calendarOptions: CalendarOptions = {
+  /* calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
     events: [
       {
@@ -98,7 +98,7 @@ export class FullEventCalendarComponent implements OnInit {
         textColor: '#fff'
       }
     ]
-  };
+  }; */
 
   ngOnInit() {}
 }

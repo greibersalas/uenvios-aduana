@@ -4,14 +4,14 @@ import { CommonModule } from '@angular/common';
 import { FrmValidationRoutingModule } from './frm-validation-routing.module';
 import { FrmValidationComponent } from './frm-validation.component';
 import {SharedModule} from '../../../../theme/shared/shared.module';
-import {CustomFormsModule} from 'ngx-custom-validators';
+//import {CustomFormsModule} from 'ngx-custom-validators';
 
 @NgModule({
   imports: [
     CommonModule,
     FrmValidationRoutingModule,
     SharedModule,
-    CustomFormsModule
+    //CustomFormsModule
   ],
   declarations: [FrmValidationComponent]
 })
