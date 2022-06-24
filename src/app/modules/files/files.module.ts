@@ -29,10 +29,14 @@ import { DepositComponent } from './deposit/deposit.component';
 import { ModalDepositComponent } from './modals/modal-deposit/modal-deposit.component';
 import { CustomsComponent } from './customs/customs.component';
 import { ModalCustomsComponent } from './modals/modal-customs/modal-customs.component';
+import { UnittypeComponent } from './unittype/unittype.component';
+import { ModalUnittypeComponent } from './modals/modal-unittype/modal-unittype.component';
+import { ArancelComponent } from './arancel/arancel.component';
+import { ModalArancelComponent } from './modals/modal-arancel/modal-arancel.component';
 
 
 @NgModule({
-  declarations: [UbigeoComponent, ModalUbigeoComponent, CountryComponent, ModalCountryComponent, StatementTypeComponent, ModalStatementTypeComponent, DocumenttypeComponent, ModalDocumenttypeComponent, ShippingTypeComponent, ModalShippingTypeComponent, CategoriesComponent, ModalCategoriesComponent, TransportRouteComponent, ModalTransportRouteComponent, SenderComponent, ModalSenderComponent, ShipperComponent, ModalShipperComponent, ImporterRiskComponent, ModalImporterRiskComponent, CarrierComponent, ModalCarrierComponent, DepositComponent, ModalDepositComponent, CustomsComponent, ModalCustomsComponent],
+  declarations: [UbigeoComponent, ModalUbigeoComponent, CountryComponent, ModalCountryComponent, StatementTypeComponent, ModalStatementTypeComponent, DocumenttypeComponent, ModalDocumenttypeComponent, ShippingTypeComponent, ModalShippingTypeComponent, CategoriesComponent, ModalCategoriesComponent, TransportRouteComponent, ModalTransportRouteComponent, SenderComponent, ModalSenderComponent, ShipperComponent, ModalShipperComponent, ImporterRiskComponent, ModalImporterRiskComponent, CarrierComponent, ModalCarrierComponent, DepositComponent, ModalDepositComponent, CustomsComponent, ModalCustomsComponent, UnittypeComponent, ModalUnittypeComponent, ArancelComponent, ModalArancelComponent],
   imports: [
     CommonModule,
     FilesRoutingModule,

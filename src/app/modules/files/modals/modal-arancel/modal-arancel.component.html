@@ -1,0 +1,163 @@
+<form class="was-validated" #formUbigeo="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+    <div class="modal-header modal_header">
+        <h5 class="modal-title titulo-modal">Registro de Arancel</h5>
+        <button type="button" class="close basic-close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="form-control-label" for="code">Codigo <small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" maxlength="15" minlength="15" class="form-control form-control-sm" name="code"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.code">
+                        <input class="form-control form-control-sm" name="code" type="text" ngbAutofocus
+                        placeholder="Codigo" required [(ngModel)]="formInput.code" maxlength="15" minlength="15">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label class="form-label" for="descrption">Descripción <small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="descrption"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.description">
+                        <input type="text" class="form-control form-control-sm" name="descrption" placeholder="Descripcion"
+                        required [(ngModel)]="formInput.description">
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="form-control-label" for="adv">ADV <small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="number"  class="form-control form-control-sm" name="adv"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.adv">
+                        <input class="form-control form-control-sm" name="adv" type="number" 
+                        placeholder="ADV" required [(ngModel)]="formInput.adv" >
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="form-control-label" for="isc">ISC <small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="number"  class="form-control form-control-sm" name="isc"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.isc">
+                        <input class="form-control form-control-sm" name="adv" type="number" 
+                        placeholder="ISC" required [(ngModel)]="formInput.isc" >
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="form-control-label" for="igv">IGV <small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="number"  class="form-control form-control-sm" name="igv"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.igv">
+                        <input class="form-control form-control-sm" name="igv" type="number" 
+                        placeholder="ADV" required [(ngModel)]="formInput.igv" >
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="form-control-label" for="imp">IPM <small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="number"  class="form-control form-control-sm" name="imp"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.imp">
+                        <input class="form-control form-control-sm" name="imp" type="number" 
+                        placeholder="IPM" required [(ngModel)]="formInput.imp" >
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="form-control-label" for="da">DA <small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="number"  class="form-control form-control-sm" name="da"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.da">
+                        <input class="form-control form-control-sm" name="da" type="number" 
+                        placeholder="DA" required [(ngModel)]="formInput.da" >
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="form-control-label" for="de">DE <small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="number"  class="form-control form-control-sm" name="aisc"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.de">
+                        <input class="form-control form-control-sm" name="de" type="number" 
+                        placeholder="DE" required [(ngModel)]="formInput.de" >
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="form-control-label" for="insurance">Seguro <small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="number"  class="form-control form-control-sm" name="insurance"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.insurance">
+                        <input class="form-control form-control-sm" name="insurance" type="number" 
+                        placeholder="Seguro" required [(ngModel)]="formInput.insurance" >
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="form-control-label" for="tax_surcharge">Sobretasa Tributo <small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="number"  class="form-control form-control-sm" name="tax_surcharge"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.tax_surcharge">
+                        <input class="form-control form-control-sm" name="tax_surcharge" type="number" 
+                        placeholder="IPM" required [(ngModel)]="formInput.tax_surcharge" >
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="form-control-label" for="measure_unit">Unidad <small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="text"  class="form-control form-control-sm" name="measure_unit"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.measure_unit"  maxlength="5" minlength="1">
+                        <input class="form-control form-control-sm" name="measure_unit" type="text" 
+                        placeholder="Unidad" required [(ngModel)]="formInput.measure_unit" maxlength="5" minlength="1">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="form-control-label" for="penalty_surtax">Sobretasa Sanción <small class="text-danger">(*)</small></label>
+                    <div class="input-group">
+                        <input type="number"  class="form-control form-control-sm" name="aisc"
+                        style="flex: 0 1 60px !important;" [(ngModel)]="formInput.penalty_surtax">
+                        <input class="form-control form-control-sm" name="penalty_surtax" type="number" 
+                        placeholder="Sobretasa Sanción" required [(ngModel)]="formInput.penalty_surtax" >
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" uiSref="work" class="btn btn-primary btn-raised" >
+            Guardar
+        </button>
+        <button type="button" class="btn btn-outline-dark"
+        (click)="activeModal.close('Close click')">
+            Salir
+        </button>
+    </div>
+</form>

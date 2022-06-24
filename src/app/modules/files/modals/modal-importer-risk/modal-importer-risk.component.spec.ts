@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalImporterRiskComponent } from './modal-importer-risk.component';
 
@@ -6,7 +6,7 @@ describe('ModalImporterRiskComponent', () => {
   let component: ModalImporterRiskComponent;
   let fixture: ComponentFixture<ModalImporterRiskComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ModalImporterRiskComponent ]
     })
