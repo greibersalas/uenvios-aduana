@@ -71,6 +71,7 @@ export class DeclarationComponent implements OnInit {
    openModal(id: number): void{
     const modal = this.modalSerive.open(ModalDeclarationComponent, {size: 'lg'});
     modal.result.then((result: any) => {
+      console.log(result);
       if (result === 'Save click'){
         this.get();
       }
@@ -87,7 +88,7 @@ export class DeclarationComponent implements OnInit {
       showCancelButton: true
     }).then((willDelete) => {
       if (willDelete.value) {
-        this.DeclarationService.delete(id)
+        this.DeclarationService.deleteDataGeneral(id)
         .subscribe(
           res => {
             Swal.fire('ok!', 'Registro eliminado satisfactoriamente', 'success');

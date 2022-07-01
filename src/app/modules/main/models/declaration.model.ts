@@ -15,7 +15,7 @@ export class Declaration implements Transferable<DeclarationDto> {
     fob_bills : number;
     freight : number;
     sure : number;
-    idinsurancecarrie : number;
+    idinsurancecarrier : number;
     iddispatcher : number;
     idcategories : number;
     customer_reference : string;
@@ -41,6 +41,8 @@ export class Declaration implements Transferable<DeclarationDto> {
     direccion : string;
     cod_customs : string;
     customs : string;
+    
+    
    
 
     ToDTO(): DeclarationDto {
@@ -57,7 +59,7 @@ export class Declaration implements Transferable<DeclarationDto> {
             fob_bills : this.fob_bills,
             freight : this.freight,
             sure : this.sure,
-            idinsurancecarrie : this.idinsurancecarrie,
+            idinsurancecarrier : this.idinsurancecarrier,
             iddispatcher : this.iddispatcher,
             idcategories : this.idcategories,
             customer_reference : this.customer_reference,
@@ -83,6 +85,7 @@ export class Declaration implements Transferable<DeclarationDto> {
             direccion : this.direccion,
             cod_customs : this.cod_customs,
             customs : this.customs,
+          
         });
         return dto;
     }
@@ -100,7 +103,7 @@ export class Declaration implements Transferable<DeclarationDto> {
         this.fob_bills = from.fob_bills;
         this.freight = from.freight;
         this.sure = from.sure;
-        this.idinsurancecarrie = from.idinsurancecarrie;
+        this.idinsurancecarrier = from.idinsurancecarrier;
         this.iddispatcher = from.iddispatcher;
         this.idcategories = from.idcategories;
         this.customer_reference = from.customer_reference;
@@ -110,6 +113,7 @@ export class Declaration implements Transferable<DeclarationDto> {
         this.idshipper = from.idshipper;
         this.idsender = from.idsender;
         this.contents = from.contents;
+        this.idtransportroute = from.idtransportroute;
         this.idtechnical = from.idtechnical;
         this.idcommissionagent = from.idcommissionagent;
         this.electronicpayment = from.electronicpayment;

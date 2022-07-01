@@ -11,7 +11,7 @@ export interface DeclarationDto {
     fob_bills : number,
     freight : number,
     sure : number,
-    idinsurancecarrie: number,
+    idinsurancecarrier: number,
     iddispatcher : number,
     idcategories : number,
     customer_reference : string,

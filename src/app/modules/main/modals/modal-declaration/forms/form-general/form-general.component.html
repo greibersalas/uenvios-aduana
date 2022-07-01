@@ -1,11 +1,11 @@
-<form class="was-validated" #formUbigeo="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+<form class="was-validated" #formDG="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
     
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
                 <label class="form-control-label" for="dispatch_date">Fecha de Despacho <small class="text-danger">(*)</small></label>
                 <div class="input-group">
-                    <input class="form-control form-control-sm" name="dispatch_date" type="text" ngbAutofocus
+                    <input class="form-control form-control-sm" name="dispatch_date" type="date" ngbAutofocus
                     placeholder="Fecha de Despacho" required [(ngModel)]="formInput.dispatch_date">
                 </div>
             </div>
@@ -14,8 +14,11 @@
             <div class="form-group">
                 <label class="form-label" for="idcustoms">Aduana<small class="text-danger">(*)</small></label>
                 <div class="input-group">
-                    <select class="custom-select" required [(ngModel)]="formInput.idcustoms">
-                        <option *ngFor="let c of customs" [ngValue]="c.idcustoms">{{c.code}} - {{c.description}}</option>
+                    <select class="custom-select"  [(ngModel)]="formInput.idcustoms" (change)="onChangeAduana($event)" [ngModelOptions]="{standalone: true}" required > 
+                        <option value="" disabled>Seleccione una Aduana</option>                   
+                        <option *ngFor="let c of customs"  [ngValue]="c.idcustoms">
+                            {{c.code}} - {{c.description}}
+                        </option>
                     </select>
                 </div>
                 
@@ -28,8 +31,11 @@
             <div class="form-group">
                 <label class="form-label" for="idconsignee">Consignatario<small class="text-danger">(*)</small></label>
                 <div class="input-group">
-                    <select class="custom-select" required [(ngModel)]="formInput.idconsignee">
-                        <option *ngFor="let c of consigners" [ngValue]="c.id">{{c.id}} - {{c.description}}</option>
+                    <select class="custom-select" required [(ngModel)]="formInput.idconsignee" [ngModelOptions]="{standalone: true}">
+                        <option value="" disabled>Seleccione un consignatario</option>  
+                        <option *ngFor="let c of consigners" [ngValue]="c.idconsignee" >
+                            {{c.idconsignee}} - {{c.description}}
+                        </option>
                     </select>
                 </div>
                 
@@ -39,7 +45,8 @@
             <div class="form-group">
                 <label class="form-label" for="idshippingtype">Tipo de Envio<small class="text-danger">(*)</small></label>
                 <div class="input-group">
-                    <select class="custom-select" required [(ngModel)]="formInput.idshippingtype">
+                    <select class="custom-select" required [(ngModel)]="formInput.idshippingtype" [ngModelOptions]="{standalone: true}">
+                        <option value="" disabled>Seleccione un tipo de envio</option>
                         <option *ngFor="let c of shippingTypes" [ngValue]="c.idshippingtype">{{c.code}} - {{c.description}}</option>
                     </select>
                 </div>
@@ -63,7 +70,8 @@
             <div class="form-group">
                 <label class="form-label" for="idcategories">Categoria<small class="text-danger">(*)</small></label>
                 <div class="input-group">
-                    <select class="custom-select" required [(ngModel)]="formInput.idcategories">
+                    <select class="custom-select" required [(ngModel)]="formInput.idcategories" [ngModelOptions]="{standalone: true}">
+                        <option value="" disabled>Seleccione una categria</option>
                         <option *ngFor="let c of categories" [ngValue]="c.idcategories">{{c.code}} - {{c.description}}</option>
                     </select>
                 </div>
@@ -77,7 +85,8 @@
             <div class="form-group">
                 <label class="form-label" for="idcarrier">Transportista<small class="text-danger">(*)</small></label>
                 <div class="input-group">
-                    <select class="custom-select" required [(ngModel)]="formInput.idcarrier">
+                    <select class="custom-select" required [(ngModel)]="formInput.idcarrier" [ngModelOptions]="{standalone: true}">
+                        <option value="" disabled>Seleccione un transporte</option>
                         <option *ngFor="let c of carries" [ngValue]="c.idcarrier">{{c.ruc}} - {{c.description}}</option>
                     </select>
                 </div>
@@ -89,7 +98,8 @@
             <div class="form-group">
                 <label class="form-label" for="idtransportroute">Via de Transporte<small class="text-danger">(*)</small></label>
                 <div class="input-group">
-                    <select class="custom-select" required [(ngModel)]="formInput.idtransportroute">
+                    <select class="custom-select" required [(ngModel)]="formInput.idtransportroute" [ngModelOptions]="{standalone: true}">
+                        <option value="" disabled>Seleccione una via de transporte</option>
                         <option *ngFor="let c of transportRoutes" [ngValue]="c.idtransportroute">{{c.code}} - {{c.description}}</option>
                     </select>
                 </div>
@@ -104,7 +114,8 @@
             <div class="form-group">
                 <label class="form-label" for="iddeposit">Deposito Temporal<small class="text-danger">(*)</small></label>
                 <div class="input-group">
-                    <select class="custom-select" required [(ngModel)]="formInput.iddeposit">
+                    <select class="custom-select" required [(ngModel)]="formInput.iddeposit" [ngModelOptions]="{standalone: true}">
+                        <option value="" disabled>Seleccione un deposito temporal</option>
                         <option *ngFor="let c of deposits" [ngValue]="c.iddeposit">{{c.code}} - {{c.description}}</option>
                     </select>
                 </div>
@@ -115,8 +126,9 @@
             <div class="form-group">
                 <label class="form-label" for="idimporterrisk">Riesgo del Importador<small class="text-danger">(*)</small></label>
                 <div class="input-group">
-                    <select class="custom-select" required [(ngModel)]="formInput.idimporterrisk">
-                        <option *ngFor="let c of importerRisks" [ngValue]="c.idimporterrisk">{{c.code}} - {{c.description}}</option>
+                    <select class="custom-select" required [(ngModel)]="formInput.idimporterrisk" [ngModelOptions]="{standalone: true}">
+                        <option value="" disabled>Seleccione un riesgo de importador</option>
+                        <option *ngFor="let c of importerRisks" [ngValue]="c.id">{{c.code}} - {{c.description}}</option>
                     </select>
                 </div>
                 
@@ -128,7 +140,8 @@
             <div class="form-group">
                 <label class="form-label" for="idshipper">Embarcador<small class="text-danger">(*)</small></label>
                 <div class="input-group">
-                    <select class="custom-select" required [(ngModel)]="formInput.idshipper">
+                    <select class="custom-select" required [(ngModel)]="formInput.idshipper" [ngModelOptions]="{standalone: true}">
+                        <option value="" disabled>Seleccione un Embarcador</option>
                         <option *ngFor="let c of shippers" [ngValue]="c.idshipper">{{c.code}} - {{c.description}}</option>
                     </select>
                 </div>
@@ -139,7 +152,8 @@
             <div class="form-group">
                 <label class="form-label" for="idsender">Remitente<small class="text-danger">(*)</small></label>
                 <div class="input-group">
-                    <select class="custom-select" required [(ngModel)]="formInput.idsender">
+                    <select class="custom-select" required [(ngModel)]="formInput.idsender" [ngModelOptions]="{standalone: true}">
+                        <option value="" disabled>Seleccione un remitente</option>
                         <option *ngFor="let c of senders" [ngValue]="c.idsender">{{c.code}} - {{c.description}}</option>
                     </select>
                 </div>
@@ -188,7 +202,7 @@
                 <label class="form-label" for="number_packages">Nro de Bultos<small class="text-danger">(*)</small></label>
                 <div class="input-group">
                     <input type="number" class="form-control form-control-sm" name="number_packages" placeholder="Numero de Bultos"
-                    required [(ngModel)]="formInput.number_packages">
+                    required [(ngModel)]="formInput.number_packages" step="1">
                 </div>
                 
             </div>
@@ -198,7 +212,7 @@
                 <label class="form-label" for="total_units">Total Unidad Fisica<small class="text-danger">(*)</small></label>
                 <div class="input-group">
                     <input type="number" class="form-control form-control-sm" name="total_units" placeholder="Total Unidad Fisica"
-                    required [(ngModel)]="formInput.total_units">
+                    required [(ngModel)]="formInput.total_units" step="1">
                 </div>
                 
             </div>
@@ -208,7 +222,7 @@
                 <label class="form-label" for="gross_kilos">Kilos Brutos<small class="text-danger">(*)</small></label>
                 <div class="input-group">
                     <input type="number" class="form-control form-control-sm" name="gross_kilos" placeholder="Kilos Brutos"
-                    required [(ngModel)]="formInput.gross_kilos">
+                    required [(ngModel)]="formInput.gross_kilos" data-decimals="2" step="0.1">
                 </div>
                 
             </div>
@@ -218,43 +232,49 @@
     <div class="row">
         <div class="col-md-3">
             <div class="form-group">
-                <label class="form-label" for="number_packages">F.O.B<small class="text-danger">(*)</small></label>
+                <label class="form-label" for="fob">F.O.B<small class="text-danger">(*)</small></label>
                 <div class="input-group">
-                    <input type="text" class="form-control form-control-sm" name="number_packages" placeholder="Numero de Bultos"
-                    required [(ngModel)]="formInput.number_packages">
+                    <input type="number" class="form-control form-control-sm" name="fob" placeholder="F.O.B"
+                    required [(ngModel)]="formInput.fob" data-decimals="3" step="0.001">
                 </div>
                 
             </div>
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <label class="form-label" for="total_units">F.O.B Gastos<small class="text-danger">(*)</small></label>
+                <label class="form-label" for="fob_bills">F.O.B Gastos<small class="text-danger">(*)</small></label>
                 <div class="input-group">
-                    <input type="text" class="form-control form-control-sm" name="total_units" placeholder="Total Unidad Fisica"
-                    required [(ngModel)]="formInput.total_units">
+                    <input type="number" class="form-control form-control-sm" name="fob_bills" placeholder="F.O.B Gastos"
+                    required [(ngModel)]="formInput.fob_bills" data-decimals="3" step="0.001">
                 </div>
                 
             </div>
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <label class="form-label" for="gross_kilos">Flete<small class="text-danger">(*)</small></label>
+                <label class="form-label" for="Flete">Flete<small class="text-danger">(*)</small></label>
                 <div class="input-group">
-                    <input type="text" class="form-control form-control-sm" name="gross_kilos" placeholder="Kilos Brutos"
-                    required [(ngModel)]="formInput.gross_kilos">
+                    <input type="number" class="form-control form-control-sm" name="Flete" placeholder="Flete"
+                    required [(ngModel)]="formInput.freight" data-decimals="3" step="0.001">
                 </div>
                 
             </div>
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <label class="form-label" for="gross_kilos">Seguro<small class="text-danger">(*)</small></label>
+                <label class="form-label" for="seguro">Seguro<small class="text-danger">(*)</small></label>
                 <div class="input-group">
-                    <input type="text" class="form-control form-control-sm" name="gross_kilos" placeholder="Kilos Brutos"
-                    required [(ngModel)]="formInput.gross_kilos">
+                    <input type="number" class="form-control form-control-sm" name="seguro" placeholder="Seguro"
+                    required [(ngModel)]="formInput.sure" data-decimals="3" step="0.001">
                 </div>
                 
             </div>
         </div>
     </div>
+    
+        <button type="submit" uiSref="work" class="btn btn-primary btn-raised" >
+            Guardar
+        </button>
+    
+    
 </form>

@@ -33,11 +33,23 @@ export class DeclarationService {
     return this.dataRequest.insert(data.ToDTO());
   }
 
+  public insertDataGeneral(data: Declaration): Observable<Response>{
+    return this.dataRequest.insertDataGeneral(data.ToDTO());
+  }
+
   public update(id:number,data: Declaration): Observable<Response>{
     return this.dataRequest.update(id,data.ToDTO());
   }
 
+  public updateDataGeneral(id:number,data: Declaration): Observable<Response>{
+    return this.dataRequest.updateDataGeneral(id,data.ToDTO());
+  }
+
   public delete(id: number): Observable<Response>{
     return this.dataRequest.delete(id);
+  }
+
+  public deleteDataGeneral(id: number): Observable<Response>{
+    return this.dataRequest.deleteDataGenereal(id);
   }
 }

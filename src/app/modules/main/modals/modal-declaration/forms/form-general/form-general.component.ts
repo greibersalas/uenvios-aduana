@@ -116,9 +116,13 @@ export class FormGeneralComponent implements OnInit {
     this.getConsigners();
   }
 
+  onChangeAduana($event:any): void {
+    console.log($event.target.value,this.formInput.idcustoms);
+  }
+
   getConsigners(): void {
     var consigner = {
-      "id":83679,
+      "idconsignee":"83679",
       "description":"CONSIGNATARIO"
     }
     this.consigners.push(consigner);
@@ -181,65 +185,70 @@ export class FormGeneralComponent implements OnInit {
   clear(): void{
     this.formInput = {
       dispatch_date : '',
-      number_packages : 0,
-      idcustoms : 0,
-      total_units : 0,
-      idconsignee : 0,
-      gross_kilos : 0,
-      idshippingtype : 0,
-      fob : 0,
-      fob_bills : 0,
-      freight : 0,
-      sure : 0,
-      idinsurancecarrie: 0,
-      iddispatcher : 0,
-      idcategories : 0,
+      number_packages : null,
+      idcustoms : null,
+      total_units : null,
+      idconsignee : null,
+      gross_kilos : null,
+      idshippingtype : null,
+      fob : null,
+      fob_bills : null,
+      freight : null,
+      sure : null,
+      idinsurancecarrie: null,
+      iddispatcher : null,
+      idcategories : null,
       customer_reference : '',
-      idtransportroute : 0,
-      idcarrier : 0,
-      iddeposit : 0,
-      idimporterrisk : 0,
-      idshipper : 0,
-      idsender : 0,
+      idtransportroute : null,
+      idcarrier : null,
+      iddeposit : null,
+      idimporterrisk : null,
+      idshipper : null,
+      idsender : null,
       contents : '',
       idtechnical : null,
       idcommissionagent : null,
       electronicpayment : null,
       date_preliquidation : '',
-      series_number : 0,
-      type_proration : 0,
+      series_number : null,
+      type_proration : null,
     };
   }
 
   setFormData(): void{
-    this.declarationService.getOneGeneralData(this.id).subscribe(res=>{
-      this.formInput.dispatch_date = res.dispatch_date;
-      this.formInput.idcustoms = res.idcustoms;
-      this.formInput.total_units = res.total_units;
-      this.formInput.idconsignee = res.idconsignee;
-      this.formInput.gross_kilos = res.gross_kilos;
-      this.formInput.idshippingtype = res.idshippingtype;
-      this.formInput.fob = res.fob;
-      this.formInput.fob_bills = res.fob_bills;
-      this.formInput.freight = res.freight;
-      this.formInput.sure = res.sure;
-      this.formInput.idinsurancecarrie = res.idinsurancecarrie;
-      this.formInput.iddispatcher = res.iddispatcher;
-      this.formInput.idcategories = res.idcategories;
-      this.formInput.customer_reference = res.customer_reference;
-      this.formInput.idtransportroute = res.idtransportroute;
-      this.formInput.idcarrier = res.idcarrier;
-      this.formInput.iddeposit = res.iddeposit;
-      this.formInput.idimporterrisk = res.idimporterrisk;
-      this.formInput.idshipper = res.idshipper;
-      this.formInput.idsender = res.idsender;
-      this.formInput.contents = res.contents;
-      this.formInput.idtechnical = res.idtechnical;
-      this.formInput.electronicpayment = res.electronicpayment;
-      this.formInput.date_preliquidation = res.date_preliquidation;
-      this.formInput.series_number = res.series_number;
-      this.formInput.type_proration = res.type_proration; 
-    })
+    if (this.id > 0){
+      this.declarationService.getOneGeneralData(this.id).subscribe(res=>{
+        this.formInput.dispatch_date = res.dispatch_date;
+        this.formInput.idcustoms = res.idcustoms;
+        this.formInput.total_units = res.total_units;
+        this.formInput.idconsignee = res.idconsignee;
+        this.formInput.gross_kilos = res.gross_kilos;
+        this.formInput.idshippingtype = res.idshippingtype;
+        this.formInput.fob = res.fob;
+        this.formInput.fob_bills = res.fob_bills;
+        this.formInput.freight = res.freight;
+        this.formInput.sure = res.sure;
+        this.formInput.idinsurancecarrie = res.idinsurancecarrier;
+        this.formInput.iddispatcher = res.iddispatcher;
+        this.formInput.idcategories = res.idcategories;
+        this.formInput.customer_reference = res.customer_reference;
+        this.formInput.idtransportroute = res.idtransportroute;
+        this.formInput.idcarrier = res.idcarrier;
+        this.formInput.iddeposit = res.iddeposit;
+        this.formInput.idimporterrisk = res.idimporterrisk;
+        this.formInput.idshipper = res.idshipper;
+        this.formInput.idsender = res.idsender;
+        this.formInput.contents = res.contents;
+        this.formInput.idtechnical = res.idtechnical;
+        this.formInput.electronicpayment = res.electronicpayment;
+        this.formInput.date_preliquidation = res.date_preliquidation;
+        this.formInput.series_number = res.series_number;
+        this.formInput.type_proration = res.type_proration; 
+        this.formInput.number_packages = res.number_packages;
+        
+      })
+    }
+    
   }
 
   onSubmit(): void{
@@ -257,7 +266,7 @@ export class FormGeneralComponent implements OnInit {
       declaration.fob_bills = this.formInput.fob_bills;
       declaration.freight = this.formInput.freight;
       declaration.sure = this.formInput.sure;
-      declaration.idinsurancecarrie = this.formInput.idinsurancecarrie;
+      declaration.idinsurancecarrier = this.formInput.idinsurancecarrie;
       declaration.iddispatcher = this.formInput.iddispatcher;
       declaration.idcategories = this.formInput.idcategories;
       declaration.customer_reference = this.formInput.customer_reference;
@@ -273,9 +282,10 @@ export class FormGeneralComponent implements OnInit {
       declaration.date_preliquidation = this.formInput.date_preliquidation;
       declaration.series_number = this.formInput.series_number;
       declaration.type_proration = this.formInput.type_proration;
+      declaration.number_packages = this.formInput.number_packages;
+      declaration.idcommissionagent = this.formInput.idcommissionagent;
 
-
-      this.declarationService.insert(declaration).subscribe(
+      this.declarationService.insertDataGeneral(declaration).subscribe(
         resp => {
           this.spinner.hide();
           this.toastr.success(
@@ -283,18 +293,20 @@ export class FormGeneralComponent implements OnInit {
             'Ok!',
             { timeOut: 3500, progressBar: true }
           );
-          //this.activeModal.close('Save click');
+          this.activeModal.close('Save click');
         },
         err => {
+          console.log(err);
           this.spinner.hide();
           this.toastr.error(
-            'Ocurrio un error al registrar el Declaration',
+            'Ocurrio un error al registrar el Declaración',
             'Atención!',
             { timeOut: 3500, progressBar: true }
           );
         }
       );
     }else{
+      console.log(this.formInput);
       declaration.id = this.id;
       declaration.dispatch_date = this.formInput.dispatch_date;
       declaration.idcustoms = this.formInput.idcustoms;
@@ -306,7 +318,7 @@ export class FormGeneralComponent implements OnInit {
       declaration.fob_bills = this.formInput.fob_bills;
       declaration.freight = this.formInput.freight;
       declaration.sure = this.formInput.sure;
-      declaration.idinsurancecarrie = this.formInput.idinsurancecarrie;
+      declaration.idinsurancecarrier = this.formInput.idinsurancecarrie;
       declaration.iddispatcher = this.formInput.iddispatcher;
       declaration.idcategories = this.formInput.idcategories;
       declaration.customer_reference = this.formInput.customer_reference;
@@ -322,8 +334,10 @@ export class FormGeneralComponent implements OnInit {
       declaration.date_preliquidation = this.formInput.date_preliquidation;
       declaration.series_number = this.formInput.series_number;
       declaration.type_proration = this.formInput.type_proration;
-
-      this.declarationService.update(this.id,declaration).subscribe(
+      declaration.number_packages = this.formInput.number_packages;
+      declaration.idcommissionagent = this.formInput.idcommissionagent;
+      
+      this.declarationService.updateDataGeneral(this.id,declaration).subscribe(
         resp => {
           this.spinner.hide();
           this.toastr.success(
@@ -336,7 +350,7 @@ export class FormGeneralComponent implements OnInit {
         err => {
           this.spinner.hide();
           this.toastr.error(
-            'Ocurrio un error al actulizar el Pais',
+            'Ocurrio un error al actulizar la Declaración',
             'Atención!',
             { timeOut: 3500, progressBar: true }
           );

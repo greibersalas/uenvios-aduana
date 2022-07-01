@@ -31,11 +31,23 @@ export class DeclarationDataRequestService {
     return this.http.post<Response>(`${this.baseUrl}/insert`, data);
   }
 
+  public insertDataGeneral(data: DeclarationDto): Observable<Response> {
+    return this.http.post<Response>(`${this.baseUrl}/general-data/insert`, data);
+  }
+
   public update(id:number, data: DeclarationDto): Observable<Response> {
     return this.http.put<Response>(`${this.baseUrl}/update/${id}`,data);
   }
 
+  public updateDataGeneral(id:number, data: DeclarationDto): Observable<Response> {
+    return this.http.put<Response>(`${this.baseUrl}/general-data/update/${id}`,data);
+  }
+
   delete(id: number): Observable<Response> {
     return this.http.delete<Response>(`${this.baseUrl}/delete/${id}`);
+  }
+
+  deleteDataGenereal(id: number): Observable<Response> {
+    return this.http.delete<Response>(`${this.baseUrl}/general-data/delete/${id}`);
   }
 }
