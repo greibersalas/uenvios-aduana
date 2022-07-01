@@ -37,6 +37,7 @@
                             {{c.idconsignee}} - {{c.description}}
                         </option>
                     </select>
+                    <button type="button" class="btn btn-outline-dark" style="color: #2ed8b6; border-color: #2ed8b6; margin-left: 2.5px;border-radius: 0px " >+</button>
                 </div>
                 
             </div>
@@ -89,6 +90,7 @@
                         <option value="" disabled>Seleccione un transporte</option>
                         <option *ngFor="let c of carries" [ngValue]="c.idcarrier">{{c.ruc}} - {{c.description}}</option>
                     </select>
+                    <button type="button" class="btn btn-outline-dark" style="color: #2ed8b6; border-color: #2ed8b6; margin-left: 2.5px;border-radius: 0px " >+</button>
                 </div>
                 
                 
@@ -144,6 +146,7 @@
                         <option value="" disabled>Seleccione un Embarcador</option>
                         <option *ngFor="let c of shippers" [ngValue]="c.idshipper">{{c.code}} - {{c.description}}</option>
                     </select>
+                    <button type="button" class="btn btn-outline-dark" style="color: #2ed8b6; border-color: #2ed8b6; margin-left: 2.5px;border-radius: 0px " >+</button>
                 </div>
                 
             </div>
@@ -156,6 +159,7 @@
                         <option value="" disabled>Seleccione un remitente</option>
                         <option *ngFor="let c of senders" [ngValue]="c.idsender">{{c.code}} - {{c.description}}</option>
                     </select>
+                    <button type="button" class="btn btn-outline-dark" style="color: #2ed8b6; border-color: #2ed8b6; margin-left: 2.5px;border-radius: 0px " >+</button>
                 </div>
                 
             </div>
