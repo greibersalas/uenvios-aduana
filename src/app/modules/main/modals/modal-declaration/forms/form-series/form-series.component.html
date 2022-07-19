@@ -1,0 +1,264 @@
+<form class="was-validated" #formDS="ngForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+    
+    <div class="row">
+        
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="form-label" for="idarancel">Partida<small class="text-danger">(*)</small></label>
+                <div class="input-group">
+                    <select class="custom-select"  [(ngModel)]="formInput.idarancel"  [ngModelOptions]="{standalone: true}" required > 
+                        <option value="" disabled>Seleccione una Partida</option>                   
+                        <option *ngFor="let c of arancels"  [ngValue]="c.id">
+                            {{c.code}} - {{c.description}}
+                        </option>
+                    </select>
+                </div>
+                
+            </div>
+ 
+            
+        </div>
+
+        
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label class="form-label" for="idpais">Pais de Origen</label>
+                <div class="input-group">
+                    <select class="custom-select"  [(ngModel)]="formInput.idpais"  [ngModelOptions]="{standalone: true}"> 
+                        <option value="" disabled>Seleccione un Pais</option>                   
+                        <option *ngFor="let c of countrys"  [ngValue]="c.id">
+                            {{c.code}} - {{c.nombre}}
+                        </option>
+                    </select>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="form-label" for="codigo_liberacion">Codigo de Liberación</label>
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-sm" name="codigo_liberacion" placeholder="Codigo de Liberación"
+                    [(ngModel)]="formInput.codigo_liberacion">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="form-label" for="fob">F.O.B USD<small class="text-danger">(*)</small></label>
+                <div class="input-group">
+                    <input type="number" class="form-control form-control-sm" name="fob" placeholder="F.O.B"
+                     [(ngModel)]="formInput.fob" data-decimals="3" step="0.001" required>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="form-label" for="fob_expenses">F.O.B Gastos USD</label>
+                <div class="input-group">
+                    <input type="number" class="form-control form-control-sm" name="fob_expenses" placeholder="F.O.B Gastos"
+                     [(ngModel)]="formInput.fob_expenses" data-decimals="3" step="0.001" >
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="form-label" for="Flete">Flete USD</label>
+                <div class="input-group">
+                    <input type="number" class="form-control form-control-sm" name="Flete" placeholder="Flete"
+                     [(ngModel)]="formInput.flete" data-decimals="3" step="0.001" >
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="form-label" for="sure">Seguro USD</label>
+                <div class="input-group">
+                    <input type="number" class="form-control form-control-sm" name="sure" placeholder="Seguro"
+                     [(ngModel)]="formInput.sure" data-decimals="3" step="0.001" >
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="form-label" for="cif">C.I.F</label>
+                <div class="input-group">
+                    <input type="number" class="form-control form-control-sm" name="cif" placeholder="C.I.F"
+                    [(ngModel)]="formInput.cif" data-decimals="3" step="0.001">
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="form-label" for="kilos">Kilos Brutos</label>
+                <div class="input-group">
+                    <input type="number" class="form-control form-control-sm" name="kilos" placeholder="Kilos Brutos"
+                    [(ngModel)]="formInput.kilos" data-decimals="2" step="0.1">
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="form-label" for="quantity">Cant. de Bultos</label>
+                <div class="input-group">
+                    <input type="number" class="form-control form-control-sm" name="quantity" placeholder="Numero de Bultos"
+                    [(ngModel)]="formInput.quantity" step="1">
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="form-label" for="units">Unidades Fisica</label>
+                <div class="input-group">
+                    <input type="number" class="form-control form-control-sm" name="units" placeholder="Total Unidad Fisica"
+                    [(ngModel)]="formInput.units" step="1">
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label" for="idunittype">Tipo de Unidad</label>
+                <div class="input-group">
+                    <select class="custom-select"  [(ngModel)]="formInput.idunittype"  [ngModelOptions]="{standalone: true}"  > 
+                        <option value="" disabled>Tipo de Unidad</option>                   
+                        <option *ngFor="let c of unitsType"  [ngValue]="c.id">
+                            {{c.code}} - {{c.description}}
+                        </option>
+                    </select>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="form-label" for="business_unit">Unidad Comercial<small class="text-danger">(*)</small></label>
+                <div class="input-group">
+                    <input type="number" class="form-control form-control-sm" name="business_unit" placeholder="Unidad Comercial"
+                    required [(ngModel)]="formInput.business_unit" step="1">
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="form-label" for="restring">Prohibida</label>
+                <div class="input-group">
+                    <input type="number" class="form-control form-control-sm" name="restring" placeholder="Prohibida"
+                    [(ngModel)]="formInput.restring" step="1">
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="form-label" for="quantity_risk">Cat. Riesgo</label>
+                <div class="input-group">
+                    <input type="number" class="form-control form-control-sm" name="quantity_risk" placeholder="Cat. Riesgo"
+                    [(ngModel)]="formInput.quantity_risk" step="1">
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="form-label" for="authorization">Autorización</label>
+                <div class="input-group">
+                    <select class="custom-select"  [(ngModel)]="formInput.authorization"  [ngModelOptions]="{standalone: true}" > 
+                        <option value="" disabled>Autorización</option>                   
+                        <option *ngFor="let c of afirmations"  [ngValue]="c.code">
+                            {{c.code}} - {{c.description}}
+                        </option>
+                    </select>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="form-label" for="transport_document">Doc. Transporte</label>
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-sm" name="transport_document" placeholder="Documento de Transporte"
+                    [(ngModel)]="formInput.transport_document">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="form-label" for="name">Nombre</label>
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-sm" name="name" placeholder="Nombre"
+                    [(ngModel)]="formInput.name">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="form-label" for="mark">Marca</label>
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-sm" name="mark" placeholder="Marca"
+                    [(ngModel)]="formInput.mark">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="form-label" for="model">Modelo</label>
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-sm" name="model" placeholder="Modelo"
+                    [(ngModel)]="formInput.model">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="form-label" for="description">Descripción</label>
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-sm" name="description" placeholder="Descripción"
+                    [(ngModel)]="formInput.description">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="form-label" for="url">Pagina Web de Compra Online</label>
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-sm" name="url" placeholder="Pagina Web de Compra Online"
+                    [(ngModel)]="formInput.url">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit"  uiSref="work" class="btn btn-primary btn-raised" >
+        Guardar
+    </button>
+</form>

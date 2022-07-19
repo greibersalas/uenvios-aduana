@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbActiveModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
@@ -66,6 +66,8 @@ export interface FormDeclaration {
 export class FormGeneralComponent implements OnInit {
 
   @Input() id: number;
+  @Output() IdChangeValue = new EventEmitter<number>();
+  
   formInput: FormDeclaration;
   customs : Customs [] = []
   shippingTypes : ShippingType []= [];
@@ -101,6 +103,10 @@ export class FormGeneralComponent implements OnInit {
     this.LoadData();
     this.clear();
     this.setFormData();
+  }
+
+  changeId(id: number): void {
+    this.IdChangeValue.emit(id);
   }
 
   LoadData(): void{
@@ -287,13 +293,16 @@ export class FormGeneralComponent implements OnInit {
 
       this.declarationService.insertDataGeneral(declaration).subscribe(
         resp => {
+          console.log(resp);
+          this.id = resp.id;
+          this.changeId(resp.id);
           this.spinner.hide();
           this.toastr.success(
             'Declaration registrado correctamente',
             'Ok!',
             { timeOut: 3500, progressBar: true }
           );
-          this.activeModal.close('Save click');
+          //this.activeModal.close('Save click');
         },
         err => {
           console.log(err);

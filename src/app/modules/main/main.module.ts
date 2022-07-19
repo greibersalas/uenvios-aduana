@@ -5,13 +5,14 @@ import { SharedModule } from 'src/app/theme/shared/shared.module';
 import { MainRoutingModule } from '../main/main-routing.module';
 import { ModalDeclarationComponent } from './modals/modal-declaration/modal-declaration.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormGeneralComponent } from './modals/modal-declaration/forms/form-general/form-general.component'
+import { FormGeneralComponent } from './modals/modal-declaration/forms/form-general/form-general.component';
+import { FormSeriesComponent } from './modals/modal-declaration/forms/form-series/form-series.component'
 
 
 
 
 @NgModule({
-  declarations: [DeclarationComponent, ModalDeclarationComponent, FormGeneralComponent],
+  declarations: [DeclarationComponent, ModalDeclarationComponent, FormGeneralComponent, FormSeriesComponent],
   imports: [
     CommonModule,
     SharedModule,

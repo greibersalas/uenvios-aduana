@@ -7,13 +7,13 @@
         <li [ngbNavItem]="1">
             <a ngbNavLink>Datos Generales</a>
             <ng-template ngbNavContent>
-                <app-form-general [id]="id"></app-form-general>
+                <app-form-general [id]="id" (IdChangeValue)="IdchangeValueEvent($event)"></app-form-general>
             </ng-template>
         </li>
         <li [ngbNavItem]="2" [disabled]="disabledSeries">
             <a ngbNavLink>Series</a>
             <ng-template ngbNavContent>
-            
+                <app-form-series [iddeclaration]="id"></app-form-series>
             </ng-template>
         </li>
 

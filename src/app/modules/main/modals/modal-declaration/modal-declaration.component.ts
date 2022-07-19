@@ -20,6 +20,7 @@ export class ModalDeclarationComponent implements OnInit {
  
   @Input() id: number;
   
+  
   active = 1;
   disabledSeries = true;
 
@@ -27,8 +28,7 @@ export class ModalDeclarationComponent implements OnInit {
     private declarationService: DeclarationService,
     config: NgbModalConfig,
     public activeModal: NgbActiveModal,
-    private spinner: NgxSpinnerService,
-    private toastr: ToastrService,
+   
    
   ) {
     config.backdrop = 'static';
@@ -37,19 +37,20 @@ export class ModalDeclarationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-    //this.loadForm();
+    if (this.id>0){
+      this.disabledSeries = false;
+    }
   }
 
-  ngAfterViewInit() {
-    
+  IdchangeValueEvent(id){
+    this.id = id;
+    if(this.id > 0){
+      this.disabledSeries = false;
+    }
+    else{
+      this.disabledSeries = true;
+    }
   }
-
-  loadForm(): void {
-    //this.fomrGeneral.id = this.id
-  }
-
-  
 
   
 
